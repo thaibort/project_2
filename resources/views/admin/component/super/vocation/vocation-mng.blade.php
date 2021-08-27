@@ -14,7 +14,7 @@
         @foreach($rs as $res)
         <tr>
             <td>
-                {{$rs->name}}
+                {{$res->vocation.name}}
             </td>
         </tr>
         @endforeach

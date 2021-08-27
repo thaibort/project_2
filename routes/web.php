@@ -19,12 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/login',[login::class, 'getLogin']);
-    Route::post('/login',[login::class, 'postLogin']);
+    Route::get('login',['as' => 'login', 'home' => login::class, 'getLogin']);
+    Route::post('login',['as' => 'login', 'home' => login::class, 'postLogin']);
 });
 
 Route::group(['prefix' => 'admin'], function () {
    Route::get('home',[adminController::class, 'home']);
    Route::get('vocation',[adminController::class, 'vocation']);
    Route::get('crevoca',[adminController::class, 'getCreateVocation']);
+   Route::post('crevoca',[adminController::class, 'postCreateVocation']);
 });

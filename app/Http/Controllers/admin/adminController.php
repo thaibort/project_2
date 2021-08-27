@@ -20,4 +20,11 @@ class adminController extends Controller
     public function getCreateVocation() {
         return view('admin.component.super.vocation.create-vocation');
     }
+
+    public function postCreateVocation(Request $request) {
+        $name = $request -> input('name');
+        $money = $request -> input('money');
+        adminModel::postCreateVocation($name,$money);
+        return redirect("admin/vocation");
+    }
 }
