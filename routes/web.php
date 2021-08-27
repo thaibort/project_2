@@ -25,4 +25,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => 'admin'], function () {
    Route::get('home',[adminController::class, 'home']);
+   Route::get('vocation',[adminController::class, 'vocation']);
+   Route::get('crevoca',[adminController::class, 'getCreateVocation']);
 });
