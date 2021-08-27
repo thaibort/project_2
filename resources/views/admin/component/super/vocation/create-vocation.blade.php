@@ -1,8 +1,17 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
 @section('body')
-    <div>
-        create
+    <div class="w-full h-screen bg-red-200">
+        <div>
+            create
+        </div>
+        <form action="{{url('admin/crevoca')}}" method="post">
+            @csrf
+            Tên ngành
+            <input type="text" name="name">
+            tổng học phí ngành
+            <input type="text" name="money">
+            <button type="submit">Thêm</button>
+        </form>
     </div>
-
 @endsection
