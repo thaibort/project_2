@@ -27,4 +27,21 @@ class adminController extends Controller
         adminModel::postCreateVocation($name,$money);
         return redirect("admin/vocation");
     }
+
+    public function deleteVocation($id){
+        adminModel::deleteVocation($id);
+        return redirect("admin/vocation");
+    }
+
+    public function goUpdateVocation($id){
+        $rs = adminModel::goUpdateVocation($id);
+        return view('admin.component.super.vocation.update-vocation',['rs' => $rs]);
+    }
+
+    public function updateVocation(Request $request){
+        $id = $request -> input('id');
+        $money = $request -> input('money');
+        adminModel::updateVocation($id,$money);
+        return redirect("admin/vocation");
+    }
 }

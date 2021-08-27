@@ -24,8 +24,22 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
+
    Route::get('home',[adminController::class, 'home']);
+
+    //vocation
    Route::get('vocation',[adminController::class, 'vocation']);
+
+        //delete
+   Route::delete('vocation/{id}',[adminController::class, 'deleteVocation']);
+
+        //update
+   Route::get('upvoca/{id}',[adminController::class, 'goUpdateVocation']);
+   Route::put('upvoca',[adminController::class, 'updateVocation']);
+
+        //create
    Route::get('crevoca',[adminController::class, 'getCreateVocation']);
    Route::post('crevoca',[adminController::class, 'postCreateVocation']);
+
+
 });

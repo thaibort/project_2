@@ -12,7 +12,7 @@ class adminModel extends Model
     static function vocation(){
         $rs = DB::table('total_money')
             ->join('vocation','total_money.idVocation','=','vocation.id')
-            ->select('vocation.name','totalMoney')
+            ->select('vocation.name','totalMoney','vocation.id')
             ->get();
         return $rs;
     }
@@ -24,5 +24,28 @@ class adminModel extends Model
             $money = ['totalMoney' => $money, 'idVocation' => $item->id];
             DB::table('total_money')->insert($money);
         }
+    }
+
+    static function deleteVocation($id){
+        DB::table('total_money')
+            ->where('idVocation','=',$id)
+            ->delete();
+        DB::table('vocation')
+            ->delete($id);
+    }
+
+    static function goUpdateVocation($id){
+        $rs = DB::table('total_money')
+            ->join('vocation','total_money.idVocation','=','vocation.id')
+            ->where('total_money.idVocation','=',$id)
+            ->select('vocation.name','totalMoney','vocation.id')
+            ->get();
+        return $rs;
+    }
+
+    static function updateVocation($id,$money){
+        DB::table('total_money')
+            ->where('idVocation','=',$id)
+            ->update(['totalMoney' => $money]);
     }
 }

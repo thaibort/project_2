@@ -2,6 +2,7 @@
 @section('title','Quản lý ngành')
 @section('body')
     <div class="w-full h-screen bg-red-200">
+        <a href="{{url('admin/vocation')}}">Quay lại</a>
         <div>
             create
         </div>
