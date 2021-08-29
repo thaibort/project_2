@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\admin\adminController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\login;
+use App\Http\Controllers\admin\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +19,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('login',['as' => 'login', 'home' => login::class, 'getLogin']);
-    Route::post('login',['as' => 'login', 'home' => login::class, 'postLogin']);
+    Route::get('',[loginController::class, 'getLogin'])->name('login');
+    Route::post('',[loginController::class, 'postLogin']);
+    Route::get('home',[adminController::class, 'home'])->name('home');
+    Route::get('logout',[adminController::class,'logout']);
 });
 
 Route::group(['prefix' => 'admin'], function () {
-   Route::get('home',[adminController::class, 'home']);
+
+
+    //vocation
    Route::get('vocation',[adminController::class, 'vocation']);
+
+        //delete
+   Route::delete('vocation/{id}',[adminController::class, 'deleteVocation']);
+
+        //update
+   Route::get('upvoca/{id}',[adminController::class, 'goUpdateVocation']);
+   Route::put('upvoca',[adminController::class, 'updateVocation']);
+
+        //create
    Route::get('crevoca',[adminController::class, 'getCreateVocation']);
    Route::post('crevoca',[adminController::class, 'postCreateVocation']);
+
+   //staff
+   Route::get('crestaff',[adminController::class,'getCreateStaff']);
+   Route::post('crevoca',[adminController::class, 'postCreateVocation']);
+
 });

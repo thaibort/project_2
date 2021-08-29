@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('login:sanctum')->get('/user', function (Request $request) {
+Route::middleware('loginController:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
