@@ -21,7 +21,7 @@ class CreateInvoicesTable extends Migration
             $table->dateTimeTz('date');
             $table->float('money');
             $table->foreign('idStudents')->references('id')->on('students');
-            $table->foreign('idAdmin')->references('id')->on('admin');
+            $table->foreign('idAdmin')->references('id')->on('admins');
             $table->foreign('idTypeOfTuition')->references('id')->on('type_of_tuition');
             $table->timestamps();
         });

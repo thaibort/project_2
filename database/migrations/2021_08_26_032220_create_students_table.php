@@ -17,8 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->String('name',50);
             $table->String('address');
-            $table->String('phone',20);
-            $table->String('email');
+            $table->String('phone',20)->unique();
+            $table->String('email')->unique();
             $table->tinyInteger('gender');
             $table->integer('totalStages');
             $table->unsignedBigInteger('idClass');

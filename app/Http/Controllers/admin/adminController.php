@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 
 class adminController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth.admin');
+//    }
+
+    //trang chủ
     public function home() {
         return view('admin.component.home');
     }
 
+    //ngành và tổng tiền
     public function vocation() {
         $rs = adminModel::vocation();
         return view('admin.component.super.vocation.vocation-mng',['rs' => $rs]);
