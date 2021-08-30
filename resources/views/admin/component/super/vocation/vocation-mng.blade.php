@@ -5,7 +5,7 @@
         <a href="{{url('admin/crevoca')}}">thêm ngành</a>
     </div>
 
-    <table>
+    <table >
         <tr>
             <th>
                 Tên ngành
