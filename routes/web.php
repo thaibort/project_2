@@ -28,22 +28,35 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'admin'], function () {
 
 
-    //vocation
+    //ngành và tổng tiền
    Route::get('vocation',[adminController::class, 'vocation']);
 
-        //delete
+        //xóa
    Route::delete('vocation/{id}',[adminController::class, 'deleteVocation']);
 
-        //update
+        //sửa
    Route::get('upvoca/{id}',[adminController::class, 'goUpdateVocation']);
    Route::put('upvoca',[adminController::class, 'updateVocation']);
 
-        //create
+        //thêm
    Route::get('crevoca',[adminController::class, 'getCreateVocation']);
    Route::post('crevoca',[adminController::class, 'postCreateVocation']);
 
-   //staff
+   //nhân viên
    Route::get('crestaff',[adminController::class,'getCreateStaff']);
    Route::post('crevoca',[adminController::class, 'postCreateVocation']);
 
+   //năm học
+    Route::get('schyear',[adminController::class,'schoolYear']);
+
+        //thêm
+    Route::get('creschyear',[adminController::class,'getCreateSchoolYear']);
+    Route::post('creschyear',[adminController::class,'postCreateSchoolYear']);
+
+        //xóa
+    Route::delete('schyear/{id}',[adminController::class, 'deleteSchoolYear']);
+
+    //sửa
+    Route::get('upschyear/{id}',[adminController::class, 'goUpdateSchoolYear']);
+    Route::put('upschyear',[adminController::class, 'updateSchoolYear']);
 });

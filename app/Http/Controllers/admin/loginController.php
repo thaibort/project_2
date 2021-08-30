@@ -24,7 +24,7 @@ class loginController extends Controller
             return redirect()->route('home');
         }
         else {
-            dd($pass);
+            dd($email,$pass);
             return redirect()->back()->with('error','Sai email hoặc mật khẩu');
         }
     }
