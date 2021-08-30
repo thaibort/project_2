@@ -97,6 +97,9 @@
              </div>
 
         </div>
+<<<<<<< HEAD
+        
+=======
         <div class="bg-white w-3/4 h-full">
     <div class=" grid grid-cols-3 gap-6 bg-green-200 h-full w-full ">
                         <div class="bg-green-400 border-red-300 m-5 academic-cap rounded-md ">
@@ -141,6 +144,7 @@
                             </svg>
                         Quản lý hóa đơn </a>
                         </div>
+>>>>>>> main
         @yield('body')
         </div>
     </div>
