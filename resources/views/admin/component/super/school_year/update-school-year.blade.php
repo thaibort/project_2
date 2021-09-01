@@ -6,14 +6,15 @@
         <div>
             create
         </div>
-        <form action="{{url('admin/upvoca')}}" method="post">
+        <form action="{{url('admin/upschyear')}}" method="post" class="flex">
             @csrf
             @method("PUT")
             @foreach($rs as $item)
                 <input type="text" name="id" value="{{$item->id}}" hidden>
-                Tên ngành: {{$item->name}}
-                tổng học phí ngành
-                <input type="text" name="money" value="{{$item->totalMoney}}">
+                Niên khóa: <br>
+                <input type="number" value="{{$item->name}}" name="name">
+                Đợt đóng tiền hiện tại: <br>
+                <input type="number" value="{{$item->stagesPresent}}" name="stagesPresent">
             @endforeach
             <button type="submit">Thêm</button>
         </form>

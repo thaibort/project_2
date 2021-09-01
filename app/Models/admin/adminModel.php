@@ -80,4 +80,63 @@ class adminModel extends Model
                     ->get();
                 return $rs;
             }
+
+            static function updateSchoolYear($name,$stagesPresent){
+                $data = ['name' => $name, 'stagesPresent' => $stagesPresent];
+                DB::table('school_year')
+                    ->update($data);
+            }
+
+    //lớp
+        static function class(){
+            $rs = DB::table('class')
+                ->join('total_money','class.idTotalMoney','total_money.id')
+                ->join('vocation','total_money.idVocation','vocation.id')
+                ->join('school_year','class.idSchoolYear','school_year.id')
+                ->select('class.id','class.name','vocation.name AS vocation','school_year.name AS schoolYear')
+                ->get();
+            return $rs;
+        }
+
+        static function getVocation(){
+            $total = DB::table('total_money')
+                ->join('vocation','total_money.idVocation','=','vocation.id')
+                ->select('vocation.name','total_money.id as idTotal')
+                ->get();
+
+            return $total;
+        }
+
+        static function getSchoolYear(){
+            $schyear = DB::table('school_year')
+                ->select('id as idYear','name')
+                ->get();
+            return $schyear;
+        }
+
+        //thêm
+            static function postCreateClass($data){
+                DB::table('class')->insert($data);
+            }
+
+        //xóa
+            static function deleteClass($id){
+                DB::table('class')
+                    ->delete($id);
+            }
+
+        //sửa
+            static function goUpdateClass($id){
+                $rs = DB::table('class')
+                    ->where('id','=',$id)
+                    ->get();
+                return $rs;
+            }
+
+            static function updateClass($id,$data){
+                DB::table('class')
+                    ->where('id','=',$id)
+                    ->update($data);
+            }
+
 }

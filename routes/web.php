@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('',[loginController::class, 'getLogin'])->name('login');
     Route::post('',[loginController::class, 'postLogin']);
     Route::get('home',[adminController::class, 'home'])->name('home');
-    Route::get('logout',[adminController::class,'logout']);
+    Route::get('logout',[loginController::class,'logout']);
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -56,7 +56,21 @@ Route::group(['prefix' => 'admin'], function () {
         //xóa
     Route::delete('schyear/{id}',[adminController::class, 'deleteSchoolYear']);
 
-    //sửa
+        //sửa
     Route::get('upschyear/{id}',[adminController::class, 'goUpdateSchoolYear']);
     Route::put('upschyear',[adminController::class, 'updateSchoolYear']);
+
+    //lớp
+    Route::get('class',[adminController::class, 'class']);
+
+        //thêm
+    Route::get('creclass',[adminController::class,'getCreateClass']);
+    Route::post('creclass',[adminController::class,'postCreateClass']);
+
+        //xóa
+    Route::delete('class/{id}',[adminController::class, 'deleteClass']);
+
+        //sửa
+    Route::get('upclass/{id}',[adminController::class, 'goUpdateClass']);
+    Route::put('upclass',[adminController::class, 'updateClass']);
 });

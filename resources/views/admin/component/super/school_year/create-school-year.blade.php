@@ -6,7 +6,7 @@
         <form action="{{url('admin/creschyear')}}" method="post">
             @csrf
             Niên khóa thứ
-            <input type="number" name="name" required>
+            <input type="number" name="name" min="0" maxlength="9"  required>
             <button type="submit">Thêm</button>
         </form>
     </div>
