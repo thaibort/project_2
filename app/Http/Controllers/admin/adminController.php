@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class adminController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth.admin');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth.admin');
+    }
 
     //trang chủ
         public function home() {
@@ -86,9 +86,58 @@ class adminController extends Controller
             }
 
             public function updateSchoolYear(Request $request){
-                $id = $request -> input('id');
-                $money = $request -> input('money');
-                adminModel::updateVocation($id,$money);
-                return redirect("admin/vocation");
+                $name = $request -> input('id');
+                $stagesPresent = $request -> input('stagesPresent');
+                adminModel::updateSchoolYear($name,$stagesPresent);
+                return redirect("admin/schyear");
             }
+
+    //lớp
+        public function class(){
+            $rs = adminModel::class();
+            return view('admin.component.staff.class.class-mng', ['rs' => $rs]);
+        }
+
+        //thêm
+            public function getCreateClass(){
+                $vocation = adminModel::getVocation();
+                $schoolYear = adminModel::getSchoolYear();
+                return view('admin.component.staff.class.create-class',['vocation' => $vocation,'schoolYear' => $schoolYear]);
+            }
+
+            public function postCreateClass(Request $request){
+                $name = $request->input('name');
+                $vocation = $request->input('vocation');
+                $schoolYear = $request->input('schoolYear');
+
+                $data = ['name' => $name, 'idTotalMoney' => $vocation, 'idSchoolYear' => $schoolYear];
+
+                adminModel::postCreateClass($data);
+                return redirect("admin/class");
+            }
+
+        //xóa
+            public function deleteClass($id){
+                adminModel::deleteClass($id);
+                return redirect('admin/class');
+            }
+
+        //sửa
+            public function goUpdateClass($id){
+                $rs = adminModel::goUpdateClass($id);
+                $vocation = adminModel::getVocation();
+                $SchoolYear = adminModel::getSchoolYear();
+                return view('admin.component.staff.class.update-class',["rs" => $rs, "vocation" => $vocation, "SchoolYear" => $SchoolYear]);
+            }
+
+            public function updateClass(Request $request){
+                $id = $request -> input('id');
+                $data = [
+                    'name' => $request -> input('name'),
+                    'idTotalMoney' => $request -> vocation,
+                    'idSchoolYear' => $request -> schoolYear
+                ];
+                adminModel::updateClass($id,$data);
+            }
+
 }

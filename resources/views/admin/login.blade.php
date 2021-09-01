@@ -317,7 +317,7 @@
             <input type="email" id="login" class="fadeIn second" name="email" placeholder="Email" required>
             <input type="password" id="pass" class="fadeIn third" name="pass" placeholder="Mật khẩu" required>
             @if(\Illuminate\Support\Facades\Session::has('error'))
-            <div style="color: red">{{\Illuminate\Support\Facades\Session::get('error')}}</div>
+            <div style="color: red" class="fadeIn fourth">{{\Illuminate\Support\Facades\Session::get('error')}}</div>
             @endif
             <input type="submit" class="fadeIn fourth" value="Đăng nhập">
         </form>

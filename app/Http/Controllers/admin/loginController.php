@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
 {
@@ -15,16 +17,15 @@ class loginController extends Controller
     public function postLogin(Request $request){
         $email = $request -> input('email');
         $pass = $request -> input('pass');
-//        dd($pass);
+
         if (Auth::guard('admin')->attempt([
             'email' => $email,
-            'pass' => $pass
+            'password' => $pass
         ]))
         {
             return redirect()->route('home');
         }
         else {
-//            dd($email,$pass);
             return redirect()->back()->with('error','Sai email hoặc mật khẩu');
         }
     }

@@ -8,7 +8,7 @@
             Tên ngành
             <input type="text" name="name" required>
             tổng học phí ngành
-            <input type="text" name="money" maxlength="9" required>
+            <input type="text" name="money" min="0" maxlength="9" required>
             <button type="submit">Thêm</button>
         </form>
     </div>
