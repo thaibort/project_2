@@ -1,22 +1,25 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
 @section('body')
-    <div>
-        <a href="{{url('admin/crevoca')}}">thêm ngành</a>
+   <div aria-colspan="3">
+        <a href="{{url('admin/crevoca')}}" ><i class="fas fa-plus-circle fa-lg" style="color: black">Thêm ngành</a>
     </div>
-
-    <table >
-        <tr>
-            <th>
+    <table class="table table-bordered">
+    <thead class="thead-inverse">
+        <tr colspan="3"><input type="text" class="form-input w-3" id="search" style="display: inline"> 
+        </tr>
+        <tr >
+            <th >
                 Tên ngành
             </th>
-            <th>
+            <th >
                 Tổng tiền thu
             </th>
-            <th colspan="2">
+            <th colspan="2" >
                 Hành động
             </th>
         </tr>
+    </thead>
         @forelse($rs as $res)
         <tr>
             <td>
@@ -43,6 +46,7 @@
         <tr>
             <td colspan="4">Hiện không có dữ liệu</td>
         </tr>
+        
         @endforelse
     </table>
 @endsection
