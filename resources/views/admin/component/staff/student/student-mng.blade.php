@@ -25,7 +25,7 @@
                     <td>{{$res -> className}}</td>
                     <td>{{$res -> schoolYear}}</td>
                     <td>{{$stagesPresent <= $totalStages ? 'Đã nộp' : 'Nợ '.($stagesPresent - $totalStages).' tháng'}}</td>
-                    <td>{{$res -> id}}</td>
+                    <td><a href="{{url('admin/stuinfor')}}">Chi tiết</a></td>
                 </tr>
             @empty
                 <tr><td colspan="6">Không có dữ liệu</td></tr>

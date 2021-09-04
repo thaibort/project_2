@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin'], function () {
     //sinh viên
         Route::get('student',[adminController::class, 'student']);
 
+        Route::get('stuinfor',[adminController::class,'stuinfor']);
+
         //thêm
             Route::get('crestudent',[adminController::class,'getCreateStudent']);
             Route::post('crestudent',[adminController::class,'postCreateStudent']);

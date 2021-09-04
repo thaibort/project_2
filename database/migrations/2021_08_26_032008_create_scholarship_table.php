@@ -15,7 +15,7 @@ class CreateScholarshipTable extends Migration
     {
         Schema::create('scholarship', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
+            $table->integer('type')->unique();
             $table->float('money');
             $table->timestamps();
         });
