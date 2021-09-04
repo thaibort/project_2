@@ -171,4 +171,40 @@ class adminModel extends Model
                     ->where('id','=',$id)
                     ->update($data);
             }
+
+    //sinh viên
+        static function student(){
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->join('scholarship','students.idScholarship','=','scholarship.id')
+                ->select(
+                    'students.id',
+                    'students.name as studentName',
+                    'class.name as className',
+                    'school_year.name as schoolYear',
+                    'school_year.stagesPresent',
+                    'students.totalStages')
+                ->get();
+            return $rs;
+        }
+
+        static function getClass(){
+            $rs = DB::table('class')
+                ->get();
+            return $rs;
+        }
+
+        static function getScholarship(){
+            $rs = DB::table('scholarship')
+                ->get();
+
+            return $rs;
+        }
+
+        //thêm
+            static function postCreateStudent($data){
+                DB::table('students')
+                    ->insert($data);
+            }
 }

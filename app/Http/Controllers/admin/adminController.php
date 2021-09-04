@@ -186,4 +186,55 @@ class adminController extends Controller
                 return redirect('admin/scholarship');
             }
 
+    //sinh viên
+        public function student(){
+            $rs = adminModel::student();
+            return view('admin.component.staff.student.student-mng',['rs' => $rs]);
+        }
+
+    //thêm
+        public function getCreateStudent(){
+            $class = adminModel::getClass();
+            $scholarship = adminModel::getScholarship();
+            return view('admin.component.staff.student.create-student',['class' => $class, 'scholarship' => $scholarship]);
+        }
+
+        public function postCreateStudent(Request $request){
+        $data = [
+            'name' => $request -> input('name'),
+            'address' => $request -> input('address'),
+            'phone' => $request -> input('phone'),
+            'email' => $request -> input('email'),
+            'gender' => $request -> input('gender'),
+            'idClass' => $request -> input('class'),
+            'idScholarship' => $request -> input('scholarship'),
+            'totalStages' => 1
+        ];
+
+        adminModel::postCreateStudent($data);
+
+        return redirect('admin/student');
+    }
+
+    //xóa
+        public function deleteStudent($id){
+        adminModel::deleteScholarship($id);
+        return redirect('admin/scholarship');
+    }
+
+    //sửa
+        public function goUpdateStudent($id){
+            $rs = adminModel::goUpdateScholarship($id);
+            return view('admin.component.super.scholarship.update-scholarship',['rs' => $rs]);
+        }
+
+        public function updateStudent(Request $request){
+        $id = $request -> input('id');
+        $data = [
+            'type' => $request -> input('name'),
+            'money' => $request -> input('money')
+        ];
+        adminModel::updateScholarship($id,$data);
+        return redirect('admin/scholarship');
+    }
 }
