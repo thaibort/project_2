@@ -15,7 +15,7 @@ class CreateSchoolYearTable extends Migration
     {
         Schema::create('school_year', function (Blueprint $table) {
             $table->id();
-            $table->integer('name');
+            $table->integer('name')->unique();
             $table->integer('stagesPresent');
             $table->timestamps();
         });

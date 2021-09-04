@@ -189,6 +189,28 @@ class adminModel extends Model
             return $rs;
         }
 
+        static function stuinfor(){
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->join('total_money','class.idTotalMoney','=','total_money.id')
+                ->join('vocation','total_money.idVocation','=','vocation.id')
+                ->join('scholarship','students.idScholarship','=','scholarship.id')
+                ->select(
+                    'students.id',
+                    'students.name as studentName',
+                    'students.phone',
+                    'students.email',
+                    'students.address',
+                    'class.name as className',
+                    'school_year.name as schoolYear',
+                    'school_year.stagesPresent',
+                    'vocation.name as vocation',
+                    'students.totalStages')
+                ->get();
+            return $rs;
+        }
+
         static function getClass(){
             $rs = DB::table('class')
                 ->get();

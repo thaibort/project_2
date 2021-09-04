@@ -15,7 +15,7 @@ class CreateTypeOfTuitionTable extends Migration
     {
         Schema::create('type_of_tuition', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
+            $table->integer('type')->unique();
             $table->integer('discount');
             $table->timestamps();
         });

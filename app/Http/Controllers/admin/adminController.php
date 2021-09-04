@@ -192,6 +192,11 @@ class adminController extends Controller
             return view('admin.component.staff.student.student-mng',['rs' => $rs]);
         }
 
+        public function stuinfor(){
+            $rs = adminModel::stuinfor();
+            return view('admin.component.staff.student.student-information',['rs' => $rs]);
+        }
+
     //thêm
         public function getCreateStudent(){
             $class = adminModel::getClass();
