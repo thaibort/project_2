@@ -19,7 +19,7 @@ class CreateAdminTable extends Migration
             $table->String('email')->unique();
             $table->String('phone',20)->unique();
             $table->String('address');
-            $table->String('pass');
+            $table->String('password');
             $table->tinyInteger('level');
             $table->timestamps();
         });

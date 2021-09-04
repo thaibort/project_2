@@ -138,6 +138,52 @@ class adminController extends Controller
                     'idSchoolYear' => $request -> schoolYear
                 ];
                 adminModel::updateClass($id,$data);
+
+                return redirect('admin/class');
+            }
+
+    //học bổng
+        public function scholarship(){
+            $rs = adminModel::scholarship();
+            return view('admin.component.super.scholarship.scholarship-mng',['rs' => $rs]);
+        }
+
+        //thêm
+            public function getCreateScholarship(){
+                return view('admin.component.super.scholarship.create-scholarship');
+            }
+
+            public function postCreateScholarship(Request $request){
+                $data = [
+                    'type' => $request -> input('name'),
+                    'money' => $request -> input('money')
+                    ];
+
+                adminModel::postCreateScholarship($data);
+
+                return redirect('admin/scholarship');
+            }
+
+        //xóa
+            public function deleteScholarship($id){
+                adminModel::deleteScholarship($id);
+                return redirect('admin/scholarship');
+            }
+
+        //sửa
+            public function goUpdateScholarship($id){
+                $rs = adminModel::goUpdateScholarship($id);
+                return view('admin.component.super.scholarship.update-scholarship',['rs' => $rs]);
+            }
+
+            public function updateScholarship(Request $request){
+                $id = $request -> input('id');
+                $data = [
+                    'type' => $request -> input('name'),
+                    'money' => $request -> input('money')
+                ];
+                adminModel::updateScholarship($id,$data);
+                return redirect('admin/scholarship');
             }
 
 }
