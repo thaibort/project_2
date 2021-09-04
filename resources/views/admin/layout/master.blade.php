@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin| Dashboard</title>
+    <title>@yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -162,7 +162,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="../img/bkacd.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">BKACAD</font>
@@ -184,9 +184,6 @@
                         <div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
                             <!-- Sidebar user panel (optional) -->
                             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                                <div class="image">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                                </div>
                                 <div class="info">
                                     <a href="#" class="d-block">ADMIN</a>
                                 </div>
@@ -235,18 +232,18 @@
                                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link active">
+                                        <a href="{{url('admin/home')}}" class="nav-link active">
                                             <i class="nav-icon fas fa-tachometer-alt"></i>
                                             <p>
-                                                Dashboard       
+                                                Trang chủ
                                             </p>
                                         </a>
-                                        <ul class="nav nav-treeview">    
+                                        <ul class="nav nav-treeview">
                                         </ul>
                                     </li>
                                     <li class="nav-header">Quản Lý</li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{url('admin/staff')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý nhân viên
@@ -254,7 +251,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{url('admin/schyear')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý khóa
@@ -262,7 +259,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="" class="nav-link">
+                                        <a href="{{url('admin/vocation')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý ngành
@@ -270,7 +267,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{url('admin/class')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý lớp
@@ -278,7 +275,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{url('admin/student')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý sinh viên
@@ -287,10 +284,10 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="{{url('admin/invoice')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
-                                                Quản lý phiếu thu
+                                                Quản lý hóa đơn
                                             </p>
                                         </a>
                                     </li>
@@ -314,8 +311,9 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-        @yield('body')
-        
+        <div class="content-wrapper" style="min-height: 404px;">
+            @yield('body')
+        </div>
         <footer class="main-footer">
             <strong>Copyright © 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
             All rights reserved.
@@ -323,7 +321,7 @@
                 <b>Version</b> 3.1.0
             </div>
         </footer>
-
+    </div>
 </body>
 
 </html>

@@ -2,11 +2,11 @@
 @section('title','Sửa lớp')
 
 @section('body')
-    <form action="" method="post">
+    <form action="{{url('admin/upclass')}}" method="post">
         @csrf
         @method('PUT')
         @foreach($rs as $res)
-            <a href="{{url('admin/upclass')}}">Quay lại</a>
+            <a href="{{url('admin/class')}}">Quay lại</a>
             <div>
                 Ngành:
                 <select name="vocation">

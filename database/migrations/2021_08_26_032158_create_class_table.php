@@ -15,7 +15,7 @@ class CreateClassTable extends Migration
     {
         Schema::create('class', function (Blueprint $table) {
             $table->id();
-            $table->String('name',20);
+            $table->String('name',20)->unique();
             $table->unsignedBigInteger('idTotalMoney');
             $table->unsignedBigInteger('idSchoolYear');
             $table->foreign('idTotalMoney')->references('id')->on('total_money');

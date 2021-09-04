@@ -139,4 +139,36 @@ class adminModel extends Model
                     ->update($data);
             }
 
+    //học bổng
+        static function scholarship(){
+            $rs = DB::table('scholarship')
+                ->get();
+            return $rs;
+        }
+
+        //thêm
+            static  function postCreateScholarship($data){
+            DB::table('scholarship')
+                ->insert($data);
+    }
+
+        //xóa
+            static function deleteScholarship($id){
+                DB::table('scholarship')
+                    ->delete($id);
+            }
+
+        //sửa
+            static function goUpdateScholarship($id){
+                $rs = DB::table('scholarship')
+                    ->where('id', '=', $id)
+                    ->get();
+                return $rs;
+            }
+
+            static function updateScholarship($id,$data){
+                DB::table('scholarship')
+                    ->where('id','=',$id)
+                    ->update($data);
+            }
 }
