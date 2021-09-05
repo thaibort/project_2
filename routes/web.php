@@ -91,7 +91,7 @@ Route::group(['prefix' => 'admin'], function () {
     //sinh viên
         Route::get('student',[adminController::class, 'student']);
 
-        Route::get('stuinfor',[adminController::class,'stuinfor']);
+        Route::get('stuinfor/{id}',[adminController::class,'stuinfor']);
 
         //thêm
             Route::get('crestudent',[adminController::class,'getCreateStudent']);

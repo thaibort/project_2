@@ -86,9 +86,9 @@ class adminController extends Controller
             }
 
             public function updateSchoolYear(Request $request){
-                $name = $request -> input('id');
-                $stagesPresent = $request -> input('stagesPresent');
-                adminModel::updateSchoolYear($name,$stagesPresent);
+                $id = $request -> input('id');
+                $data = ['name' => $request-> input('name'),'stagesPresent'=> $request -> input('stagesPresent')];
+                adminModel::updateSchoolYear($id,$data);
                 return redirect("admin/schyear");
             }
 
@@ -192,8 +192,8 @@ class adminController extends Controller
             return view('admin.component.staff.student.student-mng',['rs' => $rs]);
         }
 
-        public function stuinfor(){
-            $rs = adminModel::stuinfor();
+        public function stuinfor($id){
+            $rs = adminModel::stuinfor($id);
             return view('admin.component.staff.student.student-information',['rs' => $rs]);
         }
 
@@ -223,23 +223,34 @@ class adminController extends Controller
 
     //xóa
         public function deleteStudent($id){
-        adminModel::deleteScholarship($id);
-        return redirect('admin/scholarship');
-    }
+            adminModel::deleteStudent($id);
+            return redirect('admin/student');
+        }
 
     //sửa
         public function goUpdateStudent($id){
-            $rs = adminModel::goUpdateScholarship($id);
-            return view('admin.component.super.scholarship.update-scholarship',['rs' => $rs]);
+            $class = adminModel::getClass();
+            $scholarship = adminModel::getScholarship();
+            $rs = adminModel::goUpdateStudent($id);
+            return view('admin.component.staff.student.update-student',[
+                'rs' => $rs,
+                'class' => $class,
+                'scholarship' => $scholarship
+            ]);
         }
 
         public function updateStudent(Request $request){
-        $id = $request -> input('id');
-        $data = [
-            'type' => $request -> input('name'),
-            'money' => $request -> input('money')
-        ];
-        adminModel::updateScholarship($id,$data);
-        return redirect('admin/scholarship');
-    }
+            $id = $request -> input('id');
+            $data = [
+                'name' => $request -> input('name'),
+                'address' => $request -> input('address'),
+                'phone' => $request -> input('phone'),
+                'email' => $request -> input('email'),
+                'gender' => $request -> input('gender'),
+                'idClass' => $request -> input('class'),
+                'idScholarship' => $request -> input('scholarship'),
+            ];
+            adminModel::updateStudent($id,$data);
+            return redirect('admin/student');
+        }
 }
