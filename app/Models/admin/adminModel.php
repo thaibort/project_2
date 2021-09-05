@@ -81,9 +81,9 @@ class adminModel extends Model
                 return $rs;
             }
 
-            static function updateSchoolYear($name,$stagesPresent){
-                $data = ['name' => $name, 'stagesPresent' => $stagesPresent];
+            static function updateSchoolYear($id,$data){
                 DB::table('school_year')
+                    ->where('id','=',$id)
                     ->update($data);
             }
 
@@ -189,7 +189,7 @@ class adminModel extends Model
             return $rs;
         }
 
-        static function stuinfor(){
+        static function stuinfor($id){
             $rs = DB::table('students')
                 ->join('class','students.idClass','=','class.id')
                 ->join('school_year','class.idSchoolYear','=','school_year.id')
@@ -202,11 +202,13 @@ class adminModel extends Model
                     'students.phone',
                     'students.email',
                     'students.address',
+                    'students.gender',
                     'class.name as className',
                     'school_year.name as schoolYear',
                     'school_year.stagesPresent',
                     'vocation.name as vocation',
                     'students.totalStages')
+                ->where('students.id','=',$id)
                 ->get();
             return $rs;
         }
@@ -228,5 +230,25 @@ class adminModel extends Model
             static function postCreateStudent($data){
                 DB::table('students')
                     ->insert($data);
+            }
+
+        //xóa
+            static function deleteStudent($id){
+                DB::table('students')
+                    ->delete($id);
+            }
+
+        //sửa
+            static function goUpdateStudent($id){
+                $rs = DB::table('students')
+                    ->where('id','=',$id)
+                    ->get();
+                return $rs;
+            }
+
+            static function updateStudent($id,$data){
+                DB::table('students')
+                    ->where('id','=',$id)
+                    ->update($data);
             }
 }

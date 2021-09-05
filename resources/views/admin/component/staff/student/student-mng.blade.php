@@ -18,14 +18,18 @@
         </thead>
         <tbody>
             @forelse($rs as $res)
-                {{$stagesPresent = $res -> stagesPresent, $totalStages = $res -> totalStages}}
                 <tr>
                     <td>{{$res -> id}}</td>
                     <td>{{$res -> studentName}}</td>
                     <td>{{$res -> className}}</td>
                     <td>{{$res -> schoolYear}}</td>
-                    <td>{{$stagesPresent <= $totalStages ? 'Đã nộp' : 'Nợ '.($stagesPresent - $totalStages).' tháng'}}</td>
-                    <td><a href="{{url('admin/stuinfor')}}">Chi tiết</a></td>
+                    <td>
+                        {{$res -> stagesPresent <= $res -> totalStages
+                            ? 'Đã nộp'
+                            : 'Nợ '.($res -> stagesPresent - $res -> totalStages).' tháng'
+                        }}
+                    </td>
+                    <td><a href='{{url("admin/stuinfor/{$res -> id}")}}'>Chi tiết</a></td>
                 </tr>
             @empty
                 <tr><td colspan="6">Không có dữ liệu</td></tr>
