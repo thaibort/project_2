@@ -1,10 +1,11 @@
 @extends('admin.layout.master')
 @section('title','Quản lý niên khóa')
 @section('body')
-    <div>
-        <a href="{{url('admin/creschyear')}}">thêm niên khóa</a>
+    <div aria-colspan="3">
+        <a href="{{url('admin/creschyear')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>thêm niên khóa</a>
     </div>
-    <table>
+    <table class="table table-bordered">
         <tr>
             <th>Tên</th>
             <th>Đợt đóng tiền hiện tại</th>

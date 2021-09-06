@@ -2,10 +2,12 @@
 @section('title','Quản lý học bổng')
 
 @section('body')
-    <div>
-        <a href="{{url('admin/crescholarship')}}">thêm niên khóa</a>
+    <div aria-colspan="3">
+        <a href="{{url('admin/crescholarship')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        thêm niên khóa</a>
     </div>
-    <table>
+    <table class="table table-bordered">
         <tr>
             <td>Loại</td>
             <td>Số tiền</td>

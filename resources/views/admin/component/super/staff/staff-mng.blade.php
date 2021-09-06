@@ -1,10 +1,12 @@
 @extends('admin.layout.master')
 @section('title','Quản lý nhân viên')
 @section('body')
-    <div>
-        <a href="{{url('admin/crestaff')}}">Thêm nhân viên</a>
+    <div aria-colspan="3">
+        <a href="{{url('admin/crestaff')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        Thêm nhân viên</a>
     </div>
-    <table>
+    <table class="table table-bordered">
         <tr>
             <th>ID</th>
             <th>Tên</th>
