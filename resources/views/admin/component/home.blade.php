@@ -1,8 +1,9 @@
 @extends('.admin.layout.master')
 @section('title','Trang chủ')
+@section('name',\Illuminate\Support\Facades\Auth::user() -> name)
 @section('body')
 
-<div class="content-wrapper" style="min-height: 800px;">         
+<div class="content-wrapper" style="min-height: 800px;">
             <div class="content-header ">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -78,7 +79,7 @@
                                     </font><i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
-                        </div>        
+                        </div>
                     </div>
                     <div class="col-lg-3 col-6">
                             <div class="small-box bg-warning">
@@ -113,7 +114,7 @@
                             </div>
                         </div>
                 </div>
-            </section>           
+            </section>
         </div>
 
 @endsection
