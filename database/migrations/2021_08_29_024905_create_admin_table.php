@@ -21,6 +21,7 @@ class CreateAdminTable extends Migration
             $table->String('address');
             $table->String('password');
             $table->tinyInteger('level');
+            $table->tinyInteger('active');
             $table->timestamps();
         });
     }
