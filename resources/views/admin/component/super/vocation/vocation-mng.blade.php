@@ -2,11 +2,12 @@
 @section('title','Quản lý ngành')
 @section('body')
    <div aria-colspan="3">
-        <a href="{{url('admin/crevoca')}}" ><i class="fas fa-plus-circle fa-lg" style="color: black">Thêm ngành</a>
+        <a href="{{url('admin/crevoca')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        Thêm ngành</a>
     </div>
-    <table class="table table-bordered">
-        <thead class="thead-inverse">
-            <tr colspan="3"><input type="text" class="form-input w-3" id="search" style="display: inline">
+    <table id="vocation" class="table table-bordered">
+            <tr colspan="3">
             </tr>
             <tr >
                 <th >
@@ -19,7 +20,7 @@
                     Hành động
                 </th>
             </tr>
-        </thead>
+        
         <tbody>
             @forelse($rs as $res)
             <tr>

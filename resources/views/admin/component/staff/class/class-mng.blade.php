@@ -1,10 +1,13 @@
 @extends('admin.layout.master')
 @section('title','Quản lý lớp')
 @section('body')
-    <div>
-        <a href="{{url('admin/creclass')}}">thêm lớp</a>
+    <div aria-colspan="3">
+        <a href="{{url('admin/creclass')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        thêm lớp</a>
+
     </div>
-    <table>
+    <table class="table table-bordered">
         <tr>
             <td>Lớp</td>
             <td>Ngành</td>

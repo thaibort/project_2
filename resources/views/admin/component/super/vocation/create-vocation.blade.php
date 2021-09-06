@@ -1,7 +1,7 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
 @section('body')
-    <div class="w-full h-screen bg-red-200">
+    <div class="w-full h-screen bg-red-200 ">
         <a href="{{url('admin/vocation')}}">Quay lại</a>
         <form action="{{url('admin/crevoca')}}" method="post">
             @csrf

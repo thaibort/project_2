@@ -2,10 +2,12 @@
 @section('title', 'Quản lý sinh viên')
 
 @section('body')
-    <div>
-        <a href="{{url('admin/crestudent')}}">thêm sinh viên</a>
+    <div aria-colspan="3">
+        <a href="{{url('admin/crestudent')}}">
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        thêm sinh viên</a>
     </div>
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <td>ID</td>
