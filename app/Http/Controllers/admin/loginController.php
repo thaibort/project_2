@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
 {
@@ -23,7 +22,16 @@ class loginController extends Controller
             'password' => $pass
         ]))
         {
-            return redirect()->route('home');
+                Auth::shouldUse('admin');
+                if (Auth::user()->active == 1){
+                    return redirect()->route('home');
+                }
+                else {
+                    return redirect()->back()->with(
+                        'error',
+                        "Tài khoản chưa được kích hoạt vui lòng liên hệ với admin tối cao để kích hoạt"
+                    );
+                }
         }
         else {
             return redirect()->back()->with('error','Sai email hoặc mật khẩu');

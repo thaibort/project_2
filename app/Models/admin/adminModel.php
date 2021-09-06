@@ -251,4 +251,31 @@ class adminModel extends Model
                     ->where('id','=',$id)
                     ->update($data);
             }
+
+    //nhân viên
+        static function staff(){
+            $rs = DB::table('admins')
+                ->where('level','=',1)
+                ->get();
+            return $rs;
+        }
+
+        //kích hoạt tài khoản
+            static function active($id,$data){
+                DB::table('admins')
+                    ->where('id','=',$id)
+                    ->update($data);
+            }
+
+        //thêm
+            static function postCreateStaff($data){
+                DB::table('admins')
+                    ->insert($data);
+            }
+
+        //xóa
+            static function deleteStaff($id){
+                DB::table('admins')
+                    ->delete($id);
+            }
 }

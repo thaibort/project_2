@@ -197,49 +197,49 @@ class adminController extends Controller
             return view('admin.component.staff.student.student-information',['rs' => $rs]);
         }
 
-    //thêm
-        public function getCreateStudent(){
-            $class = adminModel::getClass();
-            $scholarship = adminModel::getScholarship();
-            return view('admin.component.staff.student.create-student',['class' => $class, 'scholarship' => $scholarship]);
-        }
+        //thêm
+            public function getCreateStudent(){
+                $class = adminModel::getClass();
+                $scholarship = adminModel::getScholarship();
+                return view('admin.component.staff.student.create-student',['class' => $class, 'scholarship' => $scholarship]);
+            }
 
-        public function postCreateStudent(Request $request){
-        $data = [
-            'name' => $request -> input('name'),
-            'address' => $request -> input('address'),
-            'phone' => $request -> input('phone'),
-            'email' => $request -> input('email'),
-            'gender' => $request -> input('gender'),
-            'idClass' => $request -> input('class'),
-            'idScholarship' => $request -> input('scholarship'),
-            'totalStages' => 1
-        ];
+            public function postCreateStudent(Request $request){
+            $data = [
+                'name' => $request -> input('name'),
+                'address' => $request -> input('address'),
+                'phone' => $request -> input('phone'),
+                'email' => $request -> input('email'),
+                'gender' => $request -> input('gender'),
+                'idClass' => $request -> input('class'),
+                'idScholarship' => $request -> input('scholarship'),
+                'totalStages' => 1
+            ];
 
-        adminModel::postCreateStudent($data);
+            adminModel::postCreateStudent($data);
 
-        return redirect('admin/student');
-    }
-
-    //xóa
-        public function deleteStudent($id){
-            adminModel::deleteStudent($id);
             return redirect('admin/student');
         }
 
-    //sửa
-        public function goUpdateStudent($id){
-            $class = adminModel::getClass();
-            $scholarship = adminModel::getScholarship();
-            $rs = adminModel::goUpdateStudent($id);
-            return view('admin.component.staff.student.update-student',[
-                'rs' => $rs,
-                'class' => $class,
-                'scholarship' => $scholarship
-            ]);
-        }
+        //xóa
+            public function deleteStudent($id){
+                adminModel::deleteStudent($id);
+                return redirect('admin/student');
+            }
 
-        public function updateStudent(Request $request){
+        //sửa
+            public function goUpdateStudent($id){
+                $class = adminModel::getClass();
+                $scholarship = adminModel::getScholarship();
+                $rs = adminModel::goUpdateStudent($id);
+                return view('admin.component.staff.student.update-student',[
+                    'rs' => $rs,
+                    'class' => $class,
+                    'scholarship' => $scholarship
+                ]);
+            }
+
+            public function updateStudent(Request $request){
             $id = $request -> input('id');
             $data = [
                 'name' => $request -> input('name'),
@@ -253,4 +253,45 @@ class adminController extends Controller
             adminModel::updateStudent($id,$data);
             return redirect('admin/student');
         }
+
+    //nhân viên
+        public function staff(){
+            $rs = adminModel::staff();
+            return view('admin.component.super.staff.staff-mng',['rs' => $rs]);
+        }
+
+        //kích hoạt tài khoản
+            public function active($id,$active){
+                $data = ['active' => $active];
+                adminModel::active($id,$data);
+
+                return redirect('admin/staff');
+            }
+
+        //thêm
+            public function getCreateStaff(){
+                return view('admin.component.super.staff.create-staff');
+            }
+
+            public function postCreateStaff(Request $request){
+                $data = [
+                    'name' => $request -> input('name'),
+                    'email' => $request -> input('email'),
+                    'phone' => $request -> input('phone'),
+                    'address' => $request -> input('address'),
+                    'password' => bcrypt($request -> input('pass')),
+                    'active' => 0,
+                    'level' => 1
+                ];
+
+                adminModel::postCreateStaff($data);
+
+                return redirect('admin/staff');
+            }
+
+        //xóa
+            public function deleteStaff($id){
+                adminModel::deleteStaff($id);
+                return redirect('admin/staff');
+            }
 }
