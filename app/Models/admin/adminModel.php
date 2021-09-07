@@ -310,12 +310,22 @@ class adminModel extends Model
             return $rs;
         }
 
-        static function totalInvoiceDetail($id){
+        static function getIdStu($id){
+            $rs = DB::table('invoices')
+                ->select('idStudents')
+                ->where('id','=',$id)
+                ->get();
+            return $rs;
+        }
+
+        //tổng hóa đơn
+            static function totalInvoiceDetail($id){
             $rs = DB::table('invoices')
                 ->join('students','invoices.idStudents','=','students.id')
                 ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
                 ->select(
                     'invoices.id',
+                    'students.id as idStudent',
                     'students.name as name',
                     'type_of_tuition.name as typeOfTuition',
                     'invoices.money',
@@ -326,4 +336,76 @@ class adminModel extends Model
 
             return $rs;
         }
+
+        //hóa đơn chi tiết
+            static function detailInvoice($id){
+            $rs = DB::table('invoices')
+                ->join('students','invoices.idStudents','=','students.id')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->join('total_money','class.idTotalMoney','=','total_money.id')
+                ->join('vocation','total_money.idVocation','=','vocation.id')
+                ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                ->join('admins','invoices.idAdmin','=','admins.id')
+                ->select(
+                    'invoices.id',
+                    'students.id as idStudent',
+                    'students.name as name',
+                    'students.email',
+                    'students.phone',
+                    'students.gender',
+                    'students.address',
+                    'students.dob',
+                    'admins.name as admin',
+                    'class.name as className',
+                    'vocation.name as vocation',
+                    'school_year.name as schoolYear',
+                    'type_of_tuition.name as typeOfTuition',
+                    'invoices.money',
+                    'invoices.date',
+                )
+                ->where('invoices.id','=',$id)
+                ->get();
+            return $rs;
+        }
+
+        //xóa
+            static function deleteInvoice($id){
+                $rs = DB::table('invoices')
+                    ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                    ->join('students','invoices.idStudents','=','students.id')
+                    ->where('invoices.id','=',$id)
+                    ->select(
+                        'type_of_tuition.type',
+                        'students.id',
+                        'students.totalStages'
+                    )
+                    ->get();
+                foreach ($rs as $res){
+                    $type = $res -> type;
+                    $totalStages = $res -> totalStages;
+                    $stage = 0;
+                    switch ($type){
+                        case 1:
+                            $stage = 1;
+                            break;
+                        case 2:
+                            $stage = 5;
+                            break;
+                        case 3:
+                            $stage = 10;
+                            break;
+                        case 4:
+                            $stage = 30;
+                            break;
+                    }
+                    $idStu = $res -> id;
+                    $data = ['totalStages' => ($totalStages - $stage)];
+                    DB::table('students')
+                        ->where('id','=',$idStu)
+                        ->update($data);
+                    DB::table('invoices')
+                        ->delete($id);
+                }
+            }
 }

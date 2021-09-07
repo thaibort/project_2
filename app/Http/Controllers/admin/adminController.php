@@ -303,10 +303,33 @@ class adminController extends Controller
             return view('admin.component.staff.invoice.invoice-mng',['rs' => $rs]);
         }
 
-        public function totalInvoiceDetail($id){
-            $rs = adminModel::totalInvoiceDetail($id);
-            $name = adminModel::getNameStudent($id);
-            return view('admin.component.staff.invoice.total-invoice-detail',['rs' => $rs,'name' => $name]);
+        //tổng hóa đơn
+            public function totalInvoiceDetail($id){
+                $rs = adminModel::totalInvoiceDetail($id);
+                $name = adminModel::getNameStudent($id);
+                return view('admin.component.staff.invoice.total-invoice-detail',['rs' => $rs,'name' => $name]);
+            }
 
-        }
+        //hóa đơn chi tiết
+            public function detailInvoice($id){
+                $rs = adminModel::detailInvoice($id);
+//                $name = adminModel::getNameStudent($id);
+                $idstu = 0;
+                $name = "";
+                foreach ($rs as $res){
+                    $name = $res -> name;
+                    $idstu = $res -> idStudent;
+                }
+                return view('admin.component.staff.invoice.invoice-detail',[
+                    'rs' => $rs,'name' => $name,'idstu' => $idstu
+                ]);
+            }
+
+        //xóa
+            public function deleteInvoice(Request $request){
+                $id = $request -> input('id');
+                $idStudent = $request -> input('idStudent');
+                adminModel::deleteInvoice($id);
+                return redirect("admin/toindetail/{$idStudent}");
+            }
 }
