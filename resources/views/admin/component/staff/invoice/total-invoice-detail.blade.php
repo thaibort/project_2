@@ -7,7 +7,7 @@
         <a href="{{url('admin/invoice')}}">Quay lại</a>
         <h1>
             @foreach($name as $res)
-                Danh sách hóa đơn của sinh viên {{$res->name}}
+                Danh sách hóa đơn sinh viên {{$res->name}}
             @endforeach</h1>
         <table>
             <tr>
@@ -23,13 +23,17 @@
                     <td>{{$res -> id}}</td>
                     <td>{{$res -> name}}</td>
                     <td>{{$res -> typeOfTuition}}</td>
-                    <td>{{$res -> money}}</td>
                     <td>{{$res -> date}}</td>
+                    <td>{{$res -> money}}</td>
                     <td>
-                        <form action="">
+                        <form action='{{url("admin/detailinvoice/{$res -> id}")}}'>
                             <button>Chi tiết</button>
                         </form>
-                        <form action="">
+                        <form action="{{url("admin/invoice")}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input hidden type="text" value="{{$res -> id}}" name="id">
+                            <input hidden type="text" value="{{$res -> idStudent}}" name="idStudent">
                             <button>Xóa</button>
                         </form>
                     </td>
