@@ -59,6 +59,11 @@
                         </label>
                     </div>
                     <div>
+                        <label>
+                            Ngày sinh: <input type="date" name="dob" value="{{$res -> dob}}" required>
+                        </label>
+                    </div>
+                    <div>
                         <b>gender:&nbsp;</b>
                         <label>
                             <input type="radio" value="1" name="gender" @if($res -> gender == 1) checked @endif> Nam

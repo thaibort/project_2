@@ -202,6 +202,7 @@ class adminModel extends Model
                     'students.phone',
                     'students.email',
                     'students.address',
+                    'students.dob',
                     'students.gender',
                     'class.name as className',
                     'school_year.name as schoolYear',
@@ -278,4 +279,51 @@ class adminModel extends Model
                 DB::table('admins')
                     ->delete($id);
             }
+
+    //hóa đơn
+        static function invoice(){
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('total_money','class.idTotalMoney','=','total_money.id')
+                ->join('vocation','total_money.idVocation','=','vocation.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->select(
+                    'students.id',
+                    'vocation.name as vocation',
+                    'school_year.name as schoolYear',
+                    'students.name',
+                    'class.name as className')
+                ->orderBy('vocation.name','asc')
+                ->orderBy('school_year.name','asc')
+                ->orderBy('class.name','asc')
+                ->orderBy('students.name','asc')
+                ->get();
+
+            return $rs;
+        }
+
+        static function getNameStudent($id){
+            $rs = DB::table('students')
+                ->select('name')
+                ->where('id','=',$id)
+                ->get();
+            return $rs;
+        }
+
+        static function totalInvoiceDetail($id){
+            $rs = DB::table('invoices')
+                ->join('students','invoices.idStudents','=','students.id')
+                ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                ->select(
+                    'invoices.id',
+                    'students.name as name',
+                    'type_of_tuition.name as typeOfTuition',
+                    'invoices.money',
+                    'invoices.date',
+                )
+                ->where('students.id','=',$id)
+                ->get();
+
+            return $rs;
+        }
 }

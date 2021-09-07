@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->String('phone',20)->unique();
             $table->String('email')->unique();
             $table->tinyInteger('gender');
+            $table->date('dob');
             $table->integer('totalStages');
             $table->unsignedBigInteger('idClass');
             $table->unsignedBigInteger('idScholarship');
