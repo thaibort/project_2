@@ -1,6 +1,5 @@
 @extends('.admin.layout.master')
 @section('title','Trang chủ')
-<!-- @section('name',\Illuminate\Support\Facades\Auth::user() -> name) -->
 @section('body')
 
 <div class="content-wrapper" style="min-height: 800px;">

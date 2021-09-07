@@ -26,6 +26,10 @@
                 <td>{{$res -> gender == 1 ? 'Nam' : 'Nữ'}}</td>
             </tr>
             <tr>
+                <th>Ngày sinh</th>
+                <td>{{$res -> dob}}</td>
+            </tr>
+            <tr>
                 <th>Lớp</th>
                 <td>{{$res -> className}}</td>
             </tr>

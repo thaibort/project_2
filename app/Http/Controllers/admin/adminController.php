@@ -210,6 +210,7 @@ class adminController extends Controller
                 'address' => $request -> input('address'),
                 'phone' => $request -> input('phone'),
                 'email' => $request -> input('email'),
+                'dob' => $request -> input('dob'),
                 'gender' => $request -> input('gender'),
                 'idClass' => $request -> input('class'),
                 'idScholarship' => $request -> input('scholarship'),
@@ -247,6 +248,7 @@ class adminController extends Controller
                 'phone' => $request -> input('phone'),
                 'email' => $request -> input('email'),
                 'gender' => $request -> input('gender'),
+                'dob' => $request -> input('dob'),
                 'idClass' => $request -> input('class'),
                 'idScholarship' => $request -> input('scholarship'),
             ];
@@ -294,4 +296,17 @@ class adminController extends Controller
                 adminModel::deleteStaff($id);
                 return redirect('admin/staff');
             }
+
+    //hóa đơn
+        public function invoice(){
+            $rs = adminModel::invoice();
+            return view('admin.component.staff.invoice.invoice-mng',['rs' => $rs]);
+        }
+
+        public function totalInvoiceDetail($id){
+            $rs = adminModel::totalInvoiceDetail($id);
+            $name = adminModel::getNameStudent($id);
+            return view('admin.component.staff.invoice.total-invoice-detail',['rs' => $rs,'name' => $name]);
+
+        }
 }

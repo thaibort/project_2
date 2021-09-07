@@ -99,7 +99,14 @@
                 <li class="nav-item">
                     <div class="user-panel d-flex">
                         <div class="info d-block">
-                            @yield('name')
+                            {{session()->get('admin.name')}}
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div cl6ass="user-panel d-flex">
+                        <div class="info d-block">
+                            <a href="{{url('admin/logout')}}">Đăng xuất</a>
                         </div>
                     </div>
                 </li>

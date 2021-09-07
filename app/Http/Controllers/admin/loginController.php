@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.checkLogout');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth.checkLogout');
+//    }
 
     public function getLogin(){
         return view('admin.login');
@@ -28,6 +28,11 @@ class loginController extends Controller
         ]))
         {
                 Auth::shouldUse('admin');
+                session()->put('admin',[
+                    'id' => Auth::user()->id,
+                    'name' => Auth::user()->name,
+                    'level' => Auth::user()->level
+                ]);
                 if (Auth::user()->active == 1){
                     return redirect()->route('home');
                 }

@@ -60,7 +60,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('upschyear',[adminController::class, 'updateStaff']);
 
    //năm học
-        Route::get('schyear',[adminController::class,'schoolYear']);
+       Route::get('schyear',[adminController::class,'schoolYear']);
         //thêm
             Route::get('creschyear',[adminController::class,'getCreateSchoolYear']);
             Route::post('creschyear',[adminController::class,'postCreateSchoolYear']);
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
     //lớp
-        Route::get('class',[adminController::class, 'class']);
+       Route::get('class',[adminController::class, 'class']);
 
         //thêm
             Route::get('creclass',[adminController::class,'getCreateClass']);
@@ -88,7 +88,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('upclass',[adminController::class, 'updateClass']);
 
     //học bổng
-        Route::get('scholarship',[adminController::class, 'scholarship']);
+       Route::get('scholarship',[adminController::class, 'scholarship']);
 
         //thêm
             Route::get('crescholarship',[adminController::class,'getCreateScholarship']);
@@ -102,9 +102,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('upscholarship',[adminController::class, 'updateScholarship']);
 
     //sinh viên
-        Route::get('student',[adminController::class, 'student']);
+       Route::get('student',[adminController::class, 'student']);
 
-        Route::get('stuinfor/{id}',[adminController::class,'stuinfor']);
+       Route::get('stuinfor/{id}',[adminController::class,'stuinfor']);
 
         //thêm
             Route::get('crestudent',[adminController::class,'getCreateStudent']);
@@ -116,4 +116,16 @@ Route::group(['prefix' => 'admin'], function () {
         //sửa
             Route::get('upstudent/{id}',[adminController::class, 'goUpdateStudent']);
             Route::put('upstudent',[adminController::class, 'updateStudent']);
+
+    //hóa đơn
+       Route::get('invoice',[adminController::class,'invoice']);
+
+       Route::get('toindetail/{id}',[adminController::class,'totalInvoiceDetail']);
+
+        //thêm
+            Route::get('creinvoice',[adminController::class,'getCreateInvoice']);
+            Route::post('creinvoice',[adminController::class,'postCreateInvoice']);
+
+        //xóa
+            Route::delete('invoice/{id}',[adminController::class, 'deleteInvoice']);
 });
