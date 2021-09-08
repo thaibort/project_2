@@ -18,6 +18,7 @@ class CreateTypeOfTuitionTable extends Migration
             $table->String('name',10)->unique();
             $table->integer('type')->unique();
             $table->integer('discount');
+            $table->integer('stage');
             $table->timestamps();
         });
     }

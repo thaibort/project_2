@@ -204,11 +204,13 @@ class adminModel extends Model
                     'students.address',
                     'students.dob',
                     'students.gender',
+                    'scholarship.money as scholarship',
                     'class.name as className',
                     'school_year.name as schoolYear',
                     'school_year.stagesPresent',
                     'vocation.name as vocation',
-                    'students.totalStages')
+                    'students.totalStages'
+                )
                 ->where('students.id','=',$id)
                 ->get();
             return $rs;
@@ -318,6 +320,12 @@ class adminModel extends Model
             return $rs;
         }
 
+        static function getTypeOfTuition(){
+            $rs = DB::table('type_of_tuition')
+                ->get();
+            return $rs;
+        }
+
         //tổng hóa đơn
             static function totalInvoiceDetail($id){
             $rs = DB::table('invoices')
@@ -376,29 +384,14 @@ class adminModel extends Model
                     ->join('students','invoices.idStudents','=','students.id')
                     ->where('invoices.id','=',$id)
                     ->select(
-                        'type_of_tuition.type',
+                        'type_of_tuition.stage',
                         'students.id',
                         'students.totalStages'
                     )
                     ->get();
                 foreach ($rs as $res){
-                    $type = $res -> type;
                     $totalStages = $res -> totalStages;
-                    $stage = 0;
-                    switch ($type){
-                        case 1:
-                            $stage = 1;
-                            break;
-                        case 2:
-                            $stage = 5;
-                            break;
-                        case 3:
-                            $stage = 10;
-                            break;
-                        case 4:
-                            $stage = 30;
-                            break;
-                    }
+                    $stage = $res -> stage;
                     $idStu = $res -> id;
                     $data = ['totalStages' => ($totalStages - $stage)];
                     DB::table('students')
@@ -407,5 +400,40 @@ class adminModel extends Model
                     DB::table('invoices')
                         ->delete($id);
                 }
+            }
+
+        //thêm
+            static function caculator($id,$typeOfTuition){
+                $rs1 = DB::table('students')
+                    ->join('class','students.idClass','=','class.id')
+                    ->join('total_money','class.idTotalMoney','=','total_money.id')
+                    ->join('scholarship','students.idScholarship','=','scholarship.id')
+                    ->select(
+                        'total_money.totalMoney',
+                        'scholarship.money as scholarship',
+                    )
+                    ->where('students.id','=',$id)
+                    ->get();
+                $rs2 = DB::table('type_of_tuition')
+                    ->where('id','=',$typeOfTuition)
+                    ->get();
+                $totalMoney = 0;
+                $discount = 0;
+                $stage = 0;
+
+                foreach ($rs2 as $res){
+                    $discount = $res -> discount / 100;
+                    $stage = $res -> stage;
+                }
+
+                foreach ($rs1 as $res){
+                    $totalMoney = $res -> totalMoney - $res -> scholarship;
+                }
+
+                $total =  $totalMoney - ($totalMoney * $discount);
+
+                $final = round($total / 30 * $stage, 0, PHP_ROUND_HALF_UP);
+
+                return $final;
             }
 }

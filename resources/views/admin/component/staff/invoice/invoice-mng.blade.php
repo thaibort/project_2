@@ -22,7 +22,7 @@
                                 Hóa đơn
                             </button>
                         </form>
-                        <form action="{{url('admin/creinvoice')}}">
+                        <form action='{{url("admin/checkinfor/{$res -> id}")}}'>
                             <button>
                                 Thu phí
                             </button>

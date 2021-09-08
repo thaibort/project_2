@@ -313,7 +313,6 @@ class adminController extends Controller
         //hóa đơn chi tiết
             public function detailInvoice($id){
                 $rs = adminModel::detailInvoice($id);
-//                $name = adminModel::getNameStudent($id);
                 $idstu = 0;
                 $name = "";
                 foreach ($rs as $res){
@@ -331,5 +330,20 @@ class adminController extends Controller
                 $idStudent = $request -> input('idStudent');
                 adminModel::deleteInvoice($id);
                 return redirect("admin/toindetail/{$idStudent}");
+            }
+
+        //thêm
+            public function checkInformation($id){
+                $rs = adminModel::stuinfor($id);
+                $type = adminModel::getTypeOfTuition();
+                return view('admin.component.staff.invoice.check-information',['rs' => $rs, 'type' => $type]);
+            }
+
+            public function getCreateInvoice(Request $request){
+                $id = $request -> input('id');
+                $typeOfTuition = $request -> typeOfTuition;
+                $rs = adminModel::stuinfor($id);
+                $total = adminModel::caculator($id,$typeOfTuition);
+                return view('admin.component.staff.invoice.create-invoice',['rs' => $rs,'total' => $total]);
             }
 }
