@@ -1,6 +1,5 @@
 @extends('admin.layout.master')
 @section('title', 'Quản lý sinh viên')
-
 @section('body')
     <div aria-colspan="3">
         <a href="{{url('admin/crestudent')}}">
