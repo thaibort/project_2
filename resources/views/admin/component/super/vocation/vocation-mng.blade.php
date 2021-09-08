@@ -7,6 +7,7 @@
         Thêm ngành</a>
     </div>
     <table id="vocation" class="table table-bordered">
+        <thead>
             <tr colspan="3">
             </tr>
             <tr >
@@ -20,7 +21,7 @@
                     Hành động
                 </th>
             </tr>
-
+        </thead>
         <tbody>
             @forelse($rs as $res)
             <tr>
