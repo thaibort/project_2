@@ -3,6 +3,7 @@
 @section('title','Thu học phí')
 
 @section('body')
+    <a href="{{url('admin/invoice')}}">Quay lại</a>
     @foreach($rs as $res)
         <form action='{{url("admin/gocreinvoice")}}' method="post">
             @csrf
@@ -14,7 +15,7 @@
                 Ngành: {{$res -> vocation}}<br>
                 Lớp: {{$res -> className}}<br>
                 Phương thức thu học phí:
-                <select name="typeOfTuition">
+                <select name="typeOfTuition" required>
                     <option value="0" hidden>Chọn loại thu</option>
                     @foreach($type as $item)
                         <option value="{{$item -> id}}">
