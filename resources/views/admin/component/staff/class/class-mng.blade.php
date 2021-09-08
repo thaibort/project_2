@@ -5,15 +5,17 @@
         <a href="{{url('admin/creclass')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         thêm lớp</a>
-
     </div>
-    <table class="table table-bordered">
+    <table id="class" class="table table-bordered bg-white">
+        <thead>
         <tr>
             <td>Lớp</td>
             <td>Ngành</td>
             <td>Khóa</td>
-            <td colspan="2">Hành động</td>
+            <td>Hành động</td>
         </tr>
+        </thead>
+        <tbody>
         @foreach($rs as $res)
             <tr>
                 <td>{{$res -> name}}</td>
@@ -24,8 +26,7 @@
                         @csrf
                         <button type="submit" class="edit_hover">Sửa</button>
                     </form>
-                </td>
-                <td>
+                
                     <form class="w-full h-full bg-red-200" action='{{url("admin/class/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
@@ -34,5 +35,13 @@
                 </td>
             </tr>
         @endforeach
+</tbody>
     </table>
+@endsection
+@section('script')
+<script>
+    $(document).ready( function () {
+        $('#class').DataTable();
+    } );
+</script>
 @endsection

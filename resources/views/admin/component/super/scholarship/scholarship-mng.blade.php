@@ -5,9 +5,9 @@
     <div aria-colspan="3">
         <a href="{{url('admin/crescholarship')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
-        thêm niên khóa</a>
+        thêm học bổng </a>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered bg-white">
         <tr>
             <td>Loại</td>
             <td>Số tiền</td>
