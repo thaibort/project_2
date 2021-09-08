@@ -42,6 +42,10 @@
                 <td>{{$res -> vocation}}</td>
             </tr>
             <tr>
+                <th>Hộc bổng</th>
+                <td>{{$res -> scholarship}}</td>
+            </tr>
+            <tr>
                 <th>Tình trạng học phí</th>
                 <td>
                     {{$res -> stagesPresent <= $res -> totalStages

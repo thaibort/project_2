@@ -120,14 +120,15 @@ Route::group(['prefix' => 'admin'], function () {
     //hóa đơn
        Route::get('invoice',[adminController::class,'invoice']);
 
-       //tổng hóa đơn
+        //tổng hóa đơn
             Route::get('toindetail/{id}',[adminController::class,'totalInvoiceDetail']);
 
-       //hóa đơn chi tiết
+        //hóa đơn chi tiết
             Route::get('detailinvoice/{id}',[adminController::class,'detailInvoice']);
 
         //thêm
-            Route::get('creinvoice',[adminController::class,'getCreateInvoice']);
+            Route::get('checkinfor/{id}',[adminController::class,'checkInformation']);
+            Route::post('gocreinvoice',[adminController::class,'getCreateInvoice']);
             Route::post('creinvoice',[adminController::class,'postCreateInvoice']);
 
         //xóa
