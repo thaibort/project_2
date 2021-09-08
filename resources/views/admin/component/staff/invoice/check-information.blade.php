@@ -3,6 +3,7 @@
 @section('title','Thu học phí')
 
 @section('body')
+    <a href="{{url('admin/invoice')}}">Quay lại</a>
     @foreach($rs as $res)
         <form action='{{url("admin/gocreinvoice")}}' method="post">
             @csrf

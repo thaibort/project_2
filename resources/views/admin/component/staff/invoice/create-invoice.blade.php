@@ -1,12 +1,8 @@
 @extends('admin.layout.master')
 
-{{--@foreach($name as $res)--}}
 @section('title','Thu học phí')
-{{--@endforeach--}}
 @section('body')
-    {{--    @foreach($idstu as $res)--}}
     <a href='{{url("admin/invoice")}}'>Quay lại</a>
-    {{--    @endforeach--}}
     @forelse($rs as $res)
         <div>
             <div class="d-flex flex-row text-lg">
@@ -21,18 +17,20 @@
                 <div>
                     Lớp: {{$res -> className}}<br>
                     Ngành học: {{$res -> vocation}}<br>
-                    Loại thu: {{$res -> typeOfTuition}}<br>
-                    Tổng tiền nộp: {{$res -> money}}<br>
-                    Ngày thu: {{$res -> date}}<br>
-                    Người thu: {{$res -> admin}}
+                    Loại thu: @foreach($type as $item) {{$item -> name}} @endforeach<br>
+                    Tổng tiền nộp: {{$total}}<br>
+                    Ngày thu: {{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y')}}<br>
+                    Người thu: {{session()->get('admin.name')}}
                 </div>
             </div>
-            <form action='{{url("admin/invoice")}}' method="post">
+            <form action='{{url("admin/creinvoice")}}' method="post">
                 @csrf
-                @method('DELETE')
+                <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
                 <input hidden type="text" value="{{$res -> id}}" name="id">
-                <input hidden type="text" value="{{$res -> idStudent}}" name="idStudent">
-                <button>Xóa</button>
+                <input hidden type="text" value="{{$total}}" name="money">
+                <input hidden type="text" value='@foreach($type as $item) {{$item -> id}} @endforeach' name="type">
+                <input hidden type="text" value="{{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->toDateString()}}" name="date">
+                <button type="submit">Xác nhận</button>
             </form>
         </div>
     @empty
