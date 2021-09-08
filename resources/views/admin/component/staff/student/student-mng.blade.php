@@ -1,13 +1,12 @@
 @extends('admin.layout.master')
 @section('title', 'Quản lý sinh viên')
-
 @section('body')
     <div aria-colspan="3">
         <a href="{{url('admin/crestudent')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         thêm sinh viên</a>
     </div>
-    <table class="table table-bordered">
+    <table id="student" class="table table-bordered bg-white">
         <thead>
             <tr>
                 <td>ID</td>
@@ -38,4 +37,12 @@
             @endforelse
         </tbody>
     </table>
+  
+@endsection
+@section('script')
+<script>
+    $(document).ready( function () {
+        $('#student').DataTable();
+    } );
+</script>
 @endsection

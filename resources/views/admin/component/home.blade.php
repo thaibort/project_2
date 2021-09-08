@@ -20,6 +20,20 @@
                 </div>
             </div>
             <section class="content">
+
+                <div class="row">
+                    <div class="col-md-3 bg-danger" style="height: 100px;">
+                        
+
+                    </div>
+                    <div class="col-md-3 bg-primary" style="height: 100px;">
+
+                    </div>
+                    <div class="col-md-6 bg-warning" style="height: 100px;">
+
+                    </div>
+                </div>
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-3">

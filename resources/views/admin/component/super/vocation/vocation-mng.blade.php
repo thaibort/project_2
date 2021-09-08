@@ -6,7 +6,8 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         Thêm ngành</a>
     </div>
-    <table id="vocation" class="table table-bordered">
+    <table id="vocation" class="table table-bordered bg-white">
+        <thead>
             <tr colspan="3">
             </tr>
             <tr >
@@ -20,7 +21,7 @@
                     Hành động
                 </th>
             </tr>
-        
+            </thead>
         <tbody>
             @forelse($rs as $res)
             <tr>
@@ -52,4 +53,6 @@
             @endforelse
         </tbody>
     </table>
-@endsection
+    
+    @endsection
+    
