@@ -4,7 +4,9 @@
     @section('title',$name)
 {{--@endforeach--}}
 @section('body')
-    <a href='{{url("admin/toindetail/{$idstu}")}}'>Quay lại</a>
+{{--    @foreach($idstu as $res)--}}
+        <a href='{{url("admin/toindetail/{$idstu}")}}'>Quay lại</a>
+{{--    @endforeach--}}
     @forelse($rs as $res)
         <div>
             <div class="d-flex flex-row text-lg">

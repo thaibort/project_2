@@ -343,23 +343,7 @@ class adminController extends Controller
                 $id = $request -> input('id');
                 $typeOfTuition = $request -> typeOfTuition;
                 $rs = adminModel::stuinfor($id);
-                $type = adminModel::getTypeOfTuitionById($typeOfTuition);
                 $total = adminModel::caculator($id,$typeOfTuition);
-                return view('admin.component.staff.invoice.create-invoice',['rs' => $rs,'total' => $total,'type' => $type]);
-            }
-
-            public function postCreateInvoice(Request $request){
-                $student = $request -> input('id');
-                $type = $request -> input('type');
-                $data = [
-                    'idStudents' => $request -> input('id'),
-                    'idAdmin' => $request -> input('admin'),
-                    'idTypeOfTuition' => $request -> input('type'),
-                    'date' => $request -> input('date'),
-                    'money' => $request -> input('money'),
-                ];
-                adminModel::postCreateInvoice($data,$student,$type);
-
-                return redirect('admin/invoice');
+                return view('admin.component.staff.invoice.create-invoice',['rs' => $rs,'total' => $total]);
             }
 }

@@ -436,38 +436,4 @@ class adminModel extends Model
 
                 return $final;
             }
-
-            static function getTypeOfTuitionById($id){
-                $rs = DB::table('type_of_tuition')
-                    ->where('id','=',$id)
-                    ->get();
-                return $rs;
-            }
-
-            static function postCreateInvoice($data,$student,$type){
-                DB::table('invoices')
-                    ->insert($data);
-
-                $typeOf = DB::table('type_of_tuition')
-                    ->where('id','=',$type)
-                    ->get();
-
-                $stu = DB::table('students')
-                    ->where('id','=',$student)
-                    ->get();
-
-                $thisStage = 0;
-                $chooseStage = 0;
-                foreach ($stu as $rs){
-                    $thisStage = $rs -> totalStages;
-                }
-                foreach ($typeOf as $rs){
-                    $chooseStage = $rs -> stage;
-                }
-
-                $stage = ['totalStages' => $thisStage + $chooseStage];
-
-                DB::table('students')
-                    ->update($stage);
-            }
 }
