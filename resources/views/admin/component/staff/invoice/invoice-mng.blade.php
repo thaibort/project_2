@@ -2,7 +2,8 @@
 @section('title','Quản lý hóa đơn')
 
 @section('body')
-        <table>
+        <table id="invoice" class="table table-bordered bg-white" >
+            <thead>
             <tr>
                 <th>Ngành</th>
                 <th>Khóa</th>
@@ -10,6 +11,8 @@
                 <th>Tên sinh viên</th>
                 <th>Hành động</th>
             </tr>
+            </thead>
+            <tbody>
             @forelse($rs as $res)
                 <tr>
                     <td>{{$res -> vocation}}</td>
@@ -32,5 +35,13 @@
             @empty
                 <tr><td colspan="5">Không có dữ liệu</td></tr>
             @endforelse
+            </tbody>
         </table>
+@endsection
+@section('script')
+<script>
+    $(document).ready( function () {
+        $('#invoice').DataTable();
+    } );
+</script>
 @endsection
