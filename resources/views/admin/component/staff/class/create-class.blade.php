@@ -2,6 +2,7 @@
 @section('title','Thêm lớp')
 
 @section('body')
+
     <a href="{{url('admin/class')}}">Quay lại</a>
     <form action="{{url('admin/creclass')}}" method="post">
         @csrf
