@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth.checkLogout');
-//    }
-
     public function getLogin(){
         return view('admin.login');
     }
