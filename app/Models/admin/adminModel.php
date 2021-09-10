@@ -5,6 +5,7 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class adminModel extends Model
 {
@@ -280,6 +281,31 @@ class adminModel extends Model
             static function deleteStaff($id){
                 DB::table('admins')
                     ->delete($id);
+            }
+
+        //sửa
+            static function goUpdateStaff($id){
+                $rs = DB::table('admins')
+                    ->where('id','=',$id)
+                    ->get();
+                return $rs;
+            }
+
+            static function checkPass($pass){
+                $oldpass = DB::table('admins')
+                    ->where('id','=',session()->get('admin.id'))
+                    ->get();
+                $oldd = '';
+                foreach ($oldpass as $old){
+                    $oldd = $old->password;
+                }
+                return Hash::check($pass,$oldd);
+            }
+
+            static function updateStaff($data){
+                DB::table('admins')
+                    ->where('id','=',session()->get('admin.id'))
+                    ->update($data);
             }
 
     //hóa đơn

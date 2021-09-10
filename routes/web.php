@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\adminController;
+use App\Http\Controllers\admin\staffController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\loginController;
 
@@ -21,7 +22,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('',[loginController::class, 'getLogin'])->name('login');
     Route::post('',[loginController::class, 'postLogin']);
-    Route::get('home',[adminController::class, 'home'])->name('home');
+    Route::get('home',[staffController::class, 'home'])->name('home');
     Route::get('logout',[loginController::class,'logout']);
 });
 
@@ -56,8 +57,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::delete('staff/{id}',[adminController::class, 'deleteStaff']);
 
         //sửa
-            Route::get('upschyear/{id}',[adminController::class, 'goUpdateStaff']);
-            Route::put('upschyear',[adminController::class, 'updateStaff']);
+            Route::get('upstaff',[staffController::class,'goUpdateStaff']);
+            Route::put('poststaff',[staffController::class, 'updateStaff']);
 
    //năm học
        Route::get('schyear',[adminController::class,'schoolYear']);
@@ -102,35 +103,35 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('upscholarship',[adminController::class, 'updateScholarship']);
 
     //sinh viên
-       Route::get('student',[adminController::class, 'student']);
+       Route::get('student',[staffController::class, 'student']);
 
-       Route::get('stuinfor/{id}',[adminController::class,'stuinfor']);
+       Route::get('stuinfor/{id}',[staffController::class,'stuinfor']);
 
         //thêm
-            Route::get('crestudent',[adminController::class,'getCreateStudent']);
-            Route::post('crestudent',[adminController::class,'postCreateStudent']);
+            Route::get('crestudent',[staffController::class,'getCreateStudent']);
+            Route::post('crestudent',[staffController::class,'postCreateStudent']);
 
         //xóa
-            Route::delete('student/{id}',[adminController::class, 'deleteStudent']);
+            Route::delete('student/{id}',[staffController::class, 'deleteStudent']);
 
         //sửa
-            Route::get('upstudent/{id}',[adminController::class, 'goUpdateStudent']);
-            Route::put('upstudent',[adminController::class, 'updateStudent']);
+            Route::get('upstudent/{id}',[staffController::class, 'goUpdateStudent']);
+            Route::put('upstudent',[staffController::class, 'updateStudent']);
 
     //hóa đơn
-       Route::get('invoice',[adminController::class,'invoice']);
+       Route::get('invoice',[staffController::class,'invoice']);
 
         //tổng hóa đơn
-            Route::get('toindetail/{id}',[adminController::class,'totalInvoiceDetail']);
+            Route::get('toindetail/{id}',[staffController::class,'totalInvoiceDetail']);
 
         //hóa đơn chi tiết
-            Route::get('detailinvoice/{id}',[adminController::class,'detailInvoice']);
+            Route::get('detailinvoice/{id}',[staffController::class,'detailInvoice']);
 
         //thêm
-            Route::get('checkinfor/{id}',[adminController::class,'checkInformation']);
-            Route::post('gocreinvoice',[adminController::class,'getCreateInvoice']);
-            Route::post('creinvoice',[adminController::class,'postCreateInvoice']);
+            Route::get('checkinfor/{id}',[staffController::class,'checkInformation']);
+            Route::post('gocreinvoice',[staffController::class,'getCreateInvoice']);
+            Route::post('creinvoice',[staffController::class,'postCreateInvoice']);
 
         //xóa
-            Route::delete('invoice',[adminController::class, 'deleteInvoice']);
+            Route::delete('invoice',[staffController::class, 'deleteInvoice']);
 });

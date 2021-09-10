@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class logoutAuthenticate
+class checkLevel
 {
     /**
      * Handle an incoming request.
@@ -17,8 +16,11 @@ class logoutAuthenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('admin')->check()){
-            return redirect()->route('home');
+        if (session()->get('admin.level') == 0){
+            return $next($request);
+        }
+        else{
+            return back()->with('mes','Bạn không dủ quyền truy cập');
         }
     }
 }
