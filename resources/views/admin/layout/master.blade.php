@@ -94,23 +94,7 @@
             </ul>
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <div class="user-panel d-flex">
-                        <div class="info d-block">
-                            {{session()->get('admin.name')}}
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div cl6ass="user-panel d-flex">
-                        <div class="info d-block">
-                            <a href="{{url('admin/logout')}}">Đăng xuất</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            
         </nav>
         <!-- /.navbar -->
 
@@ -139,7 +123,25 @@
                     <div class="os-viewport os-viewport-native-scrollbars-invisible">
                         <div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
                             <!-- Sidebar user panel (optional) -->
-
+                            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <div class="user-panel d-flex">
+                        <div class="info d-block text-white">
+                            {{session()->get('admin.name')}}
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div cl6ass="user-panel d-flex">
+                        <div class="info d-block">
+                            <a href="{{url('admin/logout')}}">Đăng xuất</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+                            </div>
                             <!-- SidebarSearch Form -->
                             <div class="form-inline">
                                 <div class="input-group" data-widget="sidebar-search">
@@ -194,6 +196,30 @@
                                     </li>
                                     <li class="nav-header">Quản Lý</li>
                                     <li class="nav-item">
+                                        <a href="{{url('admin/student')}}" class="nav-link">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>
+                                                Quản lý sinh viên
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{url('admin/invoice')}}" class="nav-link">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>
+                                                Quản lý hóa đơn
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{url('admin/class')}}" class="nav-link">
+                                            <i class="nav-icon fas fa-columns"></i>
+                                            <p>
+                                                Quản lý lớp
+                                            </p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="{{url('admin/staff')}}" class="nav-link">
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
@@ -222,31 +248,6 @@
                                             <i class="nav-icon fas fa-columns"></i>
                                             <p>
                                                 Quản lý học bổng
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('admin/class')}}" class="nav-link">
-                                            <i class="nav-icon fas fa-columns"></i>
-                                            <p>
-                                                Quản lý lớp
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('admin/student')}}" class="nav-link">
-                                            <i class="nav-icon fas fa-columns"></i>
-                                            <p>
-                                                Quản lý sinh viên
-                                            </p>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="{{url('admin/invoice')}}" class="nav-link">
-                                            <i class="nav-icon fas fa-columns"></i>
-                                            <p>
-                                                Quản lý hóa đơn
                                             </p>
                                         </a>
                                     </li>
@@ -282,19 +283,13 @@
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.1/af-2.3.7/b-2.0.0/b-colvis-2.0.0/b-html5-2.0.0/b-print-2.0.0/datatables.min.js"></script>
-
-
-    @yield('script')
-=======
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.1/af-2.3.7/b-2.0.0/b-colvis-2.0.0/b-html5-2.0.0/b-print-2.0.0/datatables.min.js"></script>
->>>>>>> Stashed changes
+@yield('script')
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.1/af-2.3.7/b-2.0.0/b-colvis-2.0.0/b-html5-2.0.0/b-print-2.0.0/datatables.min.js"></script>
 </body>
 </html>
