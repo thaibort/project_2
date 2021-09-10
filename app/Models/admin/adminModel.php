@@ -49,10 +49,10 @@ class adminModel extends Model
                 return $rs;
             }
 
-            static function updateVocation($id,$money){
+            static function updateVocation($id,$data){
                 DB::table('total_money')
                     ->where('idVocation','=',$id)
-                    ->update(['totalMoney' => $money]);
+                    ->update($data);
             }
 
     //niên khóa

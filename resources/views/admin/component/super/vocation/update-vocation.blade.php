@@ -11,7 +11,8 @@
             @method("PUT")
             @foreach($rs as $item)
                 <input type="text" name="id" value="{{$item->id}}" hidden>
-                Tên ngành: {{$item->name}}
+                Tên ngành:
+                <input type="text" name="name" value="{{$item->name}}">
                 tổng học phí ngành
                 <input type="text" name="money" value="{{$item->totalMoney}}">
             @endforeach
