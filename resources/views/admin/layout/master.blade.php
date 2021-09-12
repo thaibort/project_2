@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="http://127.0.0.1:8000/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="http://127.0.0.1:8000/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
+    <!-- JQVMap --> 
     <link rel="stylesheet" href="http://127.0.0.1:8000/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="http://127.0.0.1:8000/dist/css/adminlte.min.css">
@@ -94,7 +94,7 @@
             </ul>
 
             <!-- Right navbar links -->
-            
+
         </nav>
         <!-- /.navbar -->
 

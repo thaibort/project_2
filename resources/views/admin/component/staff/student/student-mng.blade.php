@@ -6,7 +6,7 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         thêm sinh viên</a>
     </div>
-    <table id="student" class="table table-bordered bg-white">
+    <table id="student" class="flex table table-bordered bg-white">
         <thead>
             <tr>
                 <td>ID</td>
@@ -37,7 +37,7 @@
             @endforelse
         </tbody>
     </table>
-  
+
 @endsection
 @section('script')
 <script>
