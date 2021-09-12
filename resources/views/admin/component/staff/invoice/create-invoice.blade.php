@@ -2,8 +2,8 @@
 
 @section('title','Thu học phí')
 @section('body')
+    <a href='{{url("admin/invoice")}}'>Quay lại</a>
     @forelse($rs as $res)
-        <a href='{{url("admin/checkinfor/{$res -> id}")}}'>Quay lại</a>
         <div>
             <div class="d-flex flex-row text-lg">
                 <div class="mr-5">

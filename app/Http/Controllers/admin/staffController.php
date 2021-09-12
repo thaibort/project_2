@@ -98,19 +98,19 @@ class staffController extends Controller
             }
 
             public function postCreateInvoice(Request $request){
-                $student = $request -> input('id');
-                $type = $request -> input('type');
-                $data = [
-                    'idStudents' => $request -> input('id'),
-                    'idAdmin' => $request -> input('admin'),
-                    'idTypeOfTuition' => $request -> input('type'),
-                    'date' => $request -> input('date'),
-                    'money' => $request -> input('money'),
-                ];
-                adminModel::postCreateInvoice($data,$student,$type);
+        $student = $request -> input('id');
+        $type = $request -> input('type');
+        $data = [
+            'idStudents' => $request -> input('id'),
+            'idAdmin' => $request -> input('admin'),
+            'idTypeOfTuition' => $request -> input('type'),
+            'date' => $request -> input('date'),
+            'money' => $request -> input('money'),
+        ];
+        adminModel::postCreateInvoice($data,$student,$type);
 
-                return redirect('admin/invoice');
-            }
+        return redirect('admin/invoice');
+    }
 
 
     //sinh viên

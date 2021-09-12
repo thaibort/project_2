@@ -494,7 +494,6 @@ class adminModel extends Model
                 $stage = ['totalStages' => $thisStage + $chooseStage];
 
                 DB::table('students')
-                    ->where('id','=',$student)
                     ->update($stage);
             }
 }

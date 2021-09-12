@@ -16,6 +16,7 @@
                 Lớp: {{$res -> className}}<br>
                 Phương thức thu học phí:
                 <select name="typeOfTuition">
+                    <option value="0" hidden>Chọn loại thu</option>
                     @foreach($type as $item)
                         <option value="{{$item -> id}}">
                             {{$item -> name}}
