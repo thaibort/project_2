@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title','Quản lý lớp')
-@section('content')
+@section('body')
     <div aria-colspan="3">
         <a href="{{url('admin/creclass')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
@@ -22,9 +22,12 @@
                 <td>{{$res -> vocation}}</td>
                 <td>{{$res -> schoolYear}}</td>
                 <td>
-                    <form class=" d-flex justify-content-end" action='{{url("admin/upclass/{$res->id}")}} {{url("admin/class/{$res->id}")}}' method="post">
+                    <form class="w-full h-full bg-blue-200" action='{{url("admin/upclass/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5 ">Sửa</button>
+                        <button type="submit" class="edit_hover">Sửa</button>
+                    </form>
+                
+                    <form class="w-full h-full bg-red-200" action='{{url("admin/class/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

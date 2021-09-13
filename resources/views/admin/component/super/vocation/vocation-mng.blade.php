@@ -1,6 +1,6 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
-@section('content')
+@section('body')
    <div aria-colspan="3">
         <a href="{{url('admin/crevoca')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
@@ -34,7 +34,7 @@
                 <td>
                     <form class="w-full h-full bg-blue-200" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
+                        <button type="submit" class="edit_hover">Sửa</button>
                     </form>
                 </td>
                 <td>

@@ -1,68 +1,28 @@
 @extends('admin.layout.master')
 
 @section('title','Thu học phí')
-@section('content')
-    <a href='{{url("admin/invoice")}}'>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-            </svg>
-            Quay lại</a>
+@section('body')
+    <a href='{{url("admin/invoice")}}'>Quay lại</a>
     @forelse($rs as $res)
         <div>
             <div class="d-flex flex-row text-lg">
-                <table class="table table-bordered bg-white">
-                <tr>
-                        <td> Tên: </td>
-                        <td>{{$res -> studentName}}</td>
-                    </tr>
-                   <tr>
-                        <td> Email: </td>
-                        <td>{{$res -> email}}</td>
-                    </tr>
-                    <tr>
-                        <td> Số điện thoại: </td>
-                        <td>{{$res -> phone}}</td>
-                </tr>
-                   <tr>
-                        <td>  Địa chỉ: </td>
-                        <td> {{$res -> address}}</td>
-                   <tr>
-                        <td> Giới tính:</td>
-                        <td>{{$res -> gender == 1 ? 'Nam' : 'Nữ'}}</td>
-                    </tr>
-                   <tr>
-                        <td>Ngày sinh: </td>
-                        <td> {{$res -> dob}}</td>
-                </tr>
-                
-                   <tr>
-                       <td> Lớp: </td>
-                       <td> {{$res -> className}}</td>
-                    </tr>
-                   <tr>
-                       <td> Ngành học: </td>
-                       <td> {{$res -> vocation}}</td>
-                    </tr>
-                   <tr>
-                        <td>Loại thu: </td>
-                        <td>@foreach($type as $item) {{$item -> name}} @endforeach</td>
-                    </tr>
-                   <tr>
-                       <td> Tổng tiền nộp: </td>
-                       <td> {{$total}}</td>
-                    </tr>
-                   <tr>
-                       <td> Ngày thu: </td>
-                       <td> {{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y')}}</td>
-                    </tr>
-                   <tr>
-                       <td> Người thu: </td>
-                       <td> {{session()->get('admin.name')}}</td>
-                    </tr>
-                    
-                </table>
+                <div class="mr-5">
+                    Tên: {{$res -> studentName}}<br>
+                    Email: {{$res -> email}}<br>
+                    Số điện thoại: {{$res -> phone}}<br>
+                    Địa chỉ: {{$res -> address}}<br>
+                    Giới tính: {{$res -> gender == 1 ? 'Nam' : 'Nữ'}}<br>
+                    Ngày sinh: {{$res -> dob}}<br>
+                </div>
+                <div>
+                    Lớp: {{$res -> className}}<br>
+                    Ngành học: {{$res -> vocation}}<br>
+                    Loại thu: @foreach($type as $item) {{$item -> name}} @endforeach<br>
+                    Tổng tiền nộp: {{$total}}<br>
+                    Ngày thu: {{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y')}}<br>
+                    Người thu: {{session()->get('admin.name')}}
+                </div>
             </div>
-            
             <form action='{{url("admin/creinvoice")}}' method="post">
                 @csrf
                 <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
@@ -70,9 +30,7 @@
                 <input hidden type="text" value="{{$total}}" name="money">
                 <input hidden type="text" value='@foreach($type as $item) {{$item -> id}} @endforeach' name="type">
                 <input hidden type="text" value="{{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->toDateString()}}" name="date">
-                <div class="col-12 d-flex justify-content-end ">
-                <button type="submit" required class=" bg-blue text-white form-control select2 select2-hidden-accessible col-1 mt-4 mr-4 "  data-select2-id="1" tabindex="-1">Xác nhận</button>
-                </div>
+                <button type="submit">Xác nhận</button>
             </form>
         </div>
     @empty

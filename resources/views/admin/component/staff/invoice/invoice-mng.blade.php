@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title','Quản lý hóa đơn')
 
-@section('content')
+@section('body')
         <table id="invoice" class="table table-bordered bg-white" >
             <thead>
             <tr>
@@ -20,11 +20,13 @@
                     <td>{{$res -> className}}</td>
                     <td>{{$res -> name}}</td>
                     <td>
-                        <form action='{{url("admin/toindetail/{$res -> id}")}}' class="d-flex justify-content-end">
-                            <button required class=" bg-blue text-white btn btn-outline-secondary mr-5">
+                        <form action='{{url("admin/toindetail/{$res -> id}")}}'>
+                            <button>
                                 Hóa đơn
-                            </button>                       
-                            <button required class=" bg-blue text-white btn btn-outline-secondary mr-5">
+                            </button>
+                        </form>
+                        <form action='{{url("admin/checkinfor/{$res -> id}")}}'>
+                            <button>
                                 Thu phí
                             </button>
                         </form>
