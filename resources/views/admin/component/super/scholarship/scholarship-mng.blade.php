@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title','Quản lý học bổng')
 
-@section('body')
+@section('content')
     <div aria-colspan="3">
         <a href="{{url('admin/crescholarship')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
@@ -18,13 +18,13 @@
                 <td>{{$res -> type}}</td>
                 <td>{{$res -> money}}</td>
                 <td>
-                    <form class="w-full h-full bg-blue-200" action='{{url("admin/upscholarship/{$res->id}")}}'>
+                    <form class="w-full h-full bg-blue-200 d-flex justify-content-auto" action='{{url("admin/upscholarship/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover">Sửa</button>
+                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
                     </form>
                 </td>
                 <td>
-                    <form class="w-full h-full bg-red-200" action='{{url("admin/scholarship/{$res->id}")}}' method="post">
+                    <form class="w-full h-full bg-red-200 d-flex justify-content-auto " action='{{url("admin/scholarship/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
