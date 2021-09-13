@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title', 'Quản lý sinh viên')
-@section('body')
+@section('content')
     <div aria-colspan="3">
         <a href="{{url('admin/crestudent')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
