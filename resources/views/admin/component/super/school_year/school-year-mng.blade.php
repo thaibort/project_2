@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 @section('title','Quản lý niên khóa')
-@section('body')
+@section('content')
     <div aria-colspan="3">
         <a href="{{url('admin/creschyear')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>thêm niên khóa</a>
@@ -21,7 +21,7 @@
                 <td>
                     <form class="w-full h-full bg-blue-200" action='{{url("admin/upschyear/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover">Sửa</button>
+                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
                     </form>
                 </td>
                 <td>
