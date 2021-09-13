@@ -264,6 +264,13 @@ class adminModel extends Model
             return $rs;
         }
 
+        static function staffInformation($id){
+            $rs = DB::table('admins')
+                ->where('id','=',$id)
+                ->get();
+            return $rs;
+        }
+
         //kích hoạt tài khoản
             static function active($id,$data){
                 DB::table('admins')

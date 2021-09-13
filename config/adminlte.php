@@ -254,16 +254,9 @@ return [
         ],
         ['header' => 'Hồ sơ & Quản Lý'],
         [
-            'text' => 'Hồ sơ',
-            'url'  => 'admin/settings',
-            'icon' => 'far fa-address-card',
-            'submenu' => [
-                [
-                    'text' => 'Đăng xuất',
-                    'url'  => 'admin/logout',
-                    'icon' => 'fas fa-sign-out-alt',
-                ],
-            ],
+            'text' => 'Quản Lý Hóa Đơn',
+            'url'  => 'admin/invoice',
+            'icon' => 'fas fa-file-invoice',
         ],
         [
             'text' => 'Quản Lý Sinh Viên',
@@ -271,12 +264,8 @@ return [
             'icon' => 'fas fa-user-graduate',
         ],
         [
-            'text' => 'Quản Lý Hóa Đơn',
-            'url'  => 'admin/invoice',
-            'icon' => 'fas fa-file-invoice',
-        ],
-        [
             'text'    => 'Quản lý',
+            'id'    => 'mng',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -288,7 +277,7 @@ return [
                     'text'    => 'Quản lý Ngành',
                     'url'     => 'admin/vocation',
                     'icon'   =>'fab fa-accusoft',
-                ], 
+                ],
                 [
                     'text' => 'Quản Lý Khóa',
                     'url'  => 'admin/schyear',
@@ -299,11 +288,29 @@ return [
                     'url'     => 'admin/class',
                     'icon' => 'fas fa-school',
                 ],
-                
+
                 [
                     'text' => 'Quản lý Học Bổng',
                     'url'  => 'admin/scholarship',
                     'icon' =>'fas fa-graduation-cap',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Hồ sơ',
+            'url'  => 'admin/settings',
+            'icon' => 'far fa-address-card',
+            'submenu' => [
+                [
+                    'text' => 'Thông tin cá nhân',
+                    'id'   => 'stainfor',
+                    'url'  => 'admin/staffinfor',
+                    'icon' => 'fas fa-sign-out-alt',
+                ],
+                [
+                    'text' => 'Đăng xuất',
+                    'url'  => 'admin/logout',
+                    'icon' => 'fas fa-sign-out-alt',
                 ],
             ],
         ],

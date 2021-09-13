@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin'], function () {
    //nhân viên
        Route::get('staff',[adminController::class,'staff']);
 
+       Route::get('staffinfor',[staffController::class,'staffInformation']);
+
         //kích hoạt tài khoản
             Route::get('staffactive/{id}/{active}',[adminController::class,'active']);
 

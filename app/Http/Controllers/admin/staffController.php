@@ -20,6 +20,12 @@ class staffController extends Controller
         }
 
     //cập nhật thông tin nhân viên
+        public function staffInformation(){
+            $id = session()->get('admin.id');
+            $rs = adminModel::staffInformation($id);
+            return view('admin.component.super.staff.staff-information',['rs' => $rs]);
+        }
+
         public function goUpdateStaff(){
             $id = session()->get('admin.id');
             $rs = adminModel::goUpdateStaff($id);
