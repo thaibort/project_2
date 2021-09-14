@@ -46,11 +46,11 @@ class adminController extends Controller
 
             public function updateVocation(Request $request){
                 $id =  $request -> input('id');
-                $data = [
-                    'id' => $id,
-                    'name' =>  $request -> input('name'),
-                    'money' =>  $request -> input('money')];
-                adminModel::updateVocation($id,$data);
+                $money = [
+                    'totalMoney' =>  $request -> input('money')];
+                $vocation = [
+                    'name' =>  $request -> input('name')];
+                adminModel::updateVocation($id,$money,$vocation);
                 return redirect("admin/vocation");
             }
 

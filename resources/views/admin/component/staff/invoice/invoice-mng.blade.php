@@ -8,6 +8,7 @@
                 <th>Ngành</th>
                 <th>Khóa</th>
                 <th>Lớp</th>
+                <th>Mã sinh viên</th>
                 <th>Tên sinh viên</th>
                 <th>Hành động</th>
             </tr>
@@ -18,12 +19,13 @@
                     <td>{{$res -> vocation}}</td>
                     <td>{{$res -> schoolYear}}</td>
                     <td>{{$res -> className}}</td>
+                    <td>{{$res -> id}}</td>
                     <td>{{$res -> name}}</td>
                     <td>
                         <form action='{{url("admin/toindetail/{$res -> id}")}}' class="d-flex justify-content-end">
                             <button required class=" bg-blue text-white btn btn-outline-secondary mr-5">
                                 Hóa đơn
-                            </button>                       
+                            </button>
                             <button required class=" bg-blue text-white btn btn-outline-secondary mr-5">
                                 Thu phí
                             </button>
