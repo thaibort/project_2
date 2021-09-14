@@ -114,3 +114,15 @@
             </section>
         </div>
 @endsection
+
+@section('js')
+<scipt>
+    @if(session()->get('admin.level') == 1)
+        <script>
+            $(document).ready( function () {
+                $('#ccc').remove();
+            } );
+        </script>
+    @endif
+</scipt>
+@endsection
