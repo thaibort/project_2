@@ -12,14 +12,14 @@
             @foreach($name as $res)
                 Danh sách hóa đơn sinh viên {{$res->name}}
             @endforeach</h1>
-        <table class="table table-bordered bg-white">
+        <table class="table table-bordered bg-white text-center">
             <tr>
                 <th>ID</th>
                 <th>Tên</th>
                 <th>Loại thu</th>
                 <th>Ngày thu</th>
                 <th>Số tiền</th>
-                <th>Hành động</th>
+                <th >Hành động</th>
             </tr>
             @forelse($rs as $res)
                 <tr>
@@ -29,15 +29,17 @@
                     <td>{{$res -> date}}</td>
                     <td>{{$res -> money}}</td>
                     <td>
+                        <div>
                         <form action='{{url("admin/detailinvoice/{$res -> id}")}}'>
-                            <button>Chi tiết</button>
+                            <button class=" bg-blue text-white form-control">Chi tiết</button>
                         </form>
+                        </div>
                         <form action="{{url("admin/invoice")}}" method="post">
                             @csrf
                             @method('DELETE')
                             <input hidden type="text" value="{{$res -> id}}" name="id">
                             <input hidden type="text" value="{{$res -> idStudent}}" name="idStudent">
-                            <button>Xóa</button>
+                            <button class=" bg-blue text-white form-control">Xóa</button>
                         </form>
                     </td>
                 </tr>

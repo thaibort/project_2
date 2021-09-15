@@ -6,13 +6,13 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         thêm lớp</a>
     </div>
-    <table id="class" class="table table-bordered bg-white">
+    <table id="class" class="table table-bordered bg-white  text-center">
         <thead>
         <tr>
             <td>Lớp</td>
             <td>Ngành</td>
             <td>Khóa</td>
-            <td>Hành động</td>
+            <td style="width: 200px">Hành động</td>
         </tr>
         </thead>
         <tbody>
@@ -22,15 +22,19 @@
                 <td>{{$res -> vocation}}</td>
                 <td>{{$res -> schoolYear}}</td>
                 <td>
-                    <form class=" d-flex justify-content-end" action='{{url("admin/upclass/{$res->id}")}} {{url("admin/class/{$res->id}")}}' method="post">
+                <div class="d-flex flex-row">
+                    <div>
+                    <form class="w-full h-full bg-blue-200" action='{{url("admin/upclass/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5 ">Sửa</button>
+                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Sửa</button>
+                    </form>
+                    </div>
+                    <form class="w-full h-full bg-red-200" action='{{url("admin/class/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary mr-5" data-toggle="modal" data-target="#exampleModal">
                             Xóa
                         </button>
-
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -51,6 +55,7 @@
                             </div>
                         </div>
                     </form>
+</div>
                 </td>
             </tr>
         @endforeach

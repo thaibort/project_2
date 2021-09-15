@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b class="text-danger font-italic font-weight-bol" >BKACAD</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/logoo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-4',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -305,7 +305,8 @@ return [
                     'text' => 'Thông tin cá nhân',
                     'id'   => 'stainfor',
                     'url'  => 'admin/staffinfor',
-                    'icon' => 'fas fa-sign-out-alt',
+                    'icon' => 'fas fa-address-card',
+                    'class' =>'bg-red',
                 ],
                 [
                     'text' => 'Đăng xuất',

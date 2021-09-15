@@ -7,24 +7,27 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         thêm học bổng </a>
     </div>
-    <table class="table table-bordered bg-white">
+    <table class="table table-bordered bg-white text-center">
+        <thead>
         <tr>
             <td>Loại</td>
             <td>Số tiền</td>
             <td colspan="2">Hành động</td>
         </tr>
+        </thead>
+        <tbody>
         @forelse($rs as $res)
             <tr>
                 <td>{{$res -> type}}</td>
                 <td>{{$res -> money}}</td>
                 <td>
-                    <form class="w-full h-full bg-blue-200 d-flex justify-content-auto" action='{{url("admin/upscholarship/{$res->id}")}}'>
+                    <form class="w-full h-full bg-blue-200 " action='{{url("admin/upscholarship/{$res->id}")}}'>
                         @csrf
                         <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
                     </form>
                 </td>
                 <td>
-                    <form class="w-full h-full bg-red-200 d-flex justify-content-auto " action='{{url("admin/scholarship/{$res->id}")}}' method="post">
+                    <form class="w-full h-full bg-red-200 " action='{{url("admin/scholarship/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -56,5 +59,6 @@
         @empty
             <tr><td colspan="4"> Không có dữ liệu </td></tr>
         @endforelse
+        </tbody>
     </table>
 @endsection

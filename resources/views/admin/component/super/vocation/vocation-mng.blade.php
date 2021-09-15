@@ -6,11 +6,11 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         Thêm ngành</a>
     </div>
-    <table id="vocation" class="table table-bordered bg-white">
+    <table id="vocation" class="table table-bordered bg-white text-center">
         <thead>
             <tr colspan="3">
             </tr>
-            <tr >
+            <tr class=" text-center" style="width: 200px">
                 <th >
                     Tên ngành
                 </th>
@@ -25,16 +25,16 @@
         <tbody>
             @forelse($rs as $res)
             <tr>
-                <td>
+                <td class=" text-center">
                     {{$res->name}}
                 </td>
-                <td>
+                <td class=" text-center">
                     {{$res->totalMoney}}
                 </td>
                 <td>
                     <form class="w-full h-full bg-blue-200" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
+                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mrt-5">Sửa</button>
                     </form>
                 </td>
                 <td>

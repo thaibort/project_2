@@ -5,7 +5,7 @@
         <a href="{{url('admin/creschyear')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>thêm niên khóa</a>
     </div>
-    <table class="table table-bordered bg-white">
+    <table class="table table-bordered bg-white text-center">
         <thead>
         <tr>
             <th>Tên</th>

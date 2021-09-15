@@ -9,7 +9,7 @@
             Quay lại</a>
     @forelse($rs as $res)
         <div>
-            <div class="d-flex flex-row text-lg">
+            <div class="d-flex flex-row text-lg text-center">
                 <table class="table table-bordered bg-white">
                 <tr>
                         <td> Tên: </td>
