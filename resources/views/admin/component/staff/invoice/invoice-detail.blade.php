@@ -8,31 +8,69 @@
             Quay lại</a>
     @forelse($rs as $res)
         <div>
-            <div class="d-flex flex-row text-lg">
-                <div class="mr-5" >
-                    Tên: {{$res -> name}}<br>
-                    Email: {{$res -> email}}<br>
-                    Số điện thoại: {{$res -> phone}}<br>
-                    Địa chỉ: {{$res -> address}}<br>
-                    Giới tính: {{$res -> gender == 1 ? 'Nam' : 'Nữ'}}<br>
-                    Ngày sinh: {{$res -> dob}}<br>
-                </div>
-                <div>
-                    Lớp: {{$res -> className}}<br>
-                    Ngành học: {{$res -> vocation}}<br>
-                    Loại thu: {{$res -> typeOfTuition}}<br>
-                    Tổng tiền nộp: {{$res -> money}}<br>
-                    Ngày thu: {{$res -> date}}<br>
-                    Người thu: {{$res -> admin}}
-                </div>
+            <table class="table table-bordered bg-white">
+                 <tr>   
+           <td> Tên</td>
+            <td>{{$res -> name}}</td>
+            </tr>
+           <tr>
+                <td> Email: </td>
+                <td>{{$res -> email}}</td>
+            </tr>
+           <tr>
+                <td> Số điện thoại: </td>
+                <td>{{$res -> phone}}</td>
+            </tr>
+           <tr>
+                <td> Địa chỉ: </td>
+                <td>{{$res -> address}}</td>
+            </tr>
+           <tr>
+                <td> Giới tính: </td>
+                <td>{{$res -> gender == 1 ? 'Nam' : 'Nữ'}}</td>
+            </tr>
+           <tr>
+                 <td>Ngày sinh:</td>
+                <td> {{$res -> dob}}</td>
+            </tr>    
+            
+           <tr>
+                <td> Lớp: </td>
+                <td>{{$res -> className}}</td>
+            </tr>
+           <tr>
+                 <td>Ngành học: </td>
+                <td>{{$res -> vocation}}</td>
+            </tr>
+           <tr>
+                 <td>Loại thu:</td>
+                <td> {{$res -> typeOfTuition}}<br>
+            </tr>
+           <tr>
+                 <td>Tổng tiền nộp:</td>
+                <td> {{$res -> money}}<br>
+            </tr>
+           <tr>
+                 <td>Ngày thu:</td>
+                <td> {{$res -> date}}<br>
+            </tr>
+           <tr>
+                <td> Người thu:</td>
+                <td> {{$res -> admin}}
+              </tr>
+              </table>
             </div>
+
             <form action='{{url("admin/invoice")}}' method="post">
                 @csrf
                 @method('DELETE')
                 <input hidden type="text" value="{{$res -> id}}" name="id">
                 <input hidden type="text" value="{{$res -> idStudent}}" name="idStudent">
-                <button>Xóa</button>
+                <div class="col-12 d-flex justify-content-end ">
+                <button type="submit" required class=" bg-blue text-white form-control select2 select2-hidden-accessible col-1 mt-4 mr-4 "  data-select2-id="1" tabindex="-1">Xóa</button>
+                </div>
             </form>
+
         </div>
     @empty
         <div>Hiện chưa có hóa đơn</div>

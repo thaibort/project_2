@@ -47,7 +47,9 @@
                     </label>
                 </div>
             @endforeach
-            <button type="submit" required class="bg-blue text-white form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1">Lưu</button>
+            <div class="col-12 d-flex justify-content-end">
+            <button type="submit"  required class=" bg-blue text-white form-control select2 select2-hidden-accessible col-1 mt-5 mr-5 "  data-select2-id="1" tabindex="-1" ">Lưu</button>
+            </div>
         </form>
 
         @if(\Illuminate\Support\Facades\Session::has('mes'))

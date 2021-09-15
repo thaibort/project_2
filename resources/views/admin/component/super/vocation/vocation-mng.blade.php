@@ -6,7 +6,7 @@
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         Thêm ngành</a>
     </div>
-    <table id="vocation" class="table table-bordered bg-white">
+    <table id="vocation" class="table table-bordered bg-white text-center">
         <thead>
             <tr colspan="3">
             </tr>

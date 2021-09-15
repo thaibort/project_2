@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach($rs as $res)
-        <table>
+        <table class="table table-bordered bg-white">
             <tr>
                 <th>
                     Tên
