@@ -29,20 +29,22 @@
                             : 'Nợ '.($res -> stagesPresent - $res -> totalStages).' tháng'
                         }}
                     </td>
-                    <td>
-                         <div  class="d-flex flex-row">
-                             <div>
+                    <td class=" p-0">
+                         <div  class="d-flex flex-row w-full  ">
+                             <div class="col-6">
                                 <form action='{{url("admin/toindetail/{$res -> id}")}}' class="d-flex justify-content-end">
-                                <button class=" bg-blue text-white btn btn-outline-secondary mr-5">
+                                <button class=" bg-blue text-white btn btn-outline-secondary m-auto">
                                         Hóa đơn
                                 </button>
                                 </form>
                             </div>
-                            <form action='{{url("admin/checkinfor/{$res -> id}")}}' class="d-flex justify-content-end">
-                            <button class=" bg-blue text-white btn btn-outline-secondary mr-5">
-                                Thu phí
-                            </button>
-                            </form>
+                            <div class="col-6">
+                                <form action='{{url("admin/checkinfor/{$res -> id}")}}' class="d-flex justify-content-end">
+                                <button class=" bg-red text-white btn btn-outline-secondary m-auto">
+                                    Thu phí
+                                </button>
+                                </form>
+                            </div>
                         </div>
                     </td>
                 </tr>

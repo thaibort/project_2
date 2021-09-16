@@ -46,8 +46,8 @@ return [
     */
 
     'logo' => '<b class="text-danger font-italic font-weight-bol" >BKACAD</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/logoo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-4',
+    'logo_img' => 'vendor/adminlte/dist/img/logi.png',
+    'logo_img_class' => 'brand-image ',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     
@@ -254,7 +254,7 @@ return [
         ],
         ['header' => 'Hồ sơ & Quản Lý'],
         [
-            'text' => 'Quản Lý Hóa Đơn',
+            'text' => 'Quản Lý phiếu thu',
             'url'  => 'admin/invoice',
             'icon' => 'fas fa-file-invoice',
         ],

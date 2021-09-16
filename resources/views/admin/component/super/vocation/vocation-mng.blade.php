@@ -3,7 +3,7 @@
 @section('content')
    <div aria-colspan="3">
         <a href="{{url('admin/crevoca')}}">
-        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
+        <i class="fas fa-plus-circle fa-lg" style="color: black" > </i>
         Thêm ngành</a>
     </div>
     <table id="vocation" class="table table-bordered bg-white text-center">
@@ -31,17 +31,22 @@
                 <td class=" text-center">
                     {{$res->totalMoney}}
                 </td>
-                <td>
-                    <form class="w-full h-full bg-blue-200" action='{{url("admin/upvoca/{$res->id}")}}'>
+                <td class="bg-blue">
+                    <form class="w-full h-full bg-red -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mrt-5">Sửa</button>
+                        <button 
+                            type="submit"
+                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5"
+                            style="width: 100%"
+                        >Sửa</button>
                     </form>
                 </td>
-                <td>
+                <td class="bg-red">
                     <form class="w-full h-full bg-red-200" action='{{url("admin/vocation/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                        style="width: 100%">
                             Xóa
                         </button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
