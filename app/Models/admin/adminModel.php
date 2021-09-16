@@ -429,14 +429,42 @@ class adminModel extends Model
                 return $k;
             }
 
+        //foem tăng đợt
             static function stageForm(){
-
                 $k = self::limitYear();
                 $rs = DB::table('school_year')
                     ->where('name','>',$k)
                     ->get();
-dd($rs);
                 return $rs;
+            }
+
+            static function PostStageForm($data,$mode){
+                if ($mode == 1) {
+                    DB::table('stage_form')
+                        ->insert($data);
+                }
+                $k = self::limitYear();
+                $rs = DB::table('school_year')
+                    ->where('name','>',$k)
+                    ->get();
+
+
+                foreach ($rs as $res){
+                    $data1 = [];
+                    if ($mode == 1) {
+                        $data1 = [
+                            'stagesPresent' => $res->stagesPresent + 1
+                        ];
+                    }
+                    if ($mode == 0){
+                        $data1 = [
+                            'stagesPresent' => $res->stagesPresent - 1
+                        ];
+                    }
+                    DB::table('school_year')
+                        ->where('id', '=', $res->id)
+                        ->update($data1);
+                }
             }
 
             //xóa
