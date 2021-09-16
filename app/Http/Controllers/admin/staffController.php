@@ -104,19 +104,44 @@ class staffController extends Controller
             }
 
             public function postCreateInvoice(Request $request){
-        $student = $request -> input('id');
-        $type = $request -> input('type');
-        $data = [
-            'idStudents' => $request -> input('id'),
-            'idAdmin' => $request -> input('admin'),
-            'idTypeOfTuition' => $request -> input('type'),
-            'date' => $request -> input('date'),
-            'money' => $request -> input('money'),
-        ];
-        adminModel::postCreateInvoice($data,$student,$type);
+                $student = $request -> input('id');
+                $type = $request -> input('type');
+                $data = [
+                    'idStudents' => $request -> input('id'),
+                    'idAdmin' => $request -> input('admin'),
+                    'idTypeOfTuition' => $request -> input('type'),
+                    'date' => $request -> input('date'),
+                    'money' => $request -> input('money'),
+                ];
+                adminModel::postCreateInvoice($data,$student,$type);
 
-        return redirect('admin/invoice');
-    }
+                return redirect('admin/invoice');
+            }
+        //form tăng đợt
+            public function stageForm(){
+                $rs = adminModel::stageForm();
+                return view('admin.component.staff.invoice.formStage',['rs' => $rs]);
+            }
+
+            public function PostStageForm(Request $request){
+                $mode = $request -> input('mode');
+                $data = [];
+                if ($mode === 1) {
+                    $data = [
+                        'nameAdmin' => session()->get('admin.name'),
+                        'start' => $request->input('start'),
+                        'end' => $request->input('end')
+                    ];
+                }
+
+                adminModel::PostStageForm($data,$mode);
+                if ($mode == 1){
+                    return redirect('admin/invoice');
+                }
+                if ($mode == 0){
+                    return redirect('admin/schyear');
+                }
+            }
 
 
     //sinh viên

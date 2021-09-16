@@ -330,7 +330,9 @@ class adminModel extends Model
                     'vocation.name as vocation',
                     'school_year.name as schoolYear',
                     'students.name',
-                    'class.name as className')
+                    'class.name as className',
+                    'school_year.stagesPresent',
+                    'students.totalStages')
                 ->orderBy('vocation.name','asc')
                 ->orderBy('school_year.name','asc')
                 ->orderBy('class.name','asc')
@@ -383,60 +385,112 @@ class adminModel extends Model
 
         //hóa đơn chi tiết
             static function detailInvoice($id){
-            $rs = DB::table('invoices')
-                ->join('students','invoices.idStudents','=','students.id')
-                ->join('class','students.idClass','=','class.id')
-                ->join('school_year','class.idSchoolYear','=','school_year.id')
-                ->join('total_money','class.idTotalMoney','=','total_money.id')
-                ->join('vocation','total_money.idVocation','=','vocation.id')
-                ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
-                ->join('admins','invoices.idAdmin','=','admins.id')
-                ->select(
-                    'invoices.id',
-                    'students.id as idStudent',
-                    'students.name as name',
-                    'students.email',
-                    'students.phone',
-                    'students.gender',
-                    'students.address',
-                    'students.dob',
-                    'admins.name as admin',
-                    'class.name as className',
-                    'vocation.name as vocation',
-                    'school_year.name as schoolYear',
-                    'type_of_tuition.name as typeOfTuition',
-                    'invoices.money',
-                    'invoices.date',
-                )
-                ->where('invoices.id','=',$id)
-                ->get();
-            return $rs;
-        }
-
-        //xóa
-            static function deleteInvoice($id){
                 $rs = DB::table('invoices')
-                    ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
                     ->join('students','invoices.idStudents','=','students.id')
-                    ->where('invoices.id','=',$id)
+                    ->join('class','students.idClass','=','class.id')
+                    ->join('school_year','class.idSchoolYear','=','school_year.id')
+                    ->join('total_money','class.idTotalMoney','=','total_money.id')
+                    ->join('vocation','total_money.idVocation','=','vocation.id')
+                    ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                    ->join('admins','invoices.idAdmin','=','admins.id')
                     ->select(
-                        'type_of_tuition.stage',
-                        'students.id',
-                        'students.totalStages'
+                        'invoices.id',
+                        'students.id as idStudent',
+                        'students.name as name',
+                        'students.email',
+                        'students.phone',
+                        'students.gender',
+                        'students.address',
+                        'students.dob',
+                        'admins.name as admin',
+                        'class.name as className',
+                        'vocation.name as vocation',
+                        'school_year.name as schoolYear',
+                        'type_of_tuition.name as typeOfTuition',
+                        'invoices.money',
+                        'invoices.date',
                     )
+                    ->where('invoices.id','=',$id)
                     ->get();
+                return $rs;
+            }
+
+            static function limitYear(){
+                $rs = DB::table('school_year')
+                    ->orderBy('name','asc')
+                    ->get();
+
+                $k = 0;
+
                 foreach ($rs as $res){
-                    $totalStages = $res -> totalStages;
-                    $stage = $res -> stage;
-                    $idStu = $res -> id;
-                    $data = ['totalStages' => ($totalStages - $stage)];
-                    DB::table('students')
-                        ->where('id','=',$idStu)
-                        ->update($data);
-                    DB::table('invoices')
-                        ->delete($id);
+                    $k = ($res -> name) - 3;
+                }
+
+                return $k;
+            }
+
+        //foem tăng đợt
+            static function stageForm(){
+                $k = self::limitYear();
+                $rs = DB::table('school_year')
+                    ->where('name','>',$k)
+                    ->get();
+                return $rs;
+            }
+
+            static function PostStageForm($data,$mode){
+                if ($mode == 1) {
+                    DB::table('stage_form')
+                        ->insert($data);
+                }
+                $k = self::limitYear();
+                $rs = DB::table('school_year')
+                    ->where('name','>',$k)
+                    ->get();
+
+
+                foreach ($rs as $res){
+                    $data1 = [];
+                    if ($mode == 1) {
+                        $data1 = [
+                            'stagesPresent' => $res->stagesPresent + 1
+                        ];
+                    }
+                    if ($mode == 0){
+                        $data1 = [
+                            'stagesPresent' => $res->stagesPresent - 1
+                        ];
+                    }
+                    DB::table('school_year')
+                        ->where('id', '=', $res->id)
+                        ->update($data1);
                 }
             }
+
+            //xóa
+                static function deleteInvoice($id){
+                    $rs = DB::table('invoices')
+                        ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                        ->join('students','invoices.idStudents','=','students.id')
+                        ->where('invoices.id','=',$id)
+                        ->select(
+                            'type_of_tuition.stage',
+                            'students.id',
+                            'students.totalStages'
+                        )
+                        ->get();
+                    foreach ($rs as $res){
+                        $totalStages = $res -> totalStages;
+                        $stage = $res -> stage;
+                        $idStu = $res -> id;
+                        $data = ['totalStages' => ($totalStages - $stage)];
+                        DB::table('students')
+                            ->where('id','=',$idStu)
+                            ->update($data);
+                        DB::table('invoices')
+                            ->delete($id);
+                    }
+                }
 
         //thêm
             static function caculator($id,$typeOfTuition){

@@ -13,7 +13,6 @@
                 <td>Tên</td>
                 <td>Lớp</td>
                 <td>Khóa</td>
-                <td>Tinh trạng</td>
                 <td>Hành động</td>
             </tr>
         </thead>
@@ -24,12 +23,6 @@
                     <td>{{$res -> studentName}}</td>
                     <td>{{$res -> className}}</td>
                     <td>{{$res -> schoolYear}}</td>
-                    <td>
-                        {{$res -> stagesPresent <= $res -> totalStages
-                            ? 'Đã nộp'
-                            : 'Nợ '.($res -> stagesPresent - $res -> totalStages).' tháng'
-                        }}
-                    </td>
                     <td><a href='{{url("admin/stuinfor/{$res -> id}")}}'>Chi tiết</a></td>
                 </tr>
             @empty
@@ -37,7 +30,7 @@
             @endforelse
         </tbody>
     </table>
-  
+
 @endsection
 @section('script')
 <script>

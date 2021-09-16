@@ -15,7 +15,7 @@ class CreateVocationTable extends Migration
     {
         Schema::create('vocation', function (Blueprint $table) {
             $table->id();
-            $table->String('name',10)->unique();
+            $table->String('name',100)->unique();
             $table->timestamps();
         });
     }

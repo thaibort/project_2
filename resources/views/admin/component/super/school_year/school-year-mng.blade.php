@@ -5,6 +5,13 @@
         <a href="{{url('admin/creschyear')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>thêm niên khóa</a>
     </div>
+    <div>
+        <form action="{{url('admin/stageform')}}" method="post">
+            @csrf
+            <input type="text" hidden name="mode" value="0">
+            <button type="submit">Giảm tổng đợt</button>
+        </form>
+    </div>
     <table class="table table-bordered bg-white text-center">
         <thead>
         <tr>
