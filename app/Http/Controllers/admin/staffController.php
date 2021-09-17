@@ -126,7 +126,7 @@ class staffController extends Controller
             public function PostStageForm(Request $request){
                 $mode = $request -> input('mode');
                 $data = [];
-                if ($mode === 1) {
+                if ($mode == 1) {
                     $data = [
                         'nameAdmin' => session()->get('admin.name'),
                         'start' => $request->input('start'),
