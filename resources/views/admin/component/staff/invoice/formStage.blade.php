@@ -8,9 +8,9 @@
                 <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
             </svg>
             Quay lại</a>
-    <form action="{{url('admin/stageform')}}" method="post">
+    <form action="{{url('admin/stageform')}}" method="post" class="mr-5">
         @csrf
-        <input type="text" name="mode" value="1" hidden>
+        <input type="text" name="mode" value="1" hidden class="mr-5">
             <div class="row">
                 <div class="col-md-6">
 
@@ -32,13 +32,13 @@
                             <label>
                                  Ngày bắt đầu: <br>
                             </label>
-                        <input type="date" required name="start">
+                        <input type="date" required name="start" class=" form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1">
                         </div>
                         <div class="col-md-6 text-center border-right">
                             <label>
                                 Ngày kết thúc: <br>
                             </label>
-                        <input type="date" required name="end">
+                        <input type="date" required name="end" class=" form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1">
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
            </div>
            <div class="row">
                <div class="col-12 d-flex justify-content-end ">
-               <button type="submit" class="bg-blue text-white form-control select2 select2-hidden-accessible col-1 mt-4 mr-4">Gửi</button>
+               <button type="submit" class="bg-blue text-white form-control select2 select2-hidden-accessible col-2 mt-4 mr-4">Xác Nhận Tăng</button>
                </div>
            </div>
        

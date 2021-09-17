@@ -1,7 +1,7 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
 @section('content')
-   <div aria-colspan="3">
+   <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/crevoca')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black" > </i>
         Thêm ngành</a>
@@ -32,7 +32,7 @@
                     {{$res->totalMoney}}
                 </td>
                 <td class="bg-blue">
-                    <form class="w-full h-full bg-red -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
+                    <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
                         <button 
                             type="submit"

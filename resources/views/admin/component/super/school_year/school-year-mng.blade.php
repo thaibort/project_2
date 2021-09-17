@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 @section('title','Quản lý niên khóa')
 @section('content')
-    <div aria-colspan="3">
+    <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/creschyear')}}">
-        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>thêm niên khóa</a>
+        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>Thêm Niên Khóa</a>
     </div>
     <div class="col-12 d-flex justify-content-end">
         <form action="{{url('admin/stageform')}}" method="post">
@@ -25,17 +25,17 @@
             <tr>
                 <td>{{$res -> name}}</td>
                 <td>{{$res -> stagesPresent}}</td>
-                <td>
-                    <form class="w-full h-full bg-blue-200" action='{{url("admin/upschyear/{$res->id}")}}'>
+                <td class="bg-blue">
+                    <form class="w-full h-full -p-5" action='{{url("admin/upschyear/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary">Sửa</button>
+                        <button type="submit" class="w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5">Sửa</button>
                     </form>
                 </td>
-                <td>
-                    <form class="w-full h-full bg-red-200" action='{{url("admin/schyear/{$res->id}")}}' method="post">
+                <td class="bg-red">
+                    <form class="w-full h-full -p-5" action='{{url("admin/schyear/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary border-0 bg-red text-white btn btn-outline-secondary mrt-5" data-toggle="modal" data-target="#exampleModal">
                             Xóa
                         </button>
 

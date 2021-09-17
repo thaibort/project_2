@@ -2,7 +2,9 @@
 @section('title','Quản lý hóa đơn')
 
 @section('content')
-    <a href="{{url('admin/stageform')}}">Tăng đợt đóng tiền hiện tại</a>
+<div class="pt-2">
+    <a href="{{url('admin/stageform')}}" > <i class="far fa-arrow-alt-circle-up" style="color: black"></i>Tăng đợt đóng tiền hiện tại</a>
+    </div>
 <table id="invoice" class="table table-bordered bg-white " >
             <thead>
             <tr  class=" text-center">
