@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 @section('title','Quản lý nhân viên')
 @section('content')
-    <div aria-colspan="3">
+    <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/crestaff')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         Thêm nhân viên</a>

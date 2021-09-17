@@ -1,10 +1,10 @@
 @extends('admin.layout.master')
 @section('title','Quản lý lớp')
 @section('content')
-    <div aria-colspan="3">
+    <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/creclass')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
-        thêm lớp</a>
+        Thêm Lớp</a>
     </div>
     <table id="class" class="table table-bordered bg-white  text-center">
         <thead>
@@ -23,18 +23,20 @@
                 <td>{{$res -> schoolYear}}</td>
                 <td>
                 <div class="d-flex flex-row">
-                    <div>
+                    <div class="col-6 d-flex justify-content-end">
                     <form class="w-full h-full bg-blue-200" action='{{url("admin/upclass/{$res->id}")}}'>
                         @csrf
                         <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Sửa</button>
                     </form>
                     </div>
+                    <div class="flex-row w-full col-6 d-flex justify-content-end">
                     <form class="w-full h-full bg-red-200" action='{{url("admin/class/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary mr-5" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary bg-red text-white btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
                             Xóa
                         </button>
+                        </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">

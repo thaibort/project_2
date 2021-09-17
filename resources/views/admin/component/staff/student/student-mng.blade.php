@@ -1,10 +1,10 @@
 @extends('admin.layout.master')
 @section('title', 'Quản lý sinh viên')
 @section('content')
-    <div aria-colspan="3">
+    <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/crestudent')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
-        thêm sinh viên</a>
+        Thêm Sinh Viên</a>
     </div>
     <table id="student" class="table table-bordered bg-white text-center">
         <thead>
