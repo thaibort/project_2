@@ -13,7 +13,7 @@
                 <th>Tên</th>
                 <th>Email</th>
                 <th>Số điện thoại</th>
-                <th style="width: 200px">Hành động</th>
+                <th style="width: 250px">Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                     <td class=" text-center">{{$res -> email}}</td>
                     <td class=" text-center">{{$res -> phone}}</td>
                     <td>
-                        <div class="d-flex flex-row">
-                            <div>
+                        <div class="d-flex flex-row ">
+                            <div class="col-6 d-flex justify-content-end">
                                 <form class="w-full h-full bg-red-200" action='{{url("admin/staffactive/{$res->id}/1")}}' @if($res -> active == 1) hidden @endif>
                                     @csrf
                                     <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Kích hoạt</button>
@@ -35,13 +35,14 @@
                                     <button type="submit" class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Khóa</button>
                                 </form>
                             </div>
-                            <form class="w-full h-full bg-red-200" action='{{url("admin/staff/{$res->id}")}}' method="post">
-                                @csrf
-                                @method("DELETE")
-                                <button type="button" class="btn btn-primary bg-blue text-white btn btn-outline-secondary " data-toggle="modal" data-target="#exampleModal">
-                                    Xóa
-                                </button>
-
+                            <div class="flex-row w-full col-6 d-flex justify-content-end">
+                                <form class="w-full h-full bg-red-200 " action='{{url("admin/staff/{$res->id}")}}' method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="button" class="btn btn-primary bg-red text-white btn btn-outline-secondary " data-toggle="modal" data-target="#exampleModal">
+                                        Xóa
+                                    </button>
+                                </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">

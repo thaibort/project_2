@@ -97,7 +97,7 @@
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3>4</h3>
-                                    <p>Quản lý hóa đơn</p>
+                                    <p>Quản lý Phiếu Thu</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion fas fa-file-invoice"></i>
