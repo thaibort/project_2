@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\adminModel;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class adminController extends Controller
 {
@@ -28,14 +30,20 @@ class adminController extends Controller
             public function postCreateVocation(Request $request) {
                 $name = $request -> input('name');
                 $money = $request -> input('money');
-                adminModel::postCreateVocation($name,$money);
-                return redirect("admin/vocation");
+                try {
+                    adminModel::postCreateVocation($name,$money);
+                }
+                catch (QueryException $ex){
+                    return redirect("admin/vocation")->with('error','Thêm thất bại');
+                }
+                return redirect("admin/vocation")->with('message','Thêm thành công');
             }
 
         //xóa
-            public function deleteVocation($id){
+            public function deleteVocation(Request $request){
+                $id = $request -> input('id');
                 adminModel::deleteVocation($id);
-                return redirect("admin/vocation");
+                return redirect("admin/vocation")->with('message','Xóa thành công');
             }
 
         //sửa
@@ -68,14 +76,19 @@ class adminController extends Controller
             public function postCreateSchoolYear(Request $request){
                 $name = $request -> input('name');
                 $stagesPresent = 1;
-                adminModel::postCreateSchoolYear($name,$stagesPresent);
-                return redirect("admin/schyear");
+                try {
+                    adminModel::postCreateSchoolYear($name,$stagesPresent);
+                }
+                catch (QueryException $ex){
+                    return redirect("admin/schyear")->with('error','Thêm thất bại');
+                }
+                return redirect("admin/schyear")->with('message','Thêm thành công');
             }
 
         //xóa
             public function deleteSchoolYear($id){
                 adminModel::deleteSchoolYear($id);
-                return redirect('admin/schyear');
+                return redirect('admin/schyear')->with('message','Xóa thành công');
             }
 
         //sửa
@@ -110,15 +123,19 @@ class adminController extends Controller
                 $schoolYear = $request->input('schoolYear');
 
                 $data = ['name' => $name, 'idTotalMoney' => $vocation, 'idSchoolYear' => $schoolYear];
-
-                adminModel::postCreateClass($data);
-                return redirect("admin/class");
+                try {
+                    adminModel::postCreateClass($data);
+                }
+                catch (QueryException $ex){
+                    return redirect("admin/class")->with('error','Thêm thất bại');
+                }
+                return redirect("admin/class")->with('message','Thêm thành công');
             }
 
         //xóa
             public function deleteClass($id){
                 adminModel::deleteClass($id);
-                return redirect('admin/class');
+                return redirect('admin/class')->with('message','Xóa thành công');
             }
 
         //sửa
@@ -157,16 +174,19 @@ class adminController extends Controller
                     'type' => $request -> input('name'),
                     'money' => $request -> input('money')
                     ];
-
-                adminModel::postCreateScholarship($data);
-
-                return redirect('admin/scholarship');
+                try {
+                    adminModel::postCreateScholarship($data);
+                }
+                catch (QueryException $ex){
+                    return redirect('admin/scholarship')->with('error','Thêm thất bại');
+                }
+                return redirect('admin/scholarship')->with('message','Thêm thành công');
             }
 
         //xóa
             public function deleteScholarship($id){
                 adminModel::deleteScholarship($id);
-                return redirect('admin/scholarship');
+                return redirect('admin/scholarship')->with('message','Xóa thành công');
             }
 
         //sửa
@@ -218,12 +238,12 @@ class adminController extends Controller
 
                 adminModel::postCreateStaff($data);
 
-                return redirect('admin/staff');
+                return redirect('admin/staff')->with('message','Thêm thành công');
             }
 
         //xóa
             public function deleteStaff($id){
                 adminModel::deleteStaff($id);
-                return redirect('admin/staff');
+                return redirect('admin/staff')->with('message','Xóa thành công');
             }
 }
