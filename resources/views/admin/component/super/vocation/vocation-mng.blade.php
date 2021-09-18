@@ -34,40 +34,21 @@
                 <td class="bg-blue">
                     <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
-                        <button 
+                        <button
                             type="submit"
                             class=" w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5"
                             style="width: 100%"
                         >Sửa</button>
                     </form>
                 </td>
-                <td class="bg-red">
-                    <form class="w-full h-full bg-red-200" action='{{url("admin/vocation/{$res->id}")}}' method="post">
+                <td class="btn-danger">
+                    <form class="w-full h-full bg-red-200" action='{{url("admin/vocation")}}' method="post">
                         @csrf
-                        @method("DELETE")
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                        <input type="text" value="{{$res -> id}}" name="id" hidden>
+                        <button type="submit" id="del" class="btn btn-danger"
                         style="width: 100%">
                             Xóa
                         </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Bạn có chắc muốn xóa
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </td>
             </tr>
@@ -79,6 +60,5 @@
             @endforelse
         </tbody>
     </table>
-
-    @endsection
+@endsection
 

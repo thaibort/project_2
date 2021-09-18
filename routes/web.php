@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
        Route::get('vocation',[adminController::class, 'vocation']);
 
         //xóa
-            Route::delete('vocation/{id}',[adminController::class, 'deleteVocation']);
+            Route::post('vocation',[adminController::class, 'deleteVocation']);
 
         //sửa
            Route::get('upvoca/{id}',[adminController::class, 'goUpdateVocation']);

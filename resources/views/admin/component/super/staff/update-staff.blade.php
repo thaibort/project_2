@@ -38,9 +38,6 @@
                         Mật khẩu cũ <br>
                         <input type="password" name="oldPass" required class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1">
                     </label>
-                    @if(\Illuminate\Support\Facades\Session::has('err'))
-                        <div style="color: red" class="fadeIn fourth">{{\Illuminate\Support\Facades\Session::get('err')}}</div>
-                    @endif
                     <label>
                         Mật khẩu mới <br>
                         <input type="password" name="newPass" required class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1">
