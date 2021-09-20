@@ -2,17 +2,17 @@
 @section('title','Quản lý học bổng')
 
 @section('content')
-    <div aria-colspan="3" class="pt-2">
+    <div aria-colspan="3" class="pt-3">
         <a href="{{url('admin/crescholarship')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
         Thêm Học Bổng </a>
     </div>
-    <table class="table table-bordered bg-white text-center">
+    <table class="table table-bordered bg-white text-center pt-5">
         <thead>
         <tr>
             <td>Loại</td>
             <td>Số tiền</td>
-            <td colspan="2" class="witdh: 200px">Hành động</td>
+            <td colspan="2" style="witdh: 100px">Hành động</td>
         </tr>
         </thead>
         <tbody>
@@ -20,17 +20,21 @@
             <tr>
                 <td>{{$res -> type}}</td>
                 <td>{{$res -> money}}</td>
-                <td class="bg-blue">
+                <td class="">
                     <form class="w-full h-full bg-blue-200 " action='{{url("admin/upscholarship/{$res->id}")}}'>
                         @csrf
-                        <button type="submit" class="edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5">Sửa</button>
+                        <buttontype="submit"
+                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn bg-gradient-primary mrt-5"
+                            style="width: 100%">Sửa</buttontype=>
                     </form>
                 </td>
-                <td class="bg-red">
+                <td class="">
                     <form class="w-full h-full bg-red-200 " action='{{url("admin/scholarship/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary border-0 bg-red text-white btn btn-outline-secondary mrt-5" data-toggle="modal" data-target="#exampleModal">
+                        <button type="submit"
+                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn bg-red mrt-5"
+                            style="width: 100%" data-toggle="modal" data-target="#exampleModal">
                             Xóa
                         </button>
 

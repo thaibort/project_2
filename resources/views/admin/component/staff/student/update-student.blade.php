@@ -15,8 +15,8 @@
                 <input type="text" value="{{$res -> id}}" hidden name="id">
                 <div>
                     <label>
-                        chọn lớp
-                        <select name="class">
+                        Chọn lớp:
+                        <select name="class" class="border-1  btn btn-outline-secondary mrt-5">
                             @forelse($class as $resclass)
                                 <option value="{{$resclass -> id}}" @if($res -> idClass == $resclass -> id) selected @endif>
                                     {{$resclass -> name}}
@@ -29,8 +29,8 @@
                 </div>
                 <div>
                     <label>
-                        chọn loại học bổng
-                        <select name="scholarship">
+                        Chọn loại học bổng:
+                        <select name="scholarship" class="border-1  btn btn-outline-secondary mrt-5">
                             @forelse($scholarship as $resscholarship)
                                 <option value="{{$resscholarship -> id}}" @if($res -> idScholarship == $resscholarship -> id) selected @endif>
                                     {{$resscholarship -> id == 0 ? 'Không có học bổng' : $resscholarship -> type}}

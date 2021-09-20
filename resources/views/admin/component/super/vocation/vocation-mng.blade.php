@@ -1,7 +1,7 @@
 @extends('.admin.layout.master')
 @section('title','Quản lý ngành')
 @section('content')
-   <div aria-colspan="3" class="pt-2">
+   <div aria-colspan="3" class="pt-3">
         <a href="{{url('admin/crevoca')}}">
         <i class="fas fa-plus-circle fa-lg" style="color: black" > </i>
         Thêm ngành</a>
@@ -31,17 +31,17 @@
                 <td class=" text-center">
                     {{$res->totalMoney}}
                 </td>
-                <td class="bg-blue">
+                <td class="">
                     <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
                         <button 
                             type="submit"
                             class=" w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5"
-                            style="width: 100%"
-                        >Sửa</button>
+                            style="width: 100%">
+                            Sửa</button>
                     </form>
                 </td>
-                <td class="bg-red">
+                <td class="">
                     <form class="w-full h-full bg-red-200" action='{{url("admin/vocation/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
