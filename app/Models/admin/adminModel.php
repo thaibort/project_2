@@ -35,14 +35,18 @@ class adminModel extends Model
 
         static function countPaid(){
             $k = self::limitYear();
-            $rs = DB::table('students')
-                ->join('class','students.idClass','=','class.id')
-                ->join('school_year','class.idSchoolYear','=','school_year.id')
-                ->where('school_year.name','>',$k)
-                ->where('students.totalStages','>=','school_year.stagesPresent')
-                ->count();
+            $rs = DB::select("
+                select count(*) as aggregate from `students`
+                inner join `class` on `students`.`idClass` = `class`.`id`
+                inner join `school_year` on `class`.`idSchoolYear` = `school_year`.`id`
+                where `school_year`.`name` > 1 and `students`.`totalStages` >= school_year.stagesPresent
+            ");
 
-            return $rs;
+            $count = 0;
+            foreach ($rs as $res){
+                $count = $res ->aggregate;
+            }
+            return $count;
         }
 
         static function countYear(){
