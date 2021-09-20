@@ -16,7 +16,12 @@ class staffController extends Controller
 
     //trang chủ
         public function home() {
-            return view('admin.component.home');
+            $student = adminModel::countStudent();
+            $class = adminModel::countClass();
+            $year = adminModel::countYear();
+            $paid = adminModel::countPaid();
+//            $unpaid = adminModel::countUnpaid();
+            return view('admin.component.home',['student' => $student,'class' => $class,'year' => $year]);
         }
 
     //cập nhật thông tin nhân viên
