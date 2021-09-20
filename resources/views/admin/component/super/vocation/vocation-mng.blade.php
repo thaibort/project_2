@@ -31,21 +31,21 @@
                 <td class=" text-center">
                     {{$res->totalMoney}}
                 </td>
-                <td class="bg-blue">
+                <td class="">
                     <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
                         <button
                             type="submit"
-                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5"
+                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn bg-gradient-primary mrt-5"
                             style="width: 100%"
                         >Sửa</button>
                     </form>
                 </td>
-                <td class="btn-danger">
+                <td class="">
                     <form class="w-full h-full bg-red-200" action='{{url("admin/vocation")}}' method="post">
                         @csrf
                         <input type="text" value="{{$res -> id}}" name="id" hidden>
-                        <button type="submit" id="del" class="btn btn-danger"
+                        <button type="submit" id="del" class="btn bg-gradient-danger"
                         style="width: 100%">
                             Xóa
                         </button>

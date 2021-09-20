@@ -11,6 +11,58 @@ class adminModel extends Model
 {
     use HasFactory;
 
+    //trang chủ
+        static function countStudent(){
+            $k = self::limitYear();
+
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
+        static function countClass(){
+            $k = self::limitYear();
+
+            $rs = DB::table('class')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
+        static function countPaid(){
+            $k = self::limitYear();
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->where('students.totalStages','>=','school_year.stagesPresent')
+                ->count();
+
+            return $rs;
+        }
+
+        static function countYear(){
+            $rs = DB::table('school_year')
+                ->count();
+
+            return $rs;
+        }
+
+        static function countUnpaid(){
+            $k = self::limitYear();
+
+            $rs = DB::table('invoices')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
     //ngành và tổng tiền
         static function vocation(){
             $rs = DB::table('total_money')
