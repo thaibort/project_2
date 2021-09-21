@@ -41,7 +41,6 @@
                         <td> Phương thức thu học phí:</td>
                         <td>
                             <select name="typeOfTuition" class="col-12 border-white" style="outline: 2px solid transparent; outline-offset: 2px;">
-                                <option value="0" hidden>Chọn loại thu</option>
                                 @foreach($type as $item)
                                     <option value="{{$item -> id}}">
                                         {{$item -> name}}
