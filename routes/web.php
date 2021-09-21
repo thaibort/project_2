@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\adminController;
-use App\Http\Controllers\admin\staffController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\loginController;
+use App\Http\Controllers\admin\staffController;
+use App\Http\Controllers\client\clientController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,10 @@ use App\Http\Controllers\admin\loginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//clent
+Route::get('',[clientController::class,'home']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//đăng nhập admin
 Route::group(['prefix' => 'admin'], function () {
     Route::get('',[loginController::class, 'getLogin'])->name('login');
     Route::post('',[loginController::class, 'postLogin']);
@@ -26,6 +27,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('logout',[loginController::class,'logout']);
 });
 
+//admin
 Route::group(['prefix' => 'admin'], function () {
 
 
@@ -33,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
        Route::get('vocation',[adminController::class, 'vocation']);
 
         //xóa
-            Route::delete('vocation/{id}',[adminController::class, 'deleteVocation']);
+            Route::post('vocation',[adminController::class, 'deleteVocation']);
 
         //sửa
            Route::get('upvoca/{id}',[adminController::class, 'goUpdateVocation']);

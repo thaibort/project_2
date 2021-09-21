@@ -38,12 +38,11 @@
                     <form class="w-full h-full -p-5" action='{{url("admin/schyear/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button class=" w-full h-full edit_hover border-0 bg-blue text-white btn bg-red mrt-5"
-                            style="width: 100%" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary border-0 bg-red text-white btn btn-outline-secondary mrt-5" data-toggle="modal" data-target="#a{{$res->id}}">
                             Xóa
                         </button>
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade text-black-50" id="a{{$res -> id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

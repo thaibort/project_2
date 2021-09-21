@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image ',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -85,10 +85,10 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
-    'layout_dark_mode' => null,
+    'layout_dark_mode' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -129,7 +129,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-primary navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -226,11 +226,6 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,

@@ -11,6 +11,62 @@ class adminModel extends Model
 {
     use HasFactory;
 
+    //trang chủ
+        static function countStudent(){
+            $k = self::limitYear();
+
+            $rs = DB::table('students')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
+        static function countClass(){
+            $k = self::limitYear();
+
+            $rs = DB::table('class')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
+        static function countPaid(){
+            $k = self::limitYear();
+            $rs = DB::select("
+                select count(*) as aggregate from `students`
+                inner join `class` on `students`.`idClass` = `class`.`id`
+                inner join `school_year` on `class`.`idSchoolYear` = `school_year`.`id`
+                where `school_year`.`name` > 1 and `students`.`totalStages` >= school_year.stagesPresent
+            ");
+
+            $count = 0;
+            foreach ($rs as $res){
+                $count = $res ->aggregate;
+            }
+            return $count;
+        }
+
+        static function countYear(){
+            $rs = DB::table('school_year')
+                ->count();
+
+            return $rs;
+        }
+
+        static function countUnpaid(){
+            $k = self::limitYear();
+
+            $rs = DB::table('invoices')
+                ->join('class','students.idClass','=','class.id')
+                ->join('school_year','class.idSchoolYear','=','school_year.id')
+                ->where('school_year.name','>',$k)
+                ->count();
+            return $rs;
+        }
+
     //ngành và tổng tiền
         static function vocation(){
             $rs = DB::table('total_money')
@@ -32,6 +88,32 @@ class adminModel extends Model
 
         //xóa
             static function deleteVocation($id){
+
+                $rs1 = DB::table('total_money')
+                    ->where('idVocation','=',$id)
+                    ->get();
+                foreach ($rs1 as $res1){
+                    $rs2 = DB::table('class')
+                        ->where('idTotalMoney','=',$res1 -> id)
+                        ->get();
+                    foreach ($rs2 as $res2){
+                        $rs3 = DB::table('students')
+                            ->where('idClass','=',$res2 -> id)
+                            ->get();
+                        foreach ($rs3 as $res3){
+                            DB::table('invoices')
+                                ->where('idStudents','=',$res3 -> id)
+                                ->delete();
+                        }
+                        DB::table('students')
+                            ->where('idClass','=',$res2 -> id)
+                            ->delete();
+                    }
+                    DB::table('class')
+                        ->where('idTotalMoney','=',$res1 -> id)
+                        ->delete();
+                }
+
                 DB::table('total_money')
                     ->where('idVocation','=',$id)
                     ->delete();
@@ -73,6 +155,33 @@ class adminModel extends Model
 
         //xóa
             static function deleteSchoolYear($id){
+
+                $rs1 = DB::table('school_year')
+                    ->where('id','=',$id)
+                    ->get();
+
+                foreach ($rs1 as $res1){
+                    $rs2 = DB::table('class')
+                        ->where('idSchoolYear','=',$res1 -> id)
+                        ->get();
+                    foreach ($rs2 as $res2){
+                        $rs3 = DB::table('students')
+                            ->where('idClass','=',$res2 -> id)
+                            ->get();
+                        foreach ($rs3 as $res3){
+                            DB::table('invoices')
+                                ->where('idStudents','=',$res3 -> id)
+                                ->delete();
+                        }
+                        DB::table('students')
+                            ->where('idClass','=',$res2 -> id)
+                            ->delete();
+                    }
+                    DB::table('class')
+                        ->where('idSchoolYear','=',$res1 -> id)
+                        ->delete();
+                }
+
                 DB::table('school_year')
                     ->delete($id);
             }

@@ -34,22 +34,27 @@
                 <td class="">
                     <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
                         @csrf
-                        <button 
+                        <button
                             type="submit"
-                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn btn-outline-secondary mrt-5"
-                            style="width: 100%">
-                            Sửa</button>
+                            class=" w-full h-full edit_hover border-0 bg-blue text-white btn bg-gradient-primary mrt-5"
+                            style="width: 100%"
+                        >Sửa</button>
                     </form>
                 </td>
                 <td class="">
-                    <form class="w-full h-full bg-red-200" action='{{url("admin/vocation/{$res->id}")}}' method="post">
+                    <form class="w-full h-full bg-red-200" action='{{url("admin/vocation")}}' method="post">
                         @csrf
-                        @method("DELETE")
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
-                        style="width: 100%">
+                        <input type="text" value="{{$res -> id}}" name="id" hidden>
+                        <button
+                            type="button" id="del" class="btn bg-gradient-danger"
+                            style="width: 100%"
+                            data-toggle="modal"
+                            data-target="#a{{$res -> id}}"
+                        >
                             Xóa
                         </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                        <div class="modal fade" id="a{{$res -> id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -79,6 +84,5 @@
             @endforelse
         </tbody>
     </table>
-
-    @endsection
+@endsection
 

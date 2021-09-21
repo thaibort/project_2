@@ -16,7 +16,12 @@ class staffController extends Controller
 
     //trang chủ
         public function home() {
-            return view('admin.component.home');
+            $student = adminModel::countStudent();
+            $class = adminModel::countClass();
+            $year = adminModel::countYear();
+            $paid = adminModel::countPaid();
+//            $unpaid = adminModel::countUnpaid();
+            return view('admin.component.home',['student' => $student,'class' => $class,'year' => $year, 'paid' => $paid]);
         }
 
     //cập nhật thông tin nhân viên
@@ -36,19 +41,19 @@ class staffController extends Controller
             $pass = $request -> input('oldPass');
             $newpass = $request -> input('newPass');
             if (!adminModel::checkPass($pass)){
-                return redirect()->back()->with('err',"Mật Khẩu không đúng");
+                return redirect()->back()->with('error',"Mật cũ Khẩu không đúng");
             }
             else{
-                $passbc = bcrypt($newpass);
+                $npass = bcrypt($newpass);
                 $data = [
                     'name' => $request -> input('name'),
                     'email' => $request -> input('email'),
                     'phone' => $request -> input('phone'),
                     'address' => $request -> input('address'),
-                    'password' => $passbc
+                    'password' => $npass
                 ];
                 adminModel::updateStaff($data);
-                return redirect()->back()->with('mes',"Lưu thành công");
+                return redirect()->back()->with('message',"Lưu thành công");
             }
         }
 
@@ -84,7 +89,7 @@ class staffController extends Controller
             $id = $request -> input('id');
             $idStudent = $request -> input('idStudent');
             adminModel::deleteInvoice($id);
-            return redirect("admin/toindetail/{$idStudent}");
+            return redirect("admin/toindetail/{$idStudent}")->with('message','Xóa thành công');
         }
 
         //thêm
@@ -115,7 +120,7 @@ class staffController extends Controller
                 ];
                 adminModel::postCreateInvoice($data,$student,$type);
 
-                return redirect('admin/invoice');
+                return redirect('admin/invoice')->with('message','Thêm thành công');
             }
         //form tăng đợt
             public function stageForm(){
@@ -126,7 +131,7 @@ class staffController extends Controller
             public function PostStageForm(Request $request){
                 $mode = $request -> input('mode');
                 $data = [];
-                if ($mode === 1) {
+                if ($mode == 1) {
                     $data = [
                         'nameAdmin' => session()->get('admin.name'),
                         'start' => $request->input('start'),
@@ -136,10 +141,10 @@ class staffController extends Controller
 
                 adminModel::PostStageForm($data,$mode);
                 if ($mode == 1){
-                    return redirect('admin/invoice');
+                    return redirect('admin/invoice')->with('message','Tạo thành công');
                 }
                 if ($mode == 0){
-                    return redirect('admin/schyear');
+                    return redirect('admin/schyear')->with('message','Tạo thành công');
                 }
             }
 
@@ -177,13 +182,13 @@ class staffController extends Controller
 
             adminModel::postCreateStudent($data);
 
-            return redirect('admin/student');
+            return redirect('admin/student')->with('message','Thêm thành công');
         }
 
         //xóa
             public function deleteStudent($id){
             adminModel::deleteStudent($id);
-            return redirect('admin/student');
+            return redirect('admin/student')->with('message','Xóa thành công');
         }
 
         //sửa

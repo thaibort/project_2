@@ -33,11 +33,10 @@
                     <form class="w-full h-full bg-red-200" action='{{url("admin/class/{$res->id}")}}' method="post">
                         @csrf
                         @method("DELETE")
-                        <button type="button" class="btn btn-primary bg-red text-white btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary bg-red text-white btn btn-outline-secondary" data-toggle="modal" data-target="#a{{$res->id}}">
                             Xóa
                         </button>
-                        </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="a{{$res->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -57,7 +56,6 @@
                             </div>
                         </div>
                     </form>
-</div>
                 </td>
             </tr>
         @endforeach
