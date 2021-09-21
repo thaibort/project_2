@@ -20,18 +20,6 @@
              </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- <div class="col-md-3">
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>5</h3>
-                                    <p>Quản lý nhân viên</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion fas fa-user-tie"></i>
-                                </div>
-                                <a href="{{url('admin/staff')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div> -->
                         @if(session()->get('admin.level') == 0)
                             <div class="col-md-3">
                                 <div class="small-box bg-success">
@@ -45,22 +33,6 @@
                                     <a href="{{url('admin/schyear')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-3">
-                                <div class="small-box bg-warning">
-                                    <div class="inner">
-                                        <h3>44</h3>
-                                        <p>Quản lý ngành</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion fab fa-accusoft"></i>
-                                    </div>
-                                    <a href="{{url('admin/vocation')}}" class="small-box-footer">
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">More info </font>
-                                        </font><i class="fas fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
-                            </div> -->
                             <br>
                             <div class="col-md-3">
                                 <div class="small-box bg-danger">
@@ -73,7 +45,7 @@
                                     </div>
                                     <a href="{{url('admin/class')}}" class="small-box-footer">
                                         <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">More info </font>
+                                            <font style="vertical-align: inherit;">Xem thêm </font>
                                         </font><i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -90,7 +62,7 @@
                                 </div>
                                 <a href="{{url('admin/student')}}" class="small-box-footer">
                                     <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">More info </font>
+                                        <font style="vertical-align: inherit;">Xem thêm </font>
                                     </font><i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -98,15 +70,15 @@
                         <div class="col-md-3">
                             <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h3>4</h3>
-                                    <p>Quản lý Phiếu Thu</p>
+                                    <h3>{{$paid}}</h3>
+                                    <p>Sinh viên đã nộp học phí</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion fas fa-file-invoice"></i>
                                 </div>
                                 <a href="{{url('admin/invoice')}}" class="small-box-footer">
                                     <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">More info </font>
+                                        <font style="vertical-align: inherit;">Xem thêm </font>
                                     </font><i class="fas fa-arrow-circle-right"></i>
                                 </a>
                             </div>
@@ -114,89 +86,6 @@
                     </div>
                 </div>
             </section>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
-            addsasdasdadsad <br>
         </div>
 @endsection
 
@@ -207,5 +96,15 @@
                 $('#ccc').remove();
             } );
         </script>
+        @if(session()->get('admin.level') == 1)
+            $(document).ready( function () {
+            $('#mng').remove();
+            } );
+        @endif
+        @if(session()->get('admin.level') == 0)
+            $(document).ready( function () {
+            $('#stainfor').remove();
+            } );
+        @endif
 </scipt>
 @endsection
