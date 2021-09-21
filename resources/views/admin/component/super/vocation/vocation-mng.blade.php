@@ -3,9 +3,12 @@
 @section('content')
    <div aria-colspan="3" class="pt-3">
         <a href="{{url('admin/crevoca')}}">
-        <i class="fas fa-plus-circle fa-lg" style="color: black" > </i>
-        Thêm ngành</a>
+        <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
+            <i class="fas fa-plus-circle fa-lg "></i> Thêm Niên Khóa
+        </button>
+    </a>
     </div>
+    <div class="pt-2">
     <table id="vocation" class="table table-bordered bg-white text-center">
         <thead>
             <tr colspan="3">
@@ -84,5 +87,6 @@
             @endforelse
         </tbody>
     </table>
+    </div>
 @endsection
 
