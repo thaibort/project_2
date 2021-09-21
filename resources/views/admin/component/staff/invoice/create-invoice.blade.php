@@ -2,11 +2,13 @@
 
 @section('title','Thu học phí')
 @section('content')
-    <a href='{{url("admin/invoice")}}'>
+    @foreach($rs as $res)
+    <a href='{{url("admin/checkinfor/{$res -> id}")}}'>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
             </svg>
             Quay lại</a>
+    @endforeach
     @forelse($rs as $res)
         <div>
             <div class="d-flex flex-row text-lg text-center">
@@ -34,7 +36,7 @@
                         <td>Ngày sinh: </td>
                         <td> {{$res -> dob}}</td>
                 </tr>
-                
+
                    <tr>
                        <td> Lớp: </td>
                        <td> {{$res -> className}}</td>
@@ -59,10 +61,10 @@
                        <td> Người thu: </td>
                        <td> {{session()->get('admin.name')}}</td>
                     </tr>
-                    
+
                 </table>
             </div>
-            
+
             <form action='{{url("admin/creinvoice")}}' method="post">
                 @csrf
                 <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
