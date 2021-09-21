@@ -20,35 +20,35 @@
             </button>
         </form>
     </div>
-    <table class="table-auto w-full bg-gray-200 mt-10">
+    <table class="table-auto w-full bg-gray-100 mt-10" cellpadding="0" cellspacing="0">
         <tr>
-            <th class="h-14 bg-blue-700 border text-white">Mã sinh viên</th>
-            <th class="h-14 bg-blue-700 border text-white">Ngành</th>
-            <th class="h-14 bg-blue-700 border text-white">Khóa</th>
-            <th class="h-14 bg-blue-700 border text-white">Lớp</th>
-            <th class="h-14 bg-blue-700 border text-white">Họ và tên</th>
-            <th class="h-14 bg-blue-700 border text-white">Tình trạng học phí</th>
-            <th class="h-14 bg-blue-700 border text-white">Hành động</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Mã sinh viên</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Ngành</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Khóa</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Lớp</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Họ và tên</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Tình trạng học phí</th>
+            <th class="h-14 bg-blue-700 border-2 border-black text-white">Hành động</th>
         </tr>
         @forelse($rs as $res)
-            <tr>
-                <td class="h-8 border ">{{$res -> id}}</td>
-                <td class="h-8 border ">{{$res -> vocation}}</td>
-                <td class="h-8 border ">{{$res -> schoolYear}}</td>
-                <td class="h-8 border ">{{$res -> className}}</td>
-                <td class="h-8 border ">{{$res -> name}}</td>
-                <td class="h-8 border ">
+            <tr class="hover:bg-gray-300">
+                <td class="h-8 border-2 border-black text-center">{{$res -> id}}</td>
+                <td class="h-8 border-2 border-black text-center">{{$res -> vocation}}</td>
+                <td class="h-8 border-2 border-black text-center">{{$res -> schoolYear}}</td>
+                <td class="h-8 border-2 border-black text-center">{{$res -> className}}</td>
+                <td class="h-8 border-2 border-black text-center">{{$res -> name}}</td>
+                <td class="h-8 border-2 border-black text-center">
                     {{$res -> stagesPresent <= $res -> totalStages
                         ? 'Đã nộp'
                         : 'Nợ '.($res -> stagesPresent - $res -> totalStages).' tháng'
                     }}
                 </td>
-                <td>
+                <td class="h-8 border-2 border-black text-center">
                     <a href='{{url("/invoice/{$res -> id}")}}'>Tổng phiếu thu</a>
                 </td>
             </tr>
         @empty
-            <tr>
+            <tr class="h-8 border-2 border-black text-center">
                 <td colspan="8" class="">Không có dữ liệu sinh viên</td>
             </tr>
         @endforelse
