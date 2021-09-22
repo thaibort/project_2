@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="pt-2">
-    <a href="{{url('admin/stageform')}}">
+    <a href='{{url("admin/stageform/{$mode}")}}'>
         <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
             <i class="far fa-arrow-alt-circle-up"></i> Tăng đợt đóng tiền hiện tại
         </button>

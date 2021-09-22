@@ -142,6 +142,6 @@ Route::group(['prefix' => 'admin'], function () {
             Route::delete('invoice',[staffController::class, 'deleteInvoice']);
 
     //form tăng đợt
-       Route::get('stageform',[staffController::class,'stageForm']);
+       Route::get('stageform/{mode}',[staffController::class,'stageForm']);
        Route::post('stageform',[staffController::class,'PostStageForm']);
 });

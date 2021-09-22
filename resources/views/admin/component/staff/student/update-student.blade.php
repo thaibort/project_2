@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="pt-2">
-    <a href="{{url('admin/student')}}">
+    <a href='{{url("admin/stuinfor/{$id}")}}'>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
             class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
