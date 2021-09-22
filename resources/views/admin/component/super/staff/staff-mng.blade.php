@@ -20,13 +20,13 @@
         </thead>
         <tbody>
             @forelse($rs as $res)
-            <tr>
-                <td class=" text-center">{{$res -> id}}</td>
-                <td class=" text-center">{{$res -> name}}</td>
-                <td class=" text-center">{{$res -> email}}</td>
-                <td class=" text-center">{{$res -> phone}}</td>
+            <tr class=" text-center">
+                <td>{{$res -> id}}</td>
+                <td>{{$res -> name}}</td>
+                <td >{{$res -> email}}</td>
+                <td>{{$res -> phone}}</td>
                 <td>
-                    <div class="d-flex flex-row ">
+                    <div class="d-flex flex-row w-full ">
                         <div class="col-6 d-flex justify-content-end">
                             <form class="w-full h-full bg-red-200" action='{{url("admin/staffactive/{$res->id}/1")}}'
                                 @if($res -> active == 1) hidden @endif>
@@ -52,7 +52,7 @@
                                     data-toggle="modal" data-target="#a{{$res->id}}">
                                     Xóa
                                 </button>
-
+                            
                                 <div class="modal fade" id="a{{$res -> id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
