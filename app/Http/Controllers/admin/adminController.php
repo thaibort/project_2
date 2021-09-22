@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\adminModel;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class adminController extends Controller
 {
@@ -34,7 +33,7 @@ class adminController extends Controller
                     adminModel::postCreateVocation($name,$money);
                 }
                 catch (QueryException $ex){
-                    return redirect("admin/vocation")->with('error','Thêm thất bại');
+                    return redirect("admin/vocation")->with('error','Nhành đã tồn tại');
                 }
                 return redirect("admin/vocation")->with('message','Thêm thành công');
             }
@@ -58,7 +57,12 @@ class adminController extends Controller
                     'totalMoney' =>  $request -> input('money')];
                 $vocation = [
                     'name' =>  $request -> input('name')];
-                adminModel::updateVocation($id,$money,$vocation);
+                try {
+                    adminModel::updateVocation($id,$money,$vocation);
+                }
+                catch (QueryException $ex){
+                    return redirect("admin/vocation")->with('error','Nhành đã tồn tại');
+                }
                 return redirect("admin/vocation");
             }
 
@@ -80,9 +84,9 @@ class adminController extends Controller
                     adminModel::postCreateSchoolYear($name,$stagesPresent);
                 }
                 catch (QueryException $ex){
-                    return redirect("admin/schyear")->with('error','Thêm thất bại');
+                    return redirect("admin/schyear")->with('error','Năm học đã tồn tại');
                 }
-                return redirect("admin/schyear")->with('message','Thêm thành công');
+                return back()->with('message','Thêm thành công');
             }
 
         //xóa
@@ -100,7 +104,12 @@ class adminController extends Controller
             public function updateSchoolYear(Request $request){
                 $id = $request -> input('id');
                 $data = ['name' => $request-> input('name'),'stagesPresent'=> $request -> input('stagesPresent')];
-                adminModel::updateSchoolYear($id,$data);
+                try {
+                    adminModel::updateSchoolYear($id,$data);
+                }
+                catch (QueryException $ex){
+                    return back()->with('error','Năm học đã tồn tại');
+                }
                 return redirect("admin/schyear");
             }
 
@@ -127,7 +136,7 @@ class adminController extends Controller
                     adminModel::postCreateClass($data);
                 }
                 catch (QueryException $ex){
-                    return redirect("admin/class")->with('error','Thêm thất bại');
+                    return back()->with('error','Lớp đã tồn tại');
                 }
                 return redirect("admin/class")->with('message','Thêm thành công');
             }
@@ -143,7 +152,8 @@ class adminController extends Controller
                 $rs = adminModel::goUpdateClass($id);
                 $vocation = adminModel::getVocation();
                 $SchoolYear = adminModel::getSchoolYear();
-                return view('admin.component.staff.class.update-class',["rs" => $rs, "vocation" => $vocation, "SchoolYear" => $SchoolYear]);
+                return view('admin.component.staff.class.update-class',
+                    ["rs" => $rs, "vocation" => $vocation, "SchoolYear" => $SchoolYear]);
             }
 
             public function updateClass(Request $request){
@@ -153,8 +163,12 @@ class adminController extends Controller
                     'idTotalMoney' => $request -> vocation,
                     'idSchoolYear' => $request -> schoolYear
                 ];
-                adminModel::updateClass($id,$data);
-
+                try {
+                    adminModel::updateClass($id,$data);
+                }
+                catch (QueryException $ex){
+                    return back()->with('error','Lớp đã tồn tại');
+                }
                 return redirect('admin/class');
             }
 
@@ -178,7 +192,7 @@ class adminController extends Controller
                     adminModel::postCreateScholarship($data);
                 }
                 catch (QueryException $ex){
-                    return redirect('admin/scholarship')->with('error','Thêm thất bại');
+                    return back()->with('error','Học bổng đã tồn tại');
                 }
                 return redirect('admin/scholarship')->with('message','Thêm thành công');
             }
@@ -191,7 +205,12 @@ class adminController extends Controller
 
         //sửa
             public function goUpdateScholarship($id){
-                $rs = adminModel::goUpdateScholarship($id);
+                try {
+                    $rs = adminModel::goUpdateScholarship($id);
+                }
+                catch (QueryException $ex){
+                    return back()->with('error','Học bổng đã tồn tại');
+                }
                 return view('admin.component.super.scholarship.update-scholarship',['rs' => $rs]);
             }
 
@@ -201,7 +220,12 @@ class adminController extends Controller
                     'type' => $request -> input('name'),
                     'money' => $request -> input('money')
                 ];
-                adminModel::updateScholarship($id,$data);
+                try {
+                    adminModel::updateScholarship($id,$data);
+                }
+                catch (QueryException $ex){
+                    return back()->with('error','Học bổng đã tồn tại');
+                }
                 return redirect('admin/scholarship');
             }
 
@@ -236,7 +260,17 @@ class adminController extends Controller
                     'level' => 1
                 ];
 
-                adminModel::postCreateStaff($data);
+                try {
+                    adminModel::postCreateStaff($data);
+                }
+                catch (QueryException $ex){
+                    if ($ex->errorInfo[2] == "Duplicate entry '".$request -> input('phone')."' for key 'admins_phone_unique'"){
+                        return back()->with('error','Số điện thoại đã tồn tại');
+                    }
+                    if ($ex->errorInfo[2] == "Duplicate entry '".$request -> input('email')."' for key 'admins_email_unique'"){
+                        return back()->with('error','Email đã tồn tại');
+                    }
+                }
 
                 return redirect('admin/staff')->with('message','Thêm thành công');
             }
