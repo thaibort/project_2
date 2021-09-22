@@ -36,10 +36,10 @@ class adminModel extends Model
         static function countPaid(){
             $k = self::limitYear();
             $rs = DB::select("
-                select count(*) as aggregate from `students`
-                inner join `class` on `students`.`idClass` = `class`.`id`
-                inner join `school_year` on `class`.`idSchoolYear` = `school_year`.`id`
-                where `school_year`.`name` > 1 and `students`.`totalStages` >= school_year.stagesPresent
+                select count(*) as aggregate from students
+                inner join class on students.idClass = class.id
+                inner join school_year on class.idSchoolYear = school_year.id
+                where school_year.name > 1 and students.totalStages >= school_year.stagesPresent
             ");
 
             $count = 0;
@@ -428,27 +428,53 @@ class adminModel extends Model
             }
 
     //hóa đơn
-        static function invoice(){
-            $rs = DB::table('students')
-                ->join('class','students.idClass','=','class.id')
-                ->join('total_money','class.idTotalMoney','=','total_money.id')
-                ->join('vocation','total_money.idVocation','=','vocation.id')
-                ->join('school_year','class.idSchoolYear','=','school_year.id')
-                ->select(
-                    'students.id',
-                    'vocation.name as vocation',
-                    'school_year.name as schoolYear',
-                    'students.name',
-                    'class.name as className',
-                    'school_year.stagesPresent',
-                    'students.totalStages')
-                ->orderBy('vocation.name','asc')
-                ->orderBy('school_year.name','asc')
-                ->orderBy('class.name','asc')
-                ->orderBy('students.name','asc')
-                ->get();
-
-            return $rs;
+        static function invoice($mode){
+            if ($mode == 0) {
+                return DB::table('students')
+                    ->join('class', 'students.idClass', '=', 'class.id')
+                    ->join('total_money', 'class.idTotalMoney', '=', 'total_money.id')
+                    ->join('vocation', 'total_money.idVocation', '=', 'vocation.id')
+                    ->join('school_year', 'class.idSchoolYear', '=', 'school_year.id')
+                    ->select(
+                        'students.id',
+                        'vocation.name as vocation',
+                        'school_year.name as schoolYear',
+                        'students.name',
+                        'class.name as className',
+                        'school_year.stagesPresent',
+                        'students.totalStages')
+                    ->orderBy('vocation.name', 'asc')
+                    ->orderBy('school_year.name', 'asc')
+                    ->orderBy('class.name', 'asc')
+                    ->orderBy('students.name', 'asc')
+                    ->get();
+            }
+            else{
+                $que = '';
+                if ($mode == 1){
+                    $que = '>';
+                }
+                else if ($mode == 2){
+                    $que = '<=';
+                }
+                return DB::select("
+                    select students.id,
+                        vocation.name as vocation,
+                        school_year.name as schoolYear,
+                        students.name, class.name as className,
+                        school_year.stagesPresent,
+                        students.totalStages
+                    from students
+                    inner join class on students.idClass = class.id
+                    inner join total_money on class.idTotalMoney = total_money.id
+                    inner join vocation on total_money.idVocation = vocation.id
+                    inner join school_year on class.idSchoolYear = school_year.id
+                    where school_year.stagesPresent $que students.totalStages
+                    order by vocation.name asc,
+                            school_year.name asc,
+                            class.name asc, students.name asc
+            ");
+            }
         }
 
         static function getNameStudent($id){

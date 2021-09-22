@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 //clent
 Route::get('',[clientController::class,'home']);
 
+Route::get('toinvoice/{id}',[clientController::class,'totalInvoice']);
+
 //đăng nhập admin
 Route::group(['prefix' => 'admin'], function () {
     Route::get('',[loginController::class, 'getLogin'])->name('login');
@@ -123,16 +125,16 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('upstudent',[staffController::class, 'updateStudent']);
 
     //hóa đơn
-       Route::get('invoice',[staffController::class,'invoice']);
+       Route::get('invoice/{mode}',[staffController::class,'invoice']);
 
         //tổng hóa đơn
-            Route::get('toindetail/{id}',[staffController::class,'totalInvoiceDetail']);
+            Route::get('toindetail',[staffController::class,'totalInvoiceDetail']);
 
         //hóa đơn chi tiết
-            Route::get('detailinvoice/{id}',[staffController::class,'detailInvoice']);
+            Route::get('detailinvoice',[staffController::class,'detailInvoice']);
 
         //thêm
-            Route::get('checkinfor/{id}',[staffController::class,'checkInformation']);
+            Route::get('checkinfor',[staffController::class,'checkInformation']);
             Route::post('gocreinvoice',[staffController::class,'getCreateInvoice']);
             Route::post('creinvoice',[staffController::class,'postCreateInvoice']);
 

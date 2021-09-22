@@ -13,4 +13,9 @@ class clientController extends Controller
         $rs = clientModel::home($kw);
         return view('client.home',['rs' => $rs,'kw' => $kw]);
     }
+
+    public function totalInvoice($id){
+        $rs = clientModel::totalInvoice($id);
+        return view('client.invoice',['rs' => $rs]);
+    }
 }

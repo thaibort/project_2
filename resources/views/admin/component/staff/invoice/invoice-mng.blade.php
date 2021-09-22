@@ -39,14 +39,18 @@
                 <td class=" pt-2">
                     <div class="d-flex flex-row w-full  ">
                         <div class="col-6">
-                            <form action='{{url("admin/toindetail/{$res -> id}")}}' class="d-flex justify-content-end">
+                            <form action='{{url("admin/toindetail")}}' class="d-flex justify-content-end">
+                                <input type="text" value="{{$res -> id}}" name="id" hidden>
+                                <input type="text" value="{{$mode}}" name="mode" hidden>
                                 <button class=" bg-blue text-white btn btn-outline-secondary m-auto">
                                     Hóa đơn
                                 </button>
                             </form>
                         </div>
                         <div class="col-6">
-                            <form action='{{url("admin/checkinfor/{$res -> id}")}}' class="d-flex justify-content-end">
+                            <form action='{{url("admin/checkinfor")}}' class="d-flex justify-content-end">
+                                <input type="text" value="{{$res -> id}}" name="id" hidden>
+                                <input type="text" value="{{$mode}}" name="mode" hidden>
                                 <button class=" bg-red text-white btn btn-outline-secondary m-auto">
                                     Thu phí
                                 </button>

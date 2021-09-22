@@ -2,14 +2,20 @@
 
     @section('title',$name)
     @section('content')
-    <a href='{{url("admin/toindetail/{$idstu}")}}'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-            </svg>
-            Quay lại</a>
+        <form action='{{url("admin/toindetail")}}'>
+            <input type="text" value="{{$idstu}}" name="id" hidden>
+            <input type="text" value="{{$mode}}" name="mode" hidden>
+            <button class="bg-light border-0 hover:none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Quay lại
+            </button>
+        </form>
     @forelse($rs as $res)
         <div>
             <table class="table table-bordered bg-white">
-                 <tr>   
+                 <tr>
            <td> Tên</td>
             <td>{{$res -> name}}</td>
             </tr>
@@ -32,8 +38,8 @@
            <tr>
                  <td>Ngày sinh:</td>
                 <td> {{$res -> dob}}</td>
-            </tr>    
-            
+            </tr>
+
            <tr>
                 <td> Lớp: </td>
                 <td>{{$res -> className}}</td>

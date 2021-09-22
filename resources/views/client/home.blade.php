@@ -44,7 +44,7 @@
                     }}
                 </td>
                 <td class="h-8 border-2 border-black text-center">
-                    <a href='{{url("/invoice/{$res -> id}")}}'>Tổng phiếu thu</a>
+                    <a href='{{url("/toinvoice/{$res -> id}")}}'>Tổng phiếu thu</a>
                 </td>
             </tr>
         @empty

@@ -5,7 +5,7 @@
 @endforeach
 @section('content')
 <div class="pt-2">
-    <a href='{{url("admin/invoice")}}'>
+    <a href='{{url("admin/invoice/{$mode}")}}'>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
             class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
@@ -39,7 +39,9 @@
         <td class=" pt-2">
             <div class="d-flex flex-row w-full  ">
                 <div class="col-6">
-                    <form action='{{url("admin/detailinvoice/{$res -> id}")}}'>
+                    <form action='{{url("admin/detailinvoice")}}'>
+                        <input type="text" name="id" value="{{$res -> id}}" hidden>
+                        <input type="text" name="mode" value="{{$mode}}" hidden>
                         <button class=" bg-blue text-white form-control">Chi tiết</button>
                     </form>
                 </div>

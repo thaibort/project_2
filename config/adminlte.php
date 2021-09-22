@@ -250,8 +250,24 @@ return [
         ['header' => 'Hồ sơ & Quản Lý'],
         [
             'text' => 'Quản Lý phiếu thu',
-            'url'  => 'admin/invoice',
             'icon' => 'fas fa-file-invoice',
+            'submenu' => [
+                [
+                    'text' => 'Tổng hóa đơn',
+                    'url'  => 'admin/invoice/0',
+                    'icon' => 'fas fa-file-invoice',
+                ],
+                [
+                    'text' => 'Sinh viên chưa nộp tiền',
+                    'url'  => 'admin/invoice/1',
+                    'icon' => 'fas fa-file-invoice',
+                ],
+                [
+                    'text' => 'Sinh viên đã nộp tiền',
+                    'url'  => 'admin/invoice/2',
+                    'icon' => 'fas fa-file-invoice',
+                ],
+            ],
         ],
         [
             'text' => 'Quản Lý Sinh Viên',
