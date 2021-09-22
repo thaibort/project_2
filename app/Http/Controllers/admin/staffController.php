@@ -150,9 +150,9 @@ class staffController extends Controller
                 return redirect('admin/invoice')->with('message','Thêm thành công');
             }
         //form tăng đợt
-            public function stageForm(){
+            public function stageForm($mode){
                 $rs = adminModel::stageForm();
-                return view('admin.component.staff.invoice.formStage',['rs' => $rs]);
+                return view('admin.component.staff.invoice.formStage',['rs' => $rs,'mode' => $mode]);
             }
 
             public function PostStageForm(Request $request){
@@ -236,7 +236,8 @@ class staffController extends Controller
                 return view('admin.component.staff.student.update-student',[
                     'rs' => $rs,
                     'class' => $class,
-                    'scholarship' => $scholarship
+                    'scholarship' => $scholarship,
+                    'id' => $id
                 ]);
             }
 
