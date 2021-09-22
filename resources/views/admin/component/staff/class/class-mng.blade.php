@@ -3,9 +3,12 @@
 @section('content')
     <div aria-colspan="3" class="pt-2">
         <a href="{{url('admin/creclass')}}">
-        <i class="fas fa-plus-circle fa-lg" style="color: black"> </i>
-        Thêm Lớp</a>
+        <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
+            <i class="fas fa-plus-circle fa-lg "></i> Thêm lớp
+        </button>
+    </a>
     </div>
+    <div class="pt-2">
     <table id="class" class="table table-bordered bg-white  text-center">
         <thead>
         <tr>
@@ -61,6 +64,7 @@
         @endforeach
 </tbody>
     </table>
+    </div>
 @endsection
 @section('script')
 <script>

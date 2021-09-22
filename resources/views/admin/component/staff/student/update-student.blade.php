@@ -2,12 +2,19 @@
 @section('title','Thêm sinh viên')
 
 @section('content')
+<div class="pt-2">
     <a href="{{url('admin/student')}}">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+        <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-arrow-left-short text-black hover:text-green" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
             </svg>
-            Quay lại</a>
-    <div>
+            Quay lại
+        </button>
+    </a>
+</div>
+    <div class="pt-2">
         @foreach($rs as $res)
             <form action="{{url('admin/upstudent')}}" method="post">
                 @csrf
@@ -15,8 +22,8 @@
                 <input type="text" value="{{$res -> id}}" hidden name="id">
                 <div>
                     <label>
-                        chọn lớp
-                        <select name="class">
+                        Chọn lớp:
+                        <select name="class" class="border-1  btn btn-outline-secondary mrt-5">
                             @forelse($class as $resclass)
                                 <option value="{{$resclass -> id}}" @if($res -> idClass == $resclass -> id) selected @endif>
                                     {{$resclass -> name}}
@@ -29,8 +36,8 @@
                 </div>
                 <div>
                     <label>
-                        chọn loại học bổng
-                        <select name="scholarship">
+                        Chọn loại học bổng:
+                        <select name="scholarship" class="border-1  btn btn-outline-secondary mrt-5">
                             @forelse($scholarship as $resscholarship)
                                 <option value="{{$resscholarship -> id}}" @if($res -> idScholarship == $resscholarship -> id) selected @endif>
                                     {{$resscholarship -> id == 0 ? 'Không có học bổng' : $resscholarship -> type}}
