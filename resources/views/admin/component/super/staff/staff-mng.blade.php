@@ -4,7 +4,7 @@
 <div aria-colspan="3" class="pt-3">
     <a href="{{url('admin/crestaff')}}">
         <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
-            <i class="fas fa-plus-circle fa-lg "></i> Thêm nhân viên
+        <i class="fas fa-user-plus"></i> Thêm nhân viên
         </button></a>
 </div>
 <div class="pt-2">
@@ -25,30 +25,30 @@
                 <td>{{$res -> name}}</td>
                 <td >{{$res -> email}}</td>
                 <td>{{$res -> phone}}</td>
-                <td>
-                    <div class="d-flex flex-row w-full ">
+                <td class="p-1">
+                    <div class="d-flex flex-row col-12 ">
                         <div class="col-6 d-flex justify-content-end">
-                            <form class="w-full h-full bg-red-200" action='{{url("admin/staffactive/{$res->id}/1")}}'
+                            <form class="col-12 h-full " action='{{url("admin/staffactive/{$res->id}/1")}}'
                                 @if($res -> active == 1) hidden @endif>
                                 @csrf
                                 <button type="submit"
-                                    class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Kích
+                                    class="edit_hover col-12 bg-blue text-white btn btn-outline-secondary">Kích
                                     hoạt</button>
                             </form>
-                            <form class="w-full h-full bg-red-200" action='{{url("admin/staffactive/{$res->id}/0")}}'
+                            <form class="col-12 h-full " action='{{url("admin/staffactive/{$res->id}/0")}}'
                                 @if($res -> active == 0) hidden @endif>
                                 @csrf
                                 <button type="submit"
-                                    class="edit_hover bg-blue text-white btn btn-outline-secondary mr-5">Khóa</button>
+                                    class="edit_hover col-12 bg-blue text-white btn btn-outline-secondary">Khóa</button>
                             </form>
                         </div>
-                        <div class="flex-row w-full col-6 d-flex justify-content-end">
-                            <form class="w-full h-full bg-red-200 " action='{{url("admin/staff/{$res->id}")}}'
+                        <div class="flex-row col-6 d-flex justify-content-end">
+                            <form class="col-12 h-full " action='{{url("admin/staff/{$res->id}")}}'
                                 method="post">
                                 @csrf
                                 @method("DELETE")
                                 <button type="button"
-                                    class="btn btn-primary bg-red text-white btn btn-outline-secondary "
+                                    class="btn btn-primary col-12 bg-red text-white btn btn-outline-secondary "
                                     data-toggle="modal" data-target="#a{{$res->id}}">
                                     Xóa
                                 </button>

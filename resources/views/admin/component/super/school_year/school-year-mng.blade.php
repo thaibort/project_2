@@ -11,7 +11,8 @@
         <form action="{{url('admin/stageform')}}" method="post">
             @csrf
             <input type="text" hidden name="mode" value="0">
-            <button type="submit" class="bg-blue text-white btn btn-outline-secondary">Giảm tổng đợt</button>
+            <button type="submit" class="bg-blue text-white btn btn-outline-secondary">
+            <i class="fas fa-arrow-circle-down"></i> Giảm tổng đợt</button>
         </form>
     </div>
 </div>

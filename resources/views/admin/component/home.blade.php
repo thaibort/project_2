@@ -30,7 +30,7 @@
                                     <div class="icon">
                                         <i class="ion fas fa-chart-pie"></i>
                                     </div>
-                                    <a href="{{url('admin/schyear')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                    <a href="{{url('admin/schyear')}}" class="small-box-footer"> Xem thêm <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <br>
