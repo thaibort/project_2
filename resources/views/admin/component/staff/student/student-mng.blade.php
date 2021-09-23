@@ -4,7 +4,7 @@
 <div aria-colspan="3" class="pt-2">
     <a href="{{url('admin/crestudent')}}">
         <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
-            <i class="fas fa-plus-circle fa-lg "></i> Thêm sinh viên
+        <i class="fas fa-user-plus"></i> Thêm sinh viên
         </button>
     </a>
 </div>

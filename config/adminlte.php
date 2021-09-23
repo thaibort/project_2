@@ -250,12 +250,12 @@ return [
         ['header' => 'Hồ sơ & Quản Lý'],
         [
             'text' => 'Quản Lý phiếu thu',
-            'icon' => 'fas fa-file-invoice',
+            'icon' => 'fas fa-receipt',
             'submenu' => [
                 [
                     'text' => 'Tổng hóa đơn',
                     'url'  => 'admin/invoice/0',
-                    'icon' => 'fas fa-file-invoice',
+                    'icon' => 'fas fa-file-invoice-dollar',
                 ],
                 [
                     'text' => 'Sinh viên chưa nộp tiền',
@@ -265,7 +265,7 @@ return [
                 [
                     'text' => 'Sinh viên đã nộp tiền',
                     'url'  => 'admin/invoice/2',
-                    'icon' => 'fas fa-file-invoice',
+                    'icon' => 'far fa-file-alt',
                 ],
             ],
         ],

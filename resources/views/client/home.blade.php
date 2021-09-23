@@ -9,7 +9,7 @@
 </head>
 <body class="relative min-h-screen p-5">
 <div></div>
-    <div class="border border-black w-1/5 rounded-full">
+    <div class="border border-black w-1/5 rounded-full d-flex justify-content-end">
         <form action='{{url("/")}}' class="w-full h-8 flex items-center justify-between">
             @csrf
             <input type="text" name="kw" value="{{$kw}}" class="outline-none w-5/6 h-8 rounded-l-full pl-3">
