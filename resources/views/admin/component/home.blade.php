@@ -92,9 +92,9 @@
 @section('js')
     <scipt>
         <script>
-            $(document).ready( function () {
+            $(document).ready(function() {
                 $('#ccc').remove();
-            } );
+            });
         </script>
         @if(session()->get('admin.level') == 1)
             $(document).ready( function () {

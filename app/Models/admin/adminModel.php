@@ -147,8 +147,8 @@ class adminModel extends Model
         }
 
         //thêm
-            static function postCreateSchoolYear($name){
-            $data = ['name' => $name, 'stagesPresent' => 0];
+            static function postCreateSchoolYear($name,$stagesPresent){
+            $data = ['name' => $name, 'stagesPresent' => $stagesPresent];
                 DB::table('school_year')
                     ->insert($data);
             }
@@ -564,21 +564,12 @@ class adminModel extends Model
                 return $k;
             }
 
-        //form tăng đợt
+        //foem tăng đợt
             static function stageForm(){
                 $k = self::limitYear();
                 $rs = DB::table('school_year')
                     ->where('name','>',$k)
-                    ->orderBy('name','asc')
                     ->get();
-                return $rs;
-            }
-
-        //lấy thời gian thu
-            static function getTime(){
-                $rs = DB::table('stage_form')
-                    ->orderBy('id', 'desc')
-                    ->first();
                 return $rs;
             }
 
