@@ -80,9 +80,7 @@ class staffController extends Controller
     //hóa đơn
         public function invoice($mode){
             $rs = adminModel::invoice($mode);
-            $stage = adminModel::stageForm();
-            $time = adminModel::getTime();
-            return view('admin.component.staff.invoice.invoice-mng',['rs' => $rs,'mode' => $mode, 'stage' => $stage,'time' => $time]);
+            return view('admin.component.staff.invoice.invoice-mng',['rs' => $rs,'mode' => $mode]);
         }
 
         //tổng hóa đơn

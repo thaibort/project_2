@@ -33,7 +33,7 @@ class adminController extends Controller
                     adminModel::postCreateVocation($name,$money);
                 }
                 catch (QueryException $ex){
-                    return redirect("admin/vocation")->with('error','Ngành đã tồn tại');
+                    return redirect("admin/vocation")->with('error','Nhành đã tồn tại');
                 }
                 return redirect("admin/vocation")->with('message','Thêm thành công');
             }
@@ -61,7 +61,7 @@ class adminController extends Controller
                     adminModel::updateVocation($id,$money,$vocation);
                 }
                 catch (QueryException $ex){
-                    return redirect("admin/vocation")->with('error','Ngành đã tồn tại');
+                    return redirect("admin/vocation")->with('error','Nhành đã tồn tại');
                 }
                 return redirect("admin/vocation");
             }
@@ -79,8 +79,9 @@ class adminController extends Controller
 
             public function postCreateSchoolYear(Request $request){
                 $name = $request -> input('name');
+                $stagesPresent = 1;
                 try {
-                    adminModel::postCreateSchoolYear($name);
+                    adminModel::postCreateSchoolYear($name,$stagesPresent);
                 }
                 catch (QueryException $ex){
                     return redirect("admin/schyear")->with('error','Năm học đã tồn tại');

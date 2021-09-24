@@ -54,7 +54,7 @@
             </tr>
            <tr>
                  <td>Tổng tiền nộp:</td>
-                <td> {{number_format($res -> money)}}<br>
+                <td> {{$res -> money}}<br>
             </tr>
            <tr>
                  <td>Ngày thu:</td>
