@@ -12,7 +12,7 @@
             @csrf
             <input type="text" hidden name="mode" value="0">
             <button type="submit" class="bg-blue text-white btn btn-outline-secondary">
-            <i class="fas fa-arrow-circle-down"></i> Giảm tổng đợt</button>
+                <i class="fas fa-arrow-circle-down"></i> Giảm tổng đợt</button>
         </form>
     </div>
 </div>
@@ -41,9 +41,8 @@
                 <form class="w-full h-full -p-5" action='{{url("admin/schyear/{$res->id}")}}' method="post">
                     @csrf
                     @method("DELETE")
-                    <button type="button"
-                        class="btn btn-primary border-0 text-white  btn bg-red mrt-5" style="width: 100%"
-                        data-toggle="modal" data-target="#a{{$res->id}}">
+                    <button type="button" class="btn btn-primary border-0 text-white  btn bg-red mrt-5"
+                        style="width: 100%" data-toggle="modal" data-target="#a{{$res->id}}">
                         Xóa
                     </button>
 
