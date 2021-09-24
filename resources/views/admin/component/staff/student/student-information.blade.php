@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <th>Hộc bổng</th>
-            <td>{{$res -> scholarship == 0 ? 'Không có học bổng' : $res -> scholarship}}</td>
+            <td>{{$res -> scholarship == 0 ? 'Không có học bổng' : number_format($res -> scholarship)}}</td>
         </tr>
         <tr>
             <td colspan="2">
