@@ -35,7 +35,7 @@
         <td>{{$res -> name}}</td>
         <td>{{$res -> typeOfTuition}}</td>
         <td>{{$res -> date}}</td>
-        <td>{{$res -> money}}</td>
+        <td>{{number_format($res -> money)}}</td>
         <td class=" pt-2">
             <div class="d-flex flex-row w-full  ">
                 <div class="col-6">
