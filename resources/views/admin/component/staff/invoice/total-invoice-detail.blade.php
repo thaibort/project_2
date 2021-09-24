@@ -49,6 +49,7 @@
                     <form action="{{url("admin/invoice")}}" method="post">
                         @csrf
                         @method('DELETE')
+                        <input type="text" name="mode" value="{{$mode}}" hidden>
                         <input hidden type="text" value="{{$res -> id}}" name="id">
                         <input hidden type="text" value="{{$res -> idStudent}}" name="idStudent">
                         <button class=" bg-red text-white form-control">Xóa</button>

@@ -16,7 +16,7 @@
 </a>
 </div>
 <div class="pt-2">
-<form action="{{url('admin/stageform')}}" method="post" class="mr-5">
+<form action='{{url("admin/stageform/{$mode}")}}' method="post" class="mr-5">
     @csrf
     <input type="text" name="mode" value="1" hidden class="mr-5">
     <div class="row">

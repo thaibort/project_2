@@ -143,5 +143,5 @@ Route::group(['prefix' => 'admin'], function () {
 
     //form tăng đợt
        Route::get('stageform/{mode}',[staffController::class,'stageForm']);
-       Route::post('stageform',[staffController::class,'PostStageForm']);
+       Route::post('stageform/{mode}',[staffController::class,'PostStageForm']);
 });

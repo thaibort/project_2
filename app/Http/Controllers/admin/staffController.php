@@ -137,6 +137,7 @@ class staffController extends Controller
 
             public function postCreateInvoice(Request $request){
                 $student = $request -> input('id');
+                $mode = $request -> input('mode');
                 $type = $request -> input('type');
                 $data = [
                     'idStudents' => $request -> input('id'),
@@ -147,7 +148,7 @@ class staffController extends Controller
                 ];
                 adminModel::postCreateInvoice($data,$student,$type);
 
-                return redirect('admin/invoice')->with('message','Thêm thành công');
+                return $this->invoice($mode)->with('message','Thêm thành công');
             }
         //form tăng đợt
             public function stageForm($mode){
@@ -168,7 +169,7 @@ class staffController extends Controller
 
                 adminModel::PostStageForm($data,$mode);
                 if ($mode == 1){
-                    return redirect('admin/invoice')->with('message','Tạo thành công');
+                    return $this->invoice($mode)->with('message','Tạo thành công');
                 }
                 if ($mode == 0){
                     return redirect('admin/schyear')->with('message','Tạo thành công');

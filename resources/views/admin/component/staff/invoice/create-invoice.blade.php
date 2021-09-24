@@ -81,6 +81,7 @@
         @csrf
         <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
         <input hidden type="text" value="{{$res -> id}}" name="id">
+        <input hidden type="text" value="{{$mode}}" name="mode">
         <input hidden type="text" value="{{$total}}" name="money">
         <input hidden type="text" value='@foreach($type as $item) {{$item -> id}} @endforeach' name="type">
         <input hidden type="text" value="{{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->toDateString()}}"
