@@ -63,7 +63,7 @@
             </tr>
             <tr>
                 <td> Tổng tiền nộp: </td>
-                <td> {{$total}}</td>
+                <td> {{number_format($total)}}</td>
             </tr>
             <tr>
                 <td> Ngày thu: </td>
