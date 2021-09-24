@@ -20,7 +20,7 @@ class checkLevel
             return $next($request);
         }
         else{
-            return back()->with('mes','Bạn không dủ quyền truy cập');
+            return back()->with('error','Bạn không dủ quyền truy cập');
         }
     }
 }
