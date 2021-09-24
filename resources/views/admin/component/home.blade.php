@@ -128,12 +128,10 @@
 @endsection
 
 @section('js')
-<scipt>
-    <script>
+<script>
     $(document).ready(function() {
         $('#ccc').remove();
     });
-    </script>
     @if(session()->get('admin.level') == 1)
     $(document).ready( function () {
     $('#mng').remove();
@@ -144,5 +142,5 @@
     $('#stainfor').remove();
     } );
     @endif
-</scipt>
+</script>
 @endsection
