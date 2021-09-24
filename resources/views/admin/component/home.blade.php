@@ -90,21 +90,19 @@
 @endsection
 
 @section('js')
-<scipt>
-        <script>
-            $(document).ready( function () {
-                $('#ccc').remove();
-            } );
-        </script>
-        @if(session()->get('admin.level') == 1)
-            $(document).ready( function () {
-            $('#mng').remove();
-            } );
-        @endif
-        @if(session()->get('admin.level') == 0)
-            $(document).ready( function () {
-            $('#stainfor').remove();
-            } );
-        @endif
-</scipt>
+<script>
+    $(document).ready(function() {
+        $('#ccc').remove();
+    });
+    @if(session()->get('admin.level') == 1)
+        $(document).ready( function () {
+        $('#mng').remove();
+        } );
+    @endif
+    @if(session()->get('admin.level') == 0)
+        $(document).ready( function () {
+        $('#stainfor').remove();
+        } );
+    @endif
+</script>
 @endsection

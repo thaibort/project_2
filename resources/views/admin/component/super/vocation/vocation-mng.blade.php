@@ -32,7 +32,7 @@
                     {{$res->name}}
                 </td>
                 <td class=" text-center">
-                    {{$res->totalMoney}}
+                    {{number_format($res->totalMoney)}}
                 </td>
                 <td class="">
                     <form class="w-full h-full  -p-5" action='{{url("admin/upvoca/{$res->id}")}}'>
