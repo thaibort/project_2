@@ -34,7 +34,7 @@ class clientModel extends Model
                 ->orderBy('school_year.name','asc')
                 ->orderBy('class.name','asc')
                 ->orderBy('students.name','asc')
-                ->paginate(1);
+                ->paginate(15);
         }
         else{
             return DB::table('students')

@@ -21,8 +21,9 @@
         </div>
         @if($mode == 1)
             <div class=" w-1/5 rounded-full flex justify-end h-10 items-center">
-                <form action='{{url("/")}}' class=" h-8 flex items-center w-full z-10">
+                <form action='{{url("invoice")}}' class=" h-8 flex items-center w-full z-10">
                     @csrf
+                    <input type="text" name="mode" hidden value="1">
                     <input type="text" name="kw" value="{{$kw}}" class="focus:ring z-20 outline-none w-5/6 h-10 rounded-l-full pl-3" placeholder="Tìm kiếm ...">
                     <button
                         type="submit"
