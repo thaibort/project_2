@@ -501,22 +501,22 @@ class adminModel extends Model
 
         //tổng hóa đơn
             static function totalInvoiceDetail($id){
-            $rs = DB::table('invoices')
-                ->join('students','invoices.idStudents','=','students.id')
-                ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
-                ->select(
-                    'invoices.id',
-                    'students.id as idStudent',
-                    'students.name as name',
-                    'type_of_tuition.name as typeOfTuition',
-                    'invoices.money',
-                    'invoices.date',
-                )
-                ->where('students.id','=',$id)
-                ->get();
+                $rs = DB::table('invoices')
+                    ->join('students','invoices.idStudents','=','students.id')
+                    ->join('type_of_tuition','invoices.idTypeOfTuition','=','type_of_tuition.id')
+                    ->select(
+                        'invoices.id',
+                        'students.id as idStudent',
+                        'students.name as name',
+                        'type_of_tuition.name as typeOfTuition',
+                        'invoices.money',
+                        'invoices.date',
+                    )
+                    ->where('students.id','=',$id)
+                    ->get();
 
-            return $rs;
-        }
+                return $rs;
+            }
 
         //hóa đơn chi tiết
             static function detailInvoice($id){

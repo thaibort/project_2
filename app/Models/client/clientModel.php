@@ -54,7 +54,31 @@ class clientModel extends Model
                 ->orderBy('school_year.name','asc')
                 ->orderBy('class.name','asc')
                 ->orderBy('students.name','asc')
-                ->paginate(2);
+                ->paginate(15);
         }
+    }
+
+    static function totalInvoiceClient($id){
+        return DB::table('invoices')
+            ->join('students', 'invoices.idStudents', '=', 'students.id')
+            ->join('type_of_tuition', 'invoices.idTypeOfTuition', '=', 'type_of_tuition.id')
+            ->select(
+                'invoices.id',
+                'students.id as idStudent',
+                'students.name as name',
+                'type_of_tuition.name as typeOfTuition',
+                'invoices.money',
+                'invoices.date',
+            )
+            ->where('students.id', '=', $id)
+            ->get();
+    }
+
+    static function getNameStudent($id){
+        $rs = DB::table('students')
+            ->select('name')
+            ->where('id','=',$id)
+            ->get();
+        return $rs;
     }
 }

@@ -20,8 +20,11 @@ class clientController extends Controller
         return view('client.invoice',['rs' => $rs,'kw' => $kw],['mode'=> $mode]);
     }
 
-    public function totalInvoice($id){
-        $rs = clientModel::totalInvoice($id);
-        return view('client.invoice',['rs' => $rs]);
+    public function totalInvoiceClient(Request $request){
+        $id = $request -> input('id');
+        $kw = $request -> input('kw');
+        $rs = clientModel::totalInvoiceClient($id);
+        $name = clientModel::getNameStudent($id);
+        return view('client.total-invoice',['rs' => $rs, 'kw' => $kw, 'mode' => 0,'name' => $name]);
     }
 }

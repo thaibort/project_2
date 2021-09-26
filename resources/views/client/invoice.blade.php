@@ -42,7 +42,11 @@
                         }}
                     </td>
                     <td class="h-8 border-2 border-black text-center">
-                        <a href='{{url("/toinvoice/{$res -> id}")}}'>Tổng phiếu thu</a>
+                        <form action="{{url("toinvoice")}}">
+                            <input type="text" name="id" value="{{$res -> id}}" hidden>
+                            <input type="text" name="mode" value="{{$mode}}" hidden>
+                            <input type="submit" value="Tổng phiếu thu" class="bg-transparent">
+                        </form>
                     </td>
                 </tr>
             @empty
