@@ -47,7 +47,7 @@
                 <td class="h-8 border-2 border-black text-center">{{$res -> id}}</td>
                 <td class="h-8 border-2 border-black text-center">{{$res -> name}}</td>
                 <td class="h-8 border-2 border-black text-center">{{$res -> typeOfTuition}}</td>
-                <td class="h-8 border-2 border-black text-center">{{$res -> date}}</td>
+                <td class="h-8 border-2 border-black text-center">{{date('d - m - Y',strtotime($res -> date))}}</td>
                 <td class="h-8 border-2 border-black text-center">{{number_format($res -> money)}}</td>
             </tr>
         @empty
