@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //clent
 Route::get('/',[clientController::class,'home']);
 Route::get('invoice',[clientController::class,'showInvoice']);
+Route::get('toinvoice',[clientController::class,'totalInvoiceClient']);
 
 Route::get('toinvoice/{id}',[clientController::class,'totalInvoice']);
 

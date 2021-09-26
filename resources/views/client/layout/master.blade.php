@@ -20,12 +20,14 @@
             @yield('menu')
         </div>
         @if($mode == 1)
-            <div class="border border-black w-1/5 rounded-full flex justify-end h-10 items-center">
-                <form action='{{url("/")}}' class=" h-8 flex items-center w-full ">
+            <div class=" w-1/5 rounded-full flex justify-end h-10 items-center">
+                <form action='{{url("/")}}' class=" h-8 flex items-center w-full z-10">
                     @csrf
-                    <input type="text" name="kw" value="{{$kw}}" class="outline-none w-5/6 h-9 rounded-l-full pl-3">
-                    <button type="submit"
-                            class="bg-green-200 hover:bg-blue-200 h-8 w-10 flex justify-center items-center rounded-full">
+                    <input type="text" name="kw" value="{{$kw}}" class="focus:ring z-20 outline-none w-5/6 h-10 rounded-l-full pl-3" placeholder="Tìm kiếm ...">
+                    <button
+                        type="submit"
+                        class="bg-green-300 hover:bg-green-400 h-10 w-1/6 flex justify-center items-center rounded-r-full"
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
