@@ -10,7 +10,7 @@ class clientModel extends Model
 {
     use HasFactory;
 
-    static function home($kw){
+    static function showInvoice($kw){
         if (empty($kw) == false){
             return DB::table('students')
                 ->join('class','students.idClass','=','class.id')
