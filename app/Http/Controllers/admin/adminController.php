@@ -142,8 +142,13 @@ class adminController extends Controller
 
         //xóa
             public function deleteClass($id){
-                adminModel::deleteClass($id);
-                return redirect('admin/class')->with('message','Xóa thành công');
+                try {
+                    adminModel::deleteClass($id);
+                    return redirect('admin/class')->with('message','Xóa thành công');
+                }
+                catch (QueryException $ex){
+                    return redirect('admin/class')->with('error','Xóa thất bại');
+                }
             }
 
         //sửa

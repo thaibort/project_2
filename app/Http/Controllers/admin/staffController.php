@@ -113,9 +113,10 @@ class staffController extends Controller
         //xóa
             public function deleteInvoice(Request $request){
             $id = $request -> input('id');
+            $mode = $request -> input('mode');
             $idStudent = $request -> input('idStudent');
             adminModel::deleteInvoice($id);
-            return redirect("admin/toindetail/{$idStudent}")->with('message','Xóa thành công');
+            return back()->with('message','Xóa thành công');
         }
 
         //thêm
@@ -159,9 +160,10 @@ class staffController extends Controller
             }
 
             public function PostStageForm(Request $request){
-                $mode = $request -> input('mode');
+                $mode1 = $request -> input('mode');
+                $mode = $request -> input('modeInvoice');
                 $data = [];
-                if ($mode == 1) {
+                if ($mode1 == 1) {
                     $data = [
                         'nameAdmin' => session()->get('admin.name'),
                         'start' => $request->input('start'),
@@ -169,12 +171,12 @@ class staffController extends Controller
                     ];
                 }
 
-                adminModel::PostStageForm($data,$mode);
-                if ($mode == 1){
-                    return $this->invoice($mode)->with('message','Tạo thành công');
+                adminModel::PostStageForm($data,$mode1);
+                if ($mode1 == 1){
+                    return $this->invoice($mode)->with('message','Tăng thành công');
                 }
-                if ($mode == 0){
-                    return redirect('admin/schyear')->with('message','Tạo thành công');
+                if ($mode1 == 0){
+                    return redirect('admin/schyear')->with('message','Giảm thành công');
                 }
             }
 

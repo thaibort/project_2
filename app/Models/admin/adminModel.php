@@ -234,6 +234,26 @@ class adminModel extends Model
 
         //xóa
             static function deleteClass($id){
+                $rs1 = DB::table('class')
+                    ->where('id','=',$id)
+                    ->get();
+
+                foreach ($rs1 as $res1){
+                    $rs2 = DB::table('students')
+                        ->where('idClass','=',$res1 -> id)
+                        ->get();
+
+                    foreach ($rs2 as $res2){
+                        DB::table('invoices')
+                        ->where('idStudents','=',$res2 -> id)
+                        ->delete();
+                    }
+
+                    DB::table('students')
+                        ->where('idClass','=',$res1 -> id)
+                        ->delete();
+                }
+
                 DB::table('class')
                     ->delete($id);
             }
