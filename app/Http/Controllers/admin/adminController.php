@@ -85,7 +85,7 @@ class adminController extends Controller
                 catch (QueryException $ex){
                     return redirect("admin/schyear")->with('error','Năm học đã tồn tại');
                 }
-                return back()->with('message','Thêm thành công');
+                return redirect("admin/schyear")->with('message','Thêm thành công');
             }
 
         //xóa
