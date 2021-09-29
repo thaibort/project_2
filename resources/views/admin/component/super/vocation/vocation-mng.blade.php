@@ -4,7 +4,7 @@
    <div aria-colspan="3" class="pt-3">
         <a href="{{url('admin/crevoca')}}">
         <button aria-colspan="3" type="button" class="bg-blue text-white btn btn-primary">
-            <i class="fas fa-plus-circle fa-lg "></i> Thêm Niên Khóa
+            <i class="fas fa-plus-circle fa-lg "></i> Thêm Ngành
         </button>
     </a>
     </div>

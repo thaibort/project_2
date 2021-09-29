@@ -85,7 +85,7 @@ class adminController extends Controller
                 catch (QueryException $ex){
                     return redirect("admin/schyear")->with('error','Năm học đã tồn tại');
                 }
-                return back()->with('message','Thêm thành công');
+                return redirect("admin/schyear")->with('message','Thêm thành công');
             }
 
         //xóa
@@ -142,8 +142,13 @@ class adminController extends Controller
 
         //xóa
             public function deleteClass($id){
-                adminModel::deleteClass($id);
-                return redirect('admin/class')->with('message','Xóa thành công');
+                try {
+                    adminModel::deleteClass($id);
+                    return redirect('admin/class')->with('message','Xóa thành công');
+                }
+                catch (QueryException $ex){
+                    return redirect('admin/class')->with('error','Xóa thất bại');
+                }
             }
 
         //sửa
