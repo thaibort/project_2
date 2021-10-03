@@ -1,9 +1,15 @@
 @extends('admin.layout.master')
 
 @section('title','Thu học phí')
+
+
+@section('css')
+    <link rel="stylesheet" href="/css/general.css">
+@stop
+
 @section('content')
 @foreach($rs as $res)
-<div class="pt-2">
+<div class="pt-2 no-print">
     <form action='{{url("admin/checkinfor")}}'>
         <input type="text" value="{{$res -> id}}" name="id" hidden>
         <input type="text" value="{{$mode}}" name="mode" hidden>
@@ -16,9 +22,6 @@
             Quay lại
         </button>
     </form>
-    <a href='{{url("admin/checkinfor/{$res -> id}")}}'>
-
-    </a>
 </div>
 @endforeach
 @forelse($rs as $res)
@@ -70,7 +73,7 @@
             </div>
         </div>
 
-        <div class="col-12 d-flex justify-content-end pb-3">
+        <div class="col-12 d-flex justify-content-end pb-3 no-print">
             <button
                 class=" bg-blue text-white form-control select2 select2-hidden-accessible col-2 mt-3 mr-3 "
                 onclick="window.print()">In Hóa đơn
@@ -93,6 +96,6 @@
     </div>
 </div>
 @empty
-<div colspan="6">Hiện chưa có hóa đơn</div>
+<div>Hiện chưa có hóa đơn</div>
 @endforelse
 @endsection
