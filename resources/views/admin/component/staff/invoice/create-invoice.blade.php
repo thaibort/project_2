@@ -23,75 +23,74 @@
 @endforeach
 @forelse($rs as $res)
 <div class="pt-2">
-    <div class="d-flex flex-row text-lg text-center">
-        <table class="table table-bordered bg-white">
-            <tr>
-                <td> Tên: </td>
-                <td>{{$res -> studentName}}</td>
-            </tr>
-            <tr>
-                <td> Email: </td>
-                <td>{{$res -> email}}</td>
-            </tr>
-            <tr>
-                <td> Số điện thoại: </td>
-                <td>{{$res -> phone}}</td>
-            </tr>
-            <tr>
-                <td> Địa chỉ: </td>
-                <td> {{$res -> address}}</td>
-            <tr>
-                <td> Giới tính:</td>
-                <td>{{$res -> gender == 1 ? 'Nam' : 'Nữ'}}</td>
-            </tr>
-            <tr>
-                <td>Ngày sinh: </td>
-                <td> {{$res -> dob}}</td>
-            </tr>
-
-            <tr>
-                <td> Lớp: </td>
-                <td> {{$res -> className}}</td>
-            </tr>
-            <tr>
-                <td> Ngành học: </td>
-                <td> {{$res -> vocation}}</td>
-            </tr>
-            <tr>
-                <td>Loại thu: </td>
-                <td>@foreach($type as $item) {{$item -> name}} @endforeach</td>
-            </tr>
-            <tr>
-                <td> Tổng tiền nộp: </td>
-                <td> {{number_format($total)}}</td>
-            </tr>
-            <tr>
-                <td> Ngày thu: </td>
-                <td> {{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y')}}</td>
-            </tr>
-            <tr>
-                <td> Người thu: </td>
-                <td> {{session()->get('admin.name')}}</td>
-            </tr>
-
-        </table>
-    </div>
-
-    <form action='{{url("admin/creinvoice")}}' method="post">
-        @csrf
-        <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
-        <input hidden type="text" value="{{$res -> id}}" name="id">
-        <input hidden type="text" value="{{$mode}}" name="mode">
-        <input hidden type="text" value="{{$total}}" name="money">
-        <input hidden type="text" value='@foreach($type as $item) {{$item -> id}} @endforeach' name="type">
-        <input hidden type="text" value="{{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->toDateString()}}"
-            name="date">
-        <div class="col-12 d-flex justify-content-end ">
-            <button type="submit" required
-                class=" bg-blue text-white form-control select2 select2-hidden-accessible col-1 mt-3 mr-3 "
-                data-select2-id="1" tabindex="-1">Xác nhận</button>
+    <h1 class="d-flex justify-content-center">Phiếu thu</h1>
+    <div class="col-12">
+        <div class="d-flex col-12 flex-row text-lg text-center ">
+            <div class="d-flex col-12">
+                <div class="col-6">
+                    <div>
+                        Họ và tên : {{$res -> studentName}}
+                    </div>
+                    <div>
+                        Email : {{$res -> email}}
+                    </div>
+                    <div>
+                        Số điện thoại : {{$res -> phone}}
+                    </div>
+                    <div>
+                        Địa chỉ : {{$res -> address}}
+                    </div>
+                    <div>
+                        Giới tính : {{$res -> gender == 1 ? 'Nam' : 'Nữ'}}
+                    </div>
+                    <div>
+                        Ngày sinh : {{date('d - m - Y',strtotime($res -> dob))}}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        Lớp : {{$res -> className}}
+                    </div>
+                    <div>
+                        Ngành học : {{$res -> vocation}}
+                    </div>
+                    <div>
+                        Loại thu : @foreach($type as $item) {{$item -> name}} @endforeach
+                    </div>
+                    <div>
+                        Tổng tiền nộp : {{number_format($total)}}
+                    </div>
+                    <div>
+                        Ngày thu : {{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y')}}
+                    </div>
+                    <div>
+                        Người thu : {{session()->get('admin.name')}}
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+
+        <div class="col-12 d-flex justify-content-end pb-3">
+            <button
+                class=" bg-blue text-white form-control select2 select2-hidden-accessible col-2 mt-3 mr-3 "
+                onclick="window.print()">In Hóa đơn
+            </button>
+            <form action='{{url("admin/creinvoice")}}' method="post">
+                @csrf
+                <input hidden type="text" value="{{session()->get('admin.id')}}" name="admin">
+                <input hidden type="text" value="{{$res -> id}}" name="id">
+                <input hidden type="text" value="{{$mode}}" name="mode">
+                <input hidden type="text" value="{{$total}}" name="money">
+                <input hidden type="text" value='@foreach($type as $item) {{$item -> id}} @endforeach' name="type">
+                <input hidden type="text" value="{{\Illuminate\Support\Carbon::now('Asia/Ho_Chi_Minh')->toDateString()}}"
+                    name="date">
+                    <button
+                        type="submit"
+                        class=" bg-blue text-white form-control select2 select2-hidden-accessible mt-3 mr-3 "
+                        data-select2-id="1" tabindex="-1">Xác nhận</button>
+            </form>
+        </div>
+    </div>
 </div>
 @empty
 <div colspan="6">Hiện chưa có hóa đơn</div>
