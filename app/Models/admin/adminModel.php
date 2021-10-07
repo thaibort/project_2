@@ -33,15 +33,25 @@ class adminModel extends Model
             return $rs;
         }
 
-        static function countPaid(){
+        static function countPaid($mode){
             $k = self::limitYear();
-            $rs = DB::select("
+            $rs = "";
+            if ($mode == 1){
+                $rs = DB::select("
                 select count(*) as aggregate from students
                 inner join class on students.idClass = class.id
                 inner join school_year on class.idSchoolYear = school_year.id
-                where school_year.name > 1 and students.totalStages >= school_year.stagesPresent
+                where school_year.name > ".$k." and students.totalStages >= school_year.stagesPresent
             ");
-
+            }
+            else if ($mode == 2){
+                $rs = DB::select("
+                select count(*) as aggregate from students
+                inner join class on students.idClass = class.id
+                inner join school_year on class.idSchoolYear = school_year.id
+                where school_year.name > ".$k." and students.totalStages < school_year.stagesPresent
+            ");
+            }
             $count = 0;
             foreach ($rs as $res){
                 $count = $res ->aggregate;
@@ -449,6 +459,7 @@ class adminModel extends Model
 
     //hóa đơn
         static function invoice($mode){
+            $k = self::limitYear();
             if ($mode == 0) {
                 return DB::table('students')
                     ->join('class', 'students.idClass', '=', 'class.id')
@@ -463,6 +474,7 @@ class adminModel extends Model
                         'class.name as className',
                         'school_year.stagesPresent',
                         'students.totalStages')
+                    ->where('school_year.name', '>', $k)
                     ->orderBy('vocation.name', 'asc')
                     ->orderBy('school_year.name', 'asc')
                     ->orderBy('class.name', 'asc')
@@ -490,6 +502,7 @@ class adminModel extends Model
                     inner join vocation on total_money.idVocation = vocation.id
                     inner join school_year on class.idSchoolYear = school_year.id
                     where school_year.stagesPresent $que students.totalStages
+                    and school_year.name > $k
                     order by vocation.name asc,
                             school_year.name asc,
                             class.name asc, students.name asc

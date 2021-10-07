@@ -20,9 +20,9 @@ class staffController extends Controller
             $student = adminModel::countStudent();
             $class = adminModel::countClass();
             $year = adminModel::countYear();
-            $paid = adminModel::countPaid();
-//            $unpaid = adminModel::countUnpaid();
-            return view('admin.component.home',['student' => $student,'class' => $class,'year' => $year, 'paid' => $paid]);
+            $paid = adminModel::countPaid(1);
+            $unpaid = adminModel::countPaid(2);
+            return view('admin.component.home',['student' => $student,'class' => $class,'year' => $year, 'paid' => $paid, 'unpaid' => $unpaid]);
         }
 
     //cập nhật thông tin nhân viên

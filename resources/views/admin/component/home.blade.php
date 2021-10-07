@@ -22,20 +22,6 @@
         <div class="row">
             @if(session()->get('admin.level') == 0)
             <div class="col-md-3">
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>{{$year}}<sup style="font-size: 20px"></sup></h3>
-                        <p>Khóa</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion fas fa-chart-pie"></i>
-                    </div>
-                    <a href="{{url('admin/schyear')}}" class="small-box-footer"> Xem thêm <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <br>
-            <div class="col-md-3">
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>{{$class}}</h3>
@@ -77,13 +63,26 @@
                     <div class="icon">
                         <i class="ion fas fa-file-invoice"></i>
                     </div>
-                    <a href="{{url('admin/invoice')}}" class="small-box-footer">
+                    <a href="{{url('admin/invoice/2')}}" class="small-box-footer">
                         <font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">Xem thêm </font>
                         </font><i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
+                <div class="col-md-3">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{$unpaid}}<sup style="font-size: 20px"></sup></h3>
+                            <p>Sinh viên chưa nộp học phí</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion fas fa-chart-pie"></i>
+                        </div>
+                        <a href="{{url('admin/invoice/1')}}" class="small-box-footer"> Xem thêm <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
         </div>
     </div>
     </section>
