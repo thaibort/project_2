@@ -253,7 +253,7 @@ return [
             'icon' => 'fas fa-receipt',
             'submenu' => [
                 [
-                    'text' => 'Tổng hóa đơn',
+                    'text' => 'Tổng phiếu thu',
                     'url'  => 'admin/invoice/0',
                     'icon' => 'fas fa-file-invoice-dollar',
                 ],
