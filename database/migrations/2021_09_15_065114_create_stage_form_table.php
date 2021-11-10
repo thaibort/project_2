@@ -17,6 +17,7 @@ class CreateStageFormTable extends Migration
             $table->id();
             $table->date('start');
             $table->date('end');
+            $table->date('date');
             $table->String('nameAdmin','100');
             $table->timestamps();
         });

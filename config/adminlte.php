@@ -305,6 +305,12 @@ return [
                     'url'  => 'admin/scholarship',
                     'icon' =>'fas fa-graduation-cap',
                 ],
+
+                [
+                    'text' => 'Lịch sử tăng đợt đóng tiền',
+                    'url'  => 'admin/history',
+                    'icon' =>'fas fa-graduation-cap',
+                ],
             ],
         ],
         [

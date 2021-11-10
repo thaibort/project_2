@@ -284,4 +284,11 @@ class adminController extends Controller
                 adminModel::deleteStaff($id);
                 return redirect('admin/staff')->with('message','Xóa thành công');
             }
+
+    //lịch sử tăng đợt đóng tiền
+
+        public function history(){
+            $rs = adminModel::history();
+            return view('admin.component.super.form_state.history',['rs' => $rs]);
+        }
 }

@@ -167,7 +167,8 @@ class staffController extends Controller
                     $data = [
                         'nameAdmin' => session()->get('admin.name'),
                         'start' => $request->input('start'),
-                        'end' => $request->input('end')
+                        'end' => $request->input('end'),
+                        'date' => date(now())
                     ];
                 }
 

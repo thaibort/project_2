@@ -597,7 +597,7 @@ class adminModel extends Model
                 return $k;
             }
 
-        //form tăng đợt
+        // form đợt thu tiền
             static function stageForm(){
                 $k = self::limitYear();
                 $rs = DB::table('school_year')
@@ -607,12 +607,19 @@ class adminModel extends Model
                 return $rs;
             }
 
-        //lấy thời gian thu
-            static function getTime(){
-                $rs = DB::table('stage_form')
+            //lấy thời gian thu
+                static function getTime(){
+                    $rs = DB::table('stage_form')
+                        ->orderBy('id', 'desc')
+                        ->first();
+                    return $rs;
+                }
+
+            //lịch sử tăng đợt đóng tiền
+            static function history(){
+                return DB::table('stage_form')
                     ->orderBy('id', 'desc')
-                    ->first();
-                return $rs;
+                    ->get();
             }
 
             static function PostStageForm($data,$mode){

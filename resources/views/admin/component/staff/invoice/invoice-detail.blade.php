@@ -60,7 +60,7 @@
         </tr>
         <tr>
             <td>Ngày thu:</td>
-            <td> {{$res -> date}}<br>
+            <td>{{date('d - m - Y',strtotime($res -> date))}}<br>
         </tr>
         <tr>
             <td> Người thu:</td>
